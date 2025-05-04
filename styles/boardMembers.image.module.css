@@ -1,0 +1,21 @@
+.image {
+  display: none;
+}
+
+@media (max-width: 1050px) {
+  .mobile {
+    display: block;
+  }
+}
+
+@media (min-width: 1051px) and (max-width: 1600px) {
+  .mid {
+    display: block;
+  }
+}
+
+@media (min-width: 1601px) {
+  .default {
+    display: block;
+  }
+}

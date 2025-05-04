@@ -1,0 +1,73 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+    Helvetica Neue, sans-serif;
+  font-size: 18px;
+
+  /* TODO ask for max width option */
+  /* max-width: 1200px;
+  margin: auto; */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+@font-face {
+  font-family: 'Bokonique';
+  src: url('../fonts/Bokonique-Regular.otf') format('truetype');
+}
+@font-face {
+  font-family: 'Montserratarm';
+  src: url('../fonts/Montserratarm-Regular.otf') format('truetype');
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #aaaaaa !important;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  opacity: 0.7;
+}
+
+.swiper-slide {
+  padding: 48px 32px !important;
+}
+
+.swiper-partners {
+  padding: 0 !important;
+}
+
+.swiper-wrapper {
+  align-items: center;
+}
+
+.leaflet-control-attribution {
+  display: none;
+}
+
+.customSwiperSlide {
+  padding: 48px 0 !important;
+}
+
+.swiperSlideDetailedMobile {
+  padding: 0 !important;
+}
