@@ -31,9 +31,6 @@ export const footerStyles = {
         gap: '8px',
         justifyContent: 'space-between',
         mt: '8px',
-        '@media (max-width:1050px)': {
-          justifyContent: 'start',
-        },
         '@media (max-width:600px)': {
           flexDirection: 'column',
           textAlign: 'center',
@@ -89,20 +86,6 @@ export const footerStyles = {
         display: 'flex',
         flexWrap: 'wrap',
         rowGap: '40px',
-        [theme.breakpoints.down('lg')]: {
-          display: 'none',
-        },
-      },
-    },
-    boxLaptop: {
-      sx: {
-        width: '100%',
-        flexWrap: 'wrap',
-        rowGap: '40px',
-        display: 'none',
-        [theme.breakpoints.down('lg')]: {
-          display: 'flex',
-        },
         [theme.breakpoints.down('sm')]: {
           display: 'none',
         },

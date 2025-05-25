@@ -108,6 +108,7 @@ export const contactUsStyles = {
         justifyContent: 'space-between',
         width: '100%',
         mt: '98px',
+        mb: '48px',
         '@media (max-width: 800px)': {
           display: 'block',
           justifyContent: 'center',

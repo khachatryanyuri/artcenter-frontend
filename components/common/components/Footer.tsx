@@ -1,18 +1,15 @@
 import * as React from 'react';
-import Image from 'next/image';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { Fragment } from 'react';
 
-import azatazenLogo from '@lib/public/homePage/azatazenWhite.svg';
 import { footerStyles } from '@lib/components/common/styles/footerStyle';
 import { ALL_RIGHTS_RESERVED, BOTTOM_DATA, SECTIONS_DATA } from '@lib/components/common/constants/footerConstants';
 import LinkNavigate from '@lib/components/common/components/LinkNavigate';
-import FooterLaptop from '@lib/components/common/components/FooterLaptop';
 import { SocialMedia } from '@lib/components/common/components/SocialMedia';
 import FooterMobile from '@lib/components/common/components/FooterMobile';
 
 const {
-  boxStyles: { footerBox, linkBox, lastBox, lastTextLinkBox, privacyBox, boxMax, boxLaptop, boxMobile },
+  boxStyles: { footerBox, linkBox, lastBox, lastTextLinkBox, privacyBox, boxMax, boxMobile },
   textStyles: { sectionHeading, copyrightText },
   linkStyles: { link, privacyLinks },
 } = footerStyles;
@@ -23,12 +20,12 @@ export default function Footer() {
       <Box {...boxMax}>
         <Grid container spacing={3}>
           <Grid item xs={2}>
-            <Image
+            {/* <Image
               loading="lazy"
               src={azatazenLogo}
               alt={'azatazenLogo'}
               style={{ width: '100%', height: 'auto', maxWidth: '126px' }}
-            />
+            /> */}
           </Grid>
           {SECTIONS_DATA.map((value, index) => (
             <Grid item key={`section-box-${index}`} xs={2}>
@@ -58,9 +55,6 @@ export default function Footer() {
           </Box>
           <SocialMedia iconColor={'#fff'} />
         </Box>
-      </Box>
-      <Box {...boxLaptop}>
-        <FooterLaptop />
       </Box>
       <Box {...boxMobile}>
         <FooterMobile />

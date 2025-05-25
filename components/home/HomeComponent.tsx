@@ -2,7 +2,6 @@ import React from 'react';
 
 import MainInfo from '@lib/components/home/components/MainInfo';
 import { useContent } from '@lib/services/store/contentsStore';
-import { patreonStyles } from '@lib/components/common/styles/patreonStyles';
 import OnlineLessons from '@lib/components/home/components/OnlineLessons';
 import LessonsServices from '@lib/components/home/components/LessonsServicesComponent';
 import Services from '@lib/components/home/components/ServicesComponent';

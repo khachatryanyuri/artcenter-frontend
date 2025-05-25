@@ -8,24 +8,16 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import azatazenLogo from '@lib/public/homePage/Azatazen_Mid_images.svg';
 import { isOpenAccordionStyle, navbarStyles } from '@lib/components/common/styles/navbarStyles';
-import {
-  LINKS_MOBILE,
-  IMAGES_ALT,
-  NAVIGATE_PAGES,
-  LINK_donation,
-  LINKS,
-} from '@lib/components/common/constants/navbarConstants';
+import { NAVIGATE_PAGES, LINKS } from '@lib/components/common/constants/navbarConstants';
 import LinkNavigate from './LinkNavigate';
 import menue from '@lib/public/homePage/menue.svg';
 import { IHrefLink, ILink } from '@lib/components/common/interface/navbar';
 
-const { LOGO_ALT, MENUE } = IMAGES_ALT;
 const { HOME_PAGE } = NAVIGATE_PAGES;
 const {
   linkStyles,
   toolbarStyles,
   boxStyles,
-  iconStyles,
   accordionStyles: { accordion, accordionSummary },
   mobileMenue,
   menuItem,
@@ -61,7 +53,7 @@ export default function ToolbarMobile() {
           <Image
             loading="lazy"
             src={menue}
-            alt={MENUE}
+            alt="menus"
             onClick={(event: any) => handleMenuOpen(event)}
             width={25}
             height={25}

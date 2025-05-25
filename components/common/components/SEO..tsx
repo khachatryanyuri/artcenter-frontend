@@ -14,10 +14,10 @@ export default function SEO({
   return (
     <NextSeo
       title={title}
-      description={description || 'Discover the latest updates on Ազատազէն ԿՀԿ.'}
+      description={description || 'Discover the latest updates on '}
       openGraph={{
         title,
-        description: description || 'Discover the latest updates on Ազատազէն ԿՀԿ.',
+        description: description || 'Discover the latest updates on ',
         url,
         images: image
           ? [

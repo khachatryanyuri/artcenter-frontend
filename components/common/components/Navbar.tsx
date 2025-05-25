@@ -1,41 +1,20 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import { Breadcrumbs, Button, Menu, MenuItem, Typography } from '@mui/material';
+import { Breadcrumbs, Button, Menu, MenuItem } from '@mui/material';
 import Link from 'next/link';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LanguageIcon from '@mui/icons-material/Language';
 
-import azatazenLogo from '@lib/public/common/next1.svg';
-import azatazenMidLogo from '@lib/public//homePage/Azatazen_Mid_images.svg';
 import { navbarStyles, selectLanguageStyles } from '@lib/components/common/styles/navbarStyles';
-import { useAuth } from '@lib/services/store/AuthContext';
-import {
-  LINKS,
-  LANGUAGES,
-  USER_ACTIONS,
-  IMAGES_ALT,
-  NAVIGATE_PAGES,
-  LINKS_MIN,
-} from '@lib/components/common/constants/navbarConstants';
-import UserMenu from '@lib/components/common/components/UserMenu';
+import { LINKS, LANGUAGES, NAVIGATE_PAGES } from '@lib/components/common/constants/navbarConstants';
 import LinkNavigate from '@lib/components/common/components/LinkNavigate';
 import ToolbarMobile from '@lib/components/common/components/ToolbarMobile';
 import NavbarMenuList from '@lib/components/common/components/NavbarMenueList';
 
-const { LOGO_ALT } = IMAGES_ALT;
 const { HOME_PAGE } = NAVIGATE_PAGES;
-const {
-  linkStyles,
-  toolbarStyles,
-  boxStyles,
-  breadcrumbsStyles,
-  breadcrumbsLanguageStyles,
-  boxToolbarDesktop,
-  boxToolbarLaptop,
-} = navbarStyles;
+const { linkStyles, toolbarStyles, boxStyles, breadcrumbsLanguageStyles } = navbarStyles;
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

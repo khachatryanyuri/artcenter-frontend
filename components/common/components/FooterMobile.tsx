@@ -18,9 +18,9 @@ const {
 export default function FooterMobile() {
   return (
     <>
-      <Box {...imageBoxMobile}>
+      {/* <Box {...imageBoxMobile}>
         <Image loading="lazy" src={azatazenLogo} alt={'azatazenLogo'} />
-      </Box>
+      </Box> */}
       <Grid container spacing={3} sx={{ textAlign: 'center' }}>
         {SECTIONS_DATA.map((value, index) => (
           <Grid item key={`section-box-${index}`} xs={12}>

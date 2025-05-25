@@ -1,15 +1,14 @@
 const defaultSEO = {
-  title: 'Ազատազէն ԿՀԿ',
-  description:
-    'Մեր առաքելությունն է համախմբել մարդկանց զենքի մշակույթի և զինագործության զարգացման շուրջ՝ հանուն ինքնիշխան հայկական պետականության շարունակականության և հզորացման։',
+  title: 'Артцентер',
+  description: '',
   openGraph: {
     type: 'website',
     locale: 'hy_AM',
-    url: 'https://azatazen.am/',
-    site_name: 'Ազատազէն ԿՀԿ',
+    url: '',
+    site_name: 'Артцентер',
     images: [
       {
-        url: 'https://azatazen.am/homePage/azatazenMid.png',
+        url: '',
         width: 800,
         height: 600,
         alt: 'Default Preview Image',

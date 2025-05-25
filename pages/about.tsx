@@ -1,5 +1,5 @@
 import SEO from '@lib/components/common/components/SEO.';
-import AboutUsComponent from '../components/aboutUs/components/AboutUsComponent';
+// import AboutUsComponent from '../components/aboutUs/components/AboutUsComponent';
 
 const AboutUsPage = () => {
   return (
@@ -12,7 +12,7 @@ const AboutUsPage = () => {
         url={`https://azatazen.am/about`}
         image={'https://azatazen.am/seo/about.png'}
       />
-      <AboutUsComponent />
+      {/* <AboutUsComponent /> */}
     </>
   );
 };
