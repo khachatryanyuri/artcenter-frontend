@@ -5,8 +5,8 @@ export const LINKS: ILink[] = [
     text: 'Заполнить заявку',
     id: 'fllOutTheApplication',
     menu: [
-      { text: 'На уроки', href: '/' },
-      { text: 'На услуги', href: '/' },
+      { text: 'На уроки', href: '/zayavka/uroki' },
+      { text: 'На услуги', href: '/zayavka/uslugi' },
       { text: 'На подарочный сертификат', href: '/' },
     ],
   },
