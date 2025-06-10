@@ -1,111 +1,97 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useMemo } from 'react';
 import {
   SimpleForm,
   TextInput,
   Loading,
-  DateInput,
   Edit,
-  BooleanInput,
   ImageInput,
   required,
   EditProps,
-  useRedirect,
-  ArrayInput,
-  SimpleFormIterator,
+  ImageField,
+  SelectInput,
 } from 'react-admin';
 import { RichTextInput, RichTextInputToolbar } from 'ra-input-rich-text';
-
 import { useLanguages } from '@lib/src/admin/languageStore/languageStore';
-import { dataProvider } from '@lib/src/admin/providers/dataProvider';
-import { RECURSE } from '@lib/src/admin/interface/Recurce';
-import CustomImageField from '@lib/src/admin/components/CropImages/customImageField';
-import { ImageCropperModal } from '@lib/src/admin/components/CropImages/ImageCropperModal';
-import { useImageHandling, useFormSubmission } from '@lib/src/admin/components/CropImages/useImageHandling';
+import { useSubTypes } from '@lib/src/admin/subTypeStore/subTypeStore';
+import { useFormContext, useWatch } from 'react-hook-form';
+import { TYPE_SELECT_INPUT } from '@lib/src/constants';
+
+const DependentSelectInputs = ({ subTypes }: { subTypes: any[] }) => {
+  const { control } = useFormContext();
+
+  // Watching subType key (selected in first select)
+  const selectedSubTypeKey = useWatch({ control, name: 'subTypeKey' });
+
+  const selectedSubType = useMemo(() => {
+    return subTypes.find((s) => s.key === selectedSubTypeKey);
+  }, [selectedSubTypeKey, subTypes]);
+
+  const typeChoices = useMemo(() => {
+    return (
+      selectedSubType?.type?.map((t: { key: string; name: { ru?: string; en?: string } }) => ({
+        id: t.key,
+        name: t.name?.ru || t.name?.en || t.key,
+      })) || []
+    );
+  }, [selectedSubType]);
+
+  return (
+    <>
+      <SelectInput
+        source="subTypeKey" // <-- главное исправление
+        label="Sub Type"
+        choices={subTypes}
+        optionText={(record) => `${record.title?.ru || record.title?.en || record.key}`}
+        optionValue="key"
+        fullWidth
+      />
+
+      <SelectInput
+        source="typeKey" // <-- ключ выбранного type из выбранного subType
+        label="Type"
+        choices={typeChoices}
+        optionText="name"
+        optionValue="id"
+        disabled={typeChoices.length === 0}
+        fullWidth
+      />
+    </>
+  );
+};
 
 const CoursesEdit = (props: EditProps) => {
   const { languages, isLoading } = useLanguages();
-  const { selectedImages, isImageModalOpen, croppedImages, handleImageChange, handleImageCrop, setIsImageModalOpen } =
-    useImageHandling({ multiple: true });
-  const handleSubmit = useFormSubmission(dataProvider, RECURSE.COURSES, true);
-  const redirect = useRedirect();
+  const { subTypes, isLoadingSubTypes } = useSubTypes();
 
-  if (isLoading) {
+  if (isLoading || isLoadingSubTypes) {
     return <Loading />;
   }
 
   return (
     <Edit title="Edit a Course" {...props}>
-      <SimpleForm
-        onSubmit={(values) => {
-          handleSubmit(values, croppedImages);
-          redirect('/courses');
-        }}
-      >
+      <SimpleForm>
         {languages.map((language) => (
           <Fragment key={language.id}>
-            <TextInput
-              source={`title.${language.code}`}
-              label={`Title (${language.code})`}
-              validate={language.code === 'arm' ? required() : undefined}
-            />
+            <TextInput label={`Title (${language.code})`} source={`title.${language.code}`} fullWidth />
             <RichTextInput
-              source={`description.${language.code}`}
               label={`Description (${language.code})`}
+              source={`description.${language.code}`}
               toolbar={<RichTextInputToolbar size="medium" />}
               validate={language.code === 'arm' ? required() : undefined}
             />
           </Fragment>
         ))}
-        {languages.map((language) => (
-          <Fragment key={language.id}>
-            <ArrayInput label={`Entries (${language.code})`} source={`content.${language.code}`}>
-              <SimpleFormIterator>
-                <TextInput
-                  label={`Title (${language.code})`}
-                  source={`title`}
-                  validate={language.code === 'arm' ? required() : undefined}
-                />
-                <RichTextInput
-                  label={`Description (${language.code})`}
-                  source={`description`}
-                  toolbar={<RichTextInputToolbar size="medium" />}
-                  validate={language.code === 'arm' ? required() : undefined}
-                />
-              </SimpleFormIterator>
-            </ArrayInput>
-          </Fragment>
-        ))}
-        {languages.map((language) => (
-          <RichTextInput
-            label={`Payment (${language.code})`}
-            source={`payment.${language.code}`}
-            toolbar={<RichTextInputToolbar size="medium" />}
-            validate={language.code === 'arm' ? required() : undefined}
-          />
-        ))}
 
-        <TextInput source="calendlyLink" label="Calendly link" validate={required()} />
-        <DateInput source="startingDate" label="Starting Date" validate={required()} />
-        <ImageInput
-          source="picture"
-          label="Picture"
-          accept="image/*"
-          multiple={true}
-          onChange={(files) => handleImageChange(files as File[])}
-          validate={required()}
-        />
-        <CustomImageField croppedImages={croppedImages} />
-        {selectedImages && (
-          <ImageCropperModal
-            isOpen={isImageModalOpen}
-            onClose={() => setIsImageModalOpen(false)}
-            imageSrc={URL.createObjectURL(selectedImages)}
-            originalName={selectedImages.name}
-            onSave={handleImageCrop}
-            aspect={1}
-          />
-        )}
-        <BooleanInput source="isCourseAvailable" label="Is course available" defaultValue={true} />
+        {/* Сохраняем старое изображение (если нужно) */}
+        <ImageField source="picture" title="Picture" />
+
+        <ImageInput source="picture" label="Upload New Picture" accept="image/*" multiple={false}>
+          <ImageField source="src" title="Picture" />
+        </ImageInput>
+
+        <SelectInput source="typesKey" label="Key" choices={TYPE_SELECT_INPUT} required fullWidth />
+
+        <DependentSelectInputs subTypes={subTypes} />
       </SimpleForm>
     </Edit>
   );

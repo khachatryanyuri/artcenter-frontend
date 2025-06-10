@@ -6,7 +6,8 @@ import axios from 'axios';
 import { Box } from '@mui/material';
 import SEO from '@lib/components/common/components/SEO.';
 import { stripHtmlTagsWithRegex } from '@lib/services/helpers/service';
-const DetailedCourseComponent = dynamic(() => import('@lib/components/courses/components/DetailedCourse'), {
+
+const SubCourseComponent = dynamic(() => import('@lib/components/courses/components/SubCourse'), {
   ssr: false,
 });
 
@@ -24,6 +25,7 @@ interface ICourseData {
 interface GetCourseProps {
   courseItem: {
     data: ICourseData | null;
+    curseData: any;
   };
 }
 
@@ -32,32 +34,51 @@ const GetCourse: React.FC<GetCourseProps> = ({ courseItem }) => {
     return <Box>Error: Course not found</Box>;
   }
 
-  const courseData = courseItem.data;
+  const typeData = courseItem.data;
+  const courseData = courseItem.curseData;
   const imageUrl = courseData.picture || 'https://azatazen.am/homePage/azatazenMid.png';
 
   return (
     <>
-      <SEO
+      {/* <SEO
         title={courseData?.title?.arm || 'Ազատազէն Դասընթացներ'}
         description={stripHtmlTagsWithRegex(courseData?.description?.arm) || ''}
         url={`https://azatazen.am/courses/${courseData?.id}`}
         image={imageUrl as string}
-      />
-      <DetailedCourseComponent data={courseData} />
+      /> */}
+      <SubCourseComponent typeData={typeData} courseData={courseData} />
     </>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { id } = context.params!;
-
   try {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/courses/${id}`);
+    const filter = {
+      key: 'for_music_teachers',
+    };
+
+    const curseFilter = {
+      typesKey: 'curses',
+      subTypesKey: 'for_music_teachers',
+    };
+
+    const courseResponse = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/courses`, {
+      params: {
+        filter: JSON.stringify(curseFilter),
+      },
+    });
+
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/subTypes`, {
+      params: {
+        filter: JSON.stringify(filter),
+      },
+    });
 
     return {
       props: {
         courseItem: {
           data: response.data,
+          curseData: courseResponse.data,
         },
       },
     };
@@ -67,6 +88,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props: {
         courseItem: {
           data: null,
+          curseData: null,
         },
       },
     };

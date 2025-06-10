@@ -12,6 +12,14 @@ import ContentEdit from '@lib/src/admin/components/Content/ContentEdit';
 import ContentList from '@lib/src/admin/components/Content/ContentList';
 import ContentShow from '@lib/src/admin/components/Content/ContentShow';
 import ContentCreate from '@lib/src/admin/components/Content/ContentCreate';
+import SubTypeEdit from '@lib/src/admin/components/SubType/SubTypeEdit';
+import SubTypeList from '@lib/src/admin/components/SubType/SubTypeList';
+import SubTypeShow from '@lib/src/admin/components/SubType/SubTypeShow';
+import SubTypeCreate from '@lib/src/admin/components/SubType/SubTypeCreate';
+import TypeEdit from '@lib/src/admin/components/Type/TypeEdit';
+import TypeList from '@lib/src/admin/components/Type/TypeList';
+import TypeShow from '@lib/src/admin/components/Type/TypeShow';
+import TypeCreate from '@lib/src/admin/components/Type/TypeCreate';
 
 const resources = [
   { name: 'user/users', list: UsersList, edit: UserEdit, show: UserShow },
@@ -29,6 +37,20 @@ const resources = [
     create: LanguagesCreate,
   },
   { name: 'content', list: ContentList, edit: ContentEdit, show: ContentShow, create: ContentCreate },
+  {
+    name: 'subTypes',
+    list: SubTypeList,
+    edit: SubTypeEdit,
+    show: SubTypeShow,
+    create: SubTypeCreate,
+  },
+  {
+    name: 'types',
+    list: TypeList,
+    edit: TypeEdit,
+    show: TypeShow,
+    create: TypeCreate,
+  },
 ];
 
 export default resources;

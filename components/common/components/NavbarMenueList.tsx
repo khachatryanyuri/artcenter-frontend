@@ -1,11 +1,12 @@
 import React, { Fragment, useState } from 'react';
 import Button from '@mui/material/Button';
-import { Box, MenuItem, SxProps, Theme, Typography } from '@mui/material';
+import { Box, MenuItem, SxProps, Theme } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 import LinkNavigate from '@lib/components/common/components/LinkNavigate';
 import { selectLanguageStyles, navbarStyles } from '@lib/components/common/styles/navbarStyles';
 import { IDonationLink, IHrefLink, ILink, IMenuLink } from '@lib/components/common/interface/navbar';
+import { useRouter } from 'next/router';
 
 const {
   linkStyles,
@@ -28,7 +29,7 @@ export default function NavbarMenuList({ data, styles }: { data: ILink[]; styles
       [value]: false,
     }));
   };
-
+  const router = useRouter();
   return (
     <Box {...styles}>
       {data.map((link: ILink, index: number) => (
@@ -38,6 +39,7 @@ export default function NavbarMenuList({ data, styles }: { data: ILink[]; styles
               {...menuItemBox}
               onMouseOver={() => handleMouseOver((link as IDonationLink).id)}
               onMouseOut={() => handleMouseOut((link as IDonationLink).id)}
+              onClick={() => link.href && router.push(link.href)}
             >
               <Button
                 variant="text"
@@ -48,8 +50,15 @@ export default function NavbarMenuList({ data, styles }: { data: ILink[]; styles
               </Button>
 
               <Box {...selectLanguageStyles(menuOpen[(link as IDonationLink).id]).menuBox}>
-                {(link as IMenuLink).menu.map((value: { text: string; href: string }) => (
-                  <MenuItem key={value.text} onClick={() => handleMouseOut((link as IDonationLink).id)}>
+                {(link as IMenuLink).menu.map((value) => (
+                  <MenuItem
+                    key={value.text}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleMouseOut((link as IDonationLink).id);
+                      router.push(value.href);
+                    }}
+                  >
                     <LinkNavigate text={value.text} navigatePage={value.href} styles={linkStyles.menuLink} />
                   </MenuItem>
                 ))}

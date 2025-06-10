@@ -6,10 +6,7 @@ export const courseStyle = {
       sx: {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        textAlign: 'center',
-        mt: '120px',
+        mt: '64px',
         padding: '0 120px !important',
         [theme.breakpoints.down('xl')]: {
           mt: '64px',
@@ -21,10 +18,13 @@ export const courseStyle = {
         },
       },
     },
-    gridContainer: {
-      sx: { display: 'flex', flexWrap: 'wrap', alignItems: 'stretch', mt: '64px' },
+    imageStyle: {
+      style: { width: '100%', height: 'auto' },
     },
-    gridItem: { sx: { display: 'flex', flexDirection: 'column', justifyContent: 'center' } },
+    gridContainer: {
+      sx: { display: 'flex', flexWrap: 'wrap', alignItems: 'stretch', mb: '128px' },
+    },
+    gridItem: { sx: { display: 'flex', flexDirection: 'column', justifyContent: 'center', cursor: 'pointer' } },
     gridItemPayment: {
       sx: {
         backgroundColor: '#C35F1C',
@@ -60,6 +60,9 @@ export const courseStyle = {
       },
     },
   },
+  imageStyle: {
+    style: { width: '100%', height: 'auto' },
+  },
 };
 
 export const gridItemStyles = (isLastItemOdd: boolean) => {
@@ -78,4 +81,87 @@ export const gridItemStyles = (isLastItemOdd: boolean) => {
       },
     },
   };
+};
+
+export const detailedCourseStyles = {
+  boxStyles: {
+    mainBox: {
+      sx: {
+        padding: '96px 360px',
+        width: '100%',
+        '@media (max-width: 1600px)': {
+          padding: '64px 240px',
+        },
+        '@media (max-width: 1200px)': {
+          padding: '48px 120px',
+        },
+        '@media (max-width: 900px)': {
+          padding: '24px 48px',
+        },
+        '@media (max-width: 700px)': {
+          padding: '24px',
+        },
+        '@media (max-width: 500px)': {
+          padding: '24px 0',
+        },
+      },
+    },
+    iconBox: {
+      sx: {
+        display: 'flex',
+        alignItems: 'center',
+      },
+    },
+    mainContainer: {
+      sx: {
+        backgroundImage: 'url(/news/detailedNewsBackground.png)',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'top center',
+      },
+    },
+    linkBox: {
+      sx: {
+        padding: '24px 0',
+        display: 'flex',
+        columnGap: '4px',
+        justifyContent: 'space-between',
+        '@media (max-width: 600px)': {
+          borderBottom: '1px solid #C7C7C7',
+        },
+      },
+    },
+  },
+  textStyles: {
+    heading: {
+      margin: '0 auto',
+      mb: '64px',
+    },
+    dateText: {
+      sx: {
+        textAlign: 'end',
+        marginTop: '42px',
+        color: '#8E8E8E',
+      },
+    },
+  },
+  imgStyles: {
+    newsImage: {
+      style: {
+        width: '100%',
+        height: 'auto',
+      },
+    },
+  },
+
+  iconStyles: {
+    iconButtonStyle: {
+      sx: {
+        fontSize: '36px',
+        color: '#000',
+      },
+    },
+    shareIcon: {
+      sx: { color: '#C35F1C', border: '1px solid #C35F1C', mt: '16px' },
+    },
+  },
 };

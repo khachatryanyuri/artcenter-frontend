@@ -15,3 +15,13 @@ export { default as ContentList } from '@lib/src/admin/components/Content/Conten
 export { default as ContentEdit } from '@lib/src/admin/components/Content/ContentEdit';
 export { default as ContentShow } from '@lib/src/admin/components/Content/ContentShow';
 export { default as ContentCreate } from '@lib/src/admin/components/Content/ContentCreate';
+
+export { default as SubTypeList } from '@lib/src/admin/components/SubType/SubTypeList';
+export { default as SubTypeEdit } from '@lib/src/admin/components/SubType/SubTypeEdit';
+export { default as SubTypeShow } from '@lib/src/admin/components/SubType/SubTypeShow';
+export { default as SubTypeCreate } from '@lib/src/admin/components/SubType/SubTypeCreate';
+
+export { default as TypeList } from '@lib/src/admin/components/Type/TypeList';
+export { default as TypeEdit } from '@lib/src/admin/components/Type/TypeEdit';
+export { default as TypeShow } from '@lib/src/admin/components/Type/TypeShow';
+export { default as TypeCreate } from '@lib/src/admin/components/Type/TypeCreate';

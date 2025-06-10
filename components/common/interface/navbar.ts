@@ -12,6 +12,7 @@ interface IHrefLink extends IBaseLink {
 interface IDonationLink extends IHrefLink {
   id: string;
   style: SxProps<Theme>;
+  href: string;
 }
 
 type ILink = IMenuLink | IHrefLink | IDonationLink;

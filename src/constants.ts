@@ -27,6 +27,13 @@ const RESOURCES_REQUIRING_FORM_DATA = [
   'application-form',
   'user/register',
   'services',
+  'subTypes',
+  'types',
+];
+
+export const TYPE_SELECT_INPUT = [
+  { id: 'curses', name: 'Online lessons' },
+  { id: 'services', name: 'Services' },
 ];
 
 const MAX_IMAGE_COUNT = 2;
