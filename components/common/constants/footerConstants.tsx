@@ -9,7 +9,6 @@ export const SECTIONS_DATA = [
     data: [
       { subTitle: 'О нас', link: '/about' },
       { subTitle: 'Помощь', link: '/helps' },
-      { subTitle: 'Сотрудничество', link: '/membership' },
       { subTitle: 'Связаться с нами', link: '/contactus' },
     ],
   },

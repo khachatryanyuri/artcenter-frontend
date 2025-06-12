@@ -2,6 +2,7 @@ import SEO from '@lib/components/common/components/SEO.';
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
+import paymentImage from '@lib/public/more/paymentImage.jpg';
 
 const AboutUsComponent = dynamic(() => import('../components/aboutUs/components/AboutUsComponent'), {
   ssr: false,
@@ -24,7 +25,7 @@ interface GetContentProps {
   };
 }
 
-const AboutUsPage: React.FC<GetContentProps> = ({ contentData }) => {
+const PaymentPage: React.FC<GetContentProps> = ({ contentData }) => {
   return (
     <>
       {/* <SEO
@@ -35,7 +36,7 @@ const AboutUsPage: React.FC<GetContentProps> = ({ contentData }) => {
         url={`https://azatazen.am/about`}
         image={'https://azatazen.am/seo/about.png'}
       /> */}
-      <AboutUsComponent courseData={contentData.data} />
+      <AboutUsComponent courseData={contentData.data} imageSrc={paymentImage} />
     </>
   );
 };
@@ -43,7 +44,7 @@ const AboutUsPage: React.FC<GetContentProps> = ({ contentData }) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const filter = {
-      page: 'about',
+      page: 'payment',
     };
 
     const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/content`, {
@@ -71,4 +72,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 };
 
-export default AboutUsPage;
+export default PaymentPage;

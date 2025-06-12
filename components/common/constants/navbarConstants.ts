@@ -13,9 +13,10 @@ export const LINKS: ILink[] = [
     text: 'О школе',
     id: 'аboutSchool',
     menu: [
+      { text: 'О нас', href: '/about' },
       { text: 'Вопрос-ответ', href: '/helps' },
-      { text: 'Скидки', href: '/' },
-      { text: 'Оплата', href: '/' },
+      { text: 'Скидки', href: '/discounts' },
+      { text: 'Оплата', href: '/payment' },
     ],
   },
 
