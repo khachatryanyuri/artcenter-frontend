@@ -25,13 +25,17 @@ export default function SubCourseComponent({ typeData, courseData }: any) {
         <Typography variant="h2" sx={{ mt: '32px' }}>
           {types.title.ru}
         </Typography>
-        <Content variant="h4" text={types.desc} style={{ color: '#000', mt: '32px' }} />
+        <Content variant="h5" text={types.desc} style={{ color: '#000', mt: '32px' }} />
 
         <Grid container spacing={4} {...gridContainer}>
           {types?.type?.map((value: any, index: number) => {
             return (
               <Grid item xs={12} key={index} {...gridItem}>
-                <Content variant="h4" text={value.name} style={{ color: '#000', mt: '32px', mb: '12px' }} />
+                <Content
+                  variant="h3"
+                  text={value.name}
+                  style={{ color: '#C35F1C', mt: '32px', mb: '32px', textAlign: 'center' }}
+                />
 
                 {courses.map((coursesValue: any, coursesIndex: number) => {
                   return (

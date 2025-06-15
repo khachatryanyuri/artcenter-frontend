@@ -33,7 +33,7 @@ export default function CourseComponent({ data }: any) {
         <Typography variant="h2" sx={{ mt: '32px' }}>
           {courseData?.title?.ru}
         </Typography>
-        <Content variant="h4" text={courseData?.desc} style={{ color: '#000', mt: '32px' }} />
+        <Content variant="h5" text={courseData?.desc} style={{ color: '#000', mt: '32px' }} />
 
         <Grid container spacing={4} {...gridContainer}>
           {courseData?.subTypes?.map((value: any, index: number, array: any[]) => {
@@ -49,7 +49,7 @@ export default function CourseComponent({ data }: any) {
                   handleNavigate(value.key);
                 }}
               >
-                <Content variant="h4" text={value.title} style={{ color: '#000', mt: '32px', mb: '12px' }} />
+                <Content variant="h4" text={value.title} style={{ color: '#C35F1C', mt: '32px', mb: '12px' }} />
                 <Image
                   loading="lazy"
                   src={value.picture}

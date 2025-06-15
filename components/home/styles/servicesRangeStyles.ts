@@ -26,7 +26,7 @@ export const servicesRangeStyles = {
         gap: '112px',
         justifyContent: 'center',
         alignItems: 'center',
-        maxWidth: '80%',
+        maxWidth: '100%',
         [theme.breakpoints.down('lg')]: {
           flexDirection: 'column',
           maxWidth: '100%',

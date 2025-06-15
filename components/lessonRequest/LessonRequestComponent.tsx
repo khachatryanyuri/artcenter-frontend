@@ -1,7 +1,23 @@
-import { Box, Button, TextField, Typography, Select, MenuItem } from '@mui/material';
+import { Box, Button, TextField, Typography, Select, MenuItem, FormHelperText } from '@mui/material';
 import { useState } from 'react';
 
-const fields = [
+type Person = {
+  name: string;
+  value: { name: string; age: string };
+  label: string;
+  ageLabel: string;
+  error: { name: string; age: string };
+};
+
+type Field = {
+  required: boolean;
+  name: string;
+  value: any;
+  label: string;
+  error: string;
+};
+
+const initialFields: Field[] = [
   { required: true, name: 'count', value: 1, label: 'Укажите количество участников *', error: '' },
   {
     required: true,
@@ -15,6 +31,7 @@ const fields = [
         error: { name: '', age: '' },
       },
     ],
+    label: '',
     error: '',
   },
   { required: true, name: 'location', value: '', label: 'Страна, город *', error: '' },
@@ -26,17 +43,16 @@ const fields = [
   { required: false, name: 'wishes', value: '', label: 'Ваши пожелания', error: '' },
 ];
 
-const mockFieldOfStudyOptions = ['Math', 'Science', 'Art', 'Music'];
-const mockSkillLevelOptions = ['Beginner', 'Intermediate', 'Advanced'];
+const mockSkillLevelOptions = ['нулевой', 'начальный', 'средний', 'продвинутый', 'профессиональный'];
 
-const LessonRequestComponent = () => {
-  const [data, setData] = useState<any>([...fields]);
+const LessonRequestComponent = ({ lessonsData }: { lessonsData: any }) => {
+  const [data, setData] = useState<Field[]>([...initialFields]);
 
   const validateFields = () => {
     let isValid = true;
 
-    const updatedData = data.map((field: any) => {
-      if (field.required && !field.value) {
+    const updatedData = data.map((field) => {
+      if (field.required && field.name !== 'persons' && !field.value) {
         isValid = false;
         return { ...field, error: 'Поле не может быть пустым' };
       }
@@ -47,10 +63,10 @@ const LessonRequestComponent = () => {
       }
 
       if (field.name === 'persons') {
-        const updatedPersons = field.value.map((person: any) => {
+        const updatedPersons = field.value.map((person: Person) => {
           const personErrors = {
-            name: person.value.name ? '' : 'Ошибка: имя не может быть пустым',
-            age: person.value.age ? '' : 'Ошибка: возраст не может быть пустым',
+            name: person.value.name ? '' : 'Имя не может быть пустым',
+            age: person.value.age ? '' : 'Возраст не может быть пустым',
           };
 
           if (!person.value.name || !person.value.age) {
@@ -59,7 +75,6 @@ const LessonRequestComponent = () => {
 
           return { ...person, error: personErrors };
         });
-
         return { ...field, value: updatedPersons };
       }
 
@@ -73,20 +88,19 @@ const LessonRequestComponent = () => {
   const handleSubmit = () => {
     if (validateFields()) {
       console.log('Форма успешно отправлена:', data);
+      // TODO: Add actual submit logic here (API call etc.)
     } else {
       console.log('Форма содержит ошибки');
     }
   };
 
-  const handleFieldChange = (fieldName: string, value: any, error: string = '') => {
-    setData((prevData: any) =>
-      prevData.map((field: any) => (field.name === fieldName ? { ...field, value, error } : field)),
-    );
+  const handleFieldChange = (fieldName: string, value: any) => {
+    setData((prevData) => prevData.map((field) => (field.name === fieldName ? { ...field, value, error: '' } : field)));
   };
 
   const handleCountChange = (value: number) => {
-    setData((prevData: any) =>
-      prevData.map((field: any) =>
+    setData((prevData) =>
+      prevData.map((field) =>
         field.name === 'count'
           ? { ...field, value, error: '' }
           : field.name === 'persons'
@@ -99,20 +113,40 @@ const LessonRequestComponent = () => {
                 ageLabel: `Возраст ${index + 1} *`,
                 error: { name: '', age: '' },
               })),
-              error: '',
             }
           : field,
       ),
     );
   };
 
+  const handlePersonChange = (personIndex: number, key: 'name' | 'age', value: string) => {
+    const personsField = data.find((field) => field.name === 'persons');
+    if (!personsField) return;
+
+    const updatedPersons = [...personsField.value];
+    updatedPersons[personIndex].value[key] = value;
+    updatedPersons[personIndex].error[key] = value
+      ? ''
+      : key === 'name'
+      ? 'Имя не может быть пустым'
+      : 'Возраст не может быть пустым';
+
+    setData((prevData) =>
+      prevData.map((field) => (field.name === 'persons' ? { ...field, value: updatedPersons } : field)),
+    );
+  };
+
   return (
     <Box sx={{ minHeight: '60vh', p: 2 }}>
-      <Box sx={{ margin: '64px auto', width: '100%', maxWidth: 600 }}>
-        {data.map((field: any, index: number) =>
+      <Box sx={{ margin: '64px auto', width: '100%', maxWidth: 1024 }}>
+        <Typography variant="h3" sx={{ mb: '32px', color: '#C35F1C' }}>
+          Заявка на онлайн уроки
+        </Typography>
+
+        {data.map((field, index) =>
           field.name === 'persons' ? (
             <Box key={index}>
-              {field.value.map((person: any, personIndex: number) => (
+              {field.value.map((person: Person, personIndex: number) => (
                 <Box key={personIndex} sx={{ mb: 4 }}>
                   <Typography variant="h6" sx={{ mb: 1 }}>
                     {person.label}
@@ -121,17 +155,10 @@ const LessonRequestComponent = () => {
                     fullWidth
                     sx={{ mb: 2 }}
                     value={person.value.name}
-                    onChange={(e) => {
-                      const updatedPersons = [...field.value];
-                      updatedPersons[personIndex].value.name = e.target.value;
-                      updatedPersons[personIndex].error.name = e.target.value ? '' : 'Ошибка: имя не может быть пустым';
-                      setData((prevData: any) =>
-                        prevData.map((f: any) => (f.name === 'persons' ? { ...f, value: updatedPersons } : f)),
-                      );
-                    }}
+                    onChange={(e) => handlePersonChange(personIndex, 'name', e.target.value)}
                     placeholder="Введите имя"
-                    error={!!person.error?.name}
-                    helperText={person.error?.name}
+                    error={!!person.error.name}
+                    helperText={person.error.name}
                   />
                   <Typography variant="h6" sx={{ mb: 1 }}>
                     {person.ageLabel}
@@ -140,16 +167,7 @@ const LessonRequestComponent = () => {
                     fullWidth
                     value={person.value.age}
                     type="number"
-                    onChange={(e) => {
-                      const updatedPersons = [...field.value];
-                      updatedPersons[personIndex].value.age = e.target.value;
-                      updatedPersons[personIndex].error.age = e.target.value
-                        ? ''
-                        : 'Ошибка: возраст не может быть пустым';
-                      setData((prevData: any) =>
-                        prevData.map((f: any) => (f.name === 'persons' ? { ...f, value: updatedPersons } : f)),
-                      );
-                    }}
+                    onChange={(e) => handlePersonChange(personIndex, 'age', e.target.value)}
                     placeholder="Введите возраст"
                     error={!!person.error.age}
                     helperText={person.error.age}
@@ -173,8 +191,8 @@ const LessonRequestComponent = () => {
                       sx={{
                         minWidth: 48,
                         backgroundColor:
-                          data.find((field: any) => field.name === 'count')?.value === count ? 'black' : 'transparent',
-                        color: data.find((field: any) => field.name === 'count')?.value === count ? 'white' : 'inherit',
+                          data.find((f) => f.name === 'count')?.value === count ? 'black' : 'transparent',
+                        color: data.find((f) => f.name === 'count')?.value === count ? 'white' : 'inherit',
                       }}
                     >
                       {count}
@@ -182,46 +200,52 @@ const LessonRequestComponent = () => {
                   ))}
                 </Box>
               ) : field.name === 'fieldOfStudy' ? (
-                <Select
-                  fullWidth
-                  value={field.value}
-                  onChange={(e) => handleFieldChange('fieldOfStudy', e.target.value)}
-                  displayEmpty
-                  error={!!field.error}
-                >
-                  <MenuItem value="" disabled>
-                    Выберите направление обучения
-                  </MenuItem>
-                  {mockFieldOfStudyOptions.map((option) => (
-                    <MenuItem key={option} value={option}>
-                      {option}
+                <>
+                  <Select
+                    fullWidth
+                    value={field.value}
+                    onChange={(e) => handleFieldChange('fieldOfStudy', e.target.value)}
+                    displayEmpty
+                    error={!!field.error}
+                  >
+                    <MenuItem value="" disabled>
+                      Выберите направление обучения
                     </MenuItem>
-                  ))}
-                </Select>
+                    {lessonsData.data.map((option: any) => (
+                      <MenuItem key={option?.id} value={option?.id}>
+                        {option?.title?.ru}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                  {field.error && <FormHelperText error>{field.error}</FormHelperText>}
+                </>
               ) : field.name === 'skillLevel' ? (
-                <Select
-                  fullWidth
-                  value={field.value}
-                  onChange={(e) => handleFieldChange('skillLevel', e.target.value)}
-                  displayEmpty
-                  error={!!field.error}
-                >
-                  <MenuItem value="" disabled>
-                    Выберите уровень навыков
-                  </MenuItem>
-                  {mockSkillLevelOptions.map((option) => (
-                    <MenuItem key={option} value={option}>
-                      {option}
+                <>
+                  <Select
+                    fullWidth
+                    value={field.value}
+                    onChange={(e) => handleFieldChange('skillLevel', e.target.value)}
+                    displayEmpty
+                    error={!!field.error}
+                  >
+                    <MenuItem value="" disabled>
+                      Выберите уровень навыков
                     </MenuItem>
-                  ))}
-                </Select>
+                    {mockSkillLevelOptions.map((option) => (
+                      <MenuItem key={option} value={option}>
+                        {option}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                  {field.error && <FormHelperText error>{field.error}</FormHelperText>}
+                </>
               ) : field.name === 'wishes' ? (
                 <TextField
                   fullWidth
                   multiline
                   rows={4}
                   value={field.value}
-                  onChange={(e) => handleFieldChange('wishes', e.target.value)}
+                  onChange={(e) => handleFieldChange(field.name, e.target.value)}
                   placeholder="Введите ваши пожелания"
                   error={!!field.error}
                   helperText={field.error}
@@ -238,6 +262,7 @@ const LessonRequestComponent = () => {
             </Box>
           ),
         )}
+
         <Button variant="contained" fullWidth onClick={handleSubmit} sx={{ mt: 4 }}>
           Отправить
         </Button>

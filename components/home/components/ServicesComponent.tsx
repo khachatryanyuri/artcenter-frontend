@@ -35,7 +35,7 @@ export default function Services() {
           <Box {...leftChildBox}>
             <Image src={lessonsImage} alt={'lessonsImage'} loading="lazy" {...imageStyles} />
             <Box {...leftChildTextBox}>
-              <LinkNavigate text={'Выбрать уроки'} navigatePage={'/'} styles={linkStyles} />
+              <LinkNavigate text={'Выбрать уроки'} navigatePage={'/online-courses'} styles={linkStyles} />
             </Box>
           </Box>
         </Grid>
@@ -43,7 +43,7 @@ export default function Services() {
           <Box {...leftChildBox}>
             <Image src={servicesImage} alt={'servicesImage'} loading="lazy" {...imageStyles} />
             <Box {...leftChildTextBox}>
-              <LinkNavigate text={'Выбрать услуги'} navigatePage={'/'} styles={{ ...linkStyles }} />
+              <LinkNavigate text={'Выбрать услуги'} navigatePage={'/services'} styles={{ ...linkStyles }} />
             </Box>
           </Box>
         </Grid>

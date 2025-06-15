@@ -22,7 +22,7 @@ export default function LessonsServices() {
         {LESSONS_SERVICES_DATA.map((value: any, index: number) => (
           <>
             <Fragment key={index}>
-              <Grid {...newsBox} item xs={10} sm={5} lg={3}>
+              <Grid {...newsBox} item xs={10} sm={5}>
                 <Image width={100} height={100} src={value.img} alt={value.img} loading="lazy" {...newsImage} />
                 <Box {...newsTextBox}>
                   <SwiperContent

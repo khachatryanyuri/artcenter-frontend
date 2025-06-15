@@ -7,7 +7,7 @@ import { Box } from '@mui/material';
 import SEO from '@lib/components/common/components/SEO.';
 import { stripHtmlTagsWithRegex } from '@lib/services/helpers/service';
 
-const CourseComponent = dynamic(() => import('@lib/components/courses/components/Course'), {
+const ServicesRequestComponent = dynamic(() => import('@lib/components/lessonRequest/ServicesRequest'), {
   ssr: false,
 });
 
@@ -28,7 +28,7 @@ interface GetCourseProps {
   };
 }
 
-const GetCourse: React.FC<GetCourseProps> = ({ courseItem }) => {
+const OnlineLessons: React.FC<GetCourseProps> = ({ courseItem }) => {
   if (!courseItem.data) {
     return <Box>Error: Course not found</Box>;
   }
@@ -44,20 +44,20 @@ const GetCourse: React.FC<GetCourseProps> = ({ courseItem }) => {
         url={`https://azatazen.am/courses/${courseData?.id}`}
         image={imageUrl as string}
       /> */}
-      <CourseComponent data={courseData} />
+      <ServicesRequestComponent servicesData={courseData} />
     </>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
-    const web_filter = {
-      key: 'curses',
+    const filter = {
+      typesKey: 'services',
     };
 
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/types`, {
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/courses`, {
       params: {
-        web_filter: JSON.stringify(web_filter),
+        filter: JSON.stringify(filter),
       },
     });
 
@@ -80,4 +80,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 };
 
-export default GetCourse;
+export default OnlineLessons;
