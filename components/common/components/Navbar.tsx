@@ -1,32 +1,48 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import { Breadcrumbs, Button, Menu, MenuItem } from '@mui/material';
+import { Breadcrumbs, Button, Menu, MenuItem, Typography } from '@mui/material';
 import Link from 'next/link';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LanguageIcon from '@mui/icons-material/Language';
 
 import { navbarStyles, selectLanguageStyles } from '@lib/components/common/styles/navbarStyles';
 import { LINKS, LANGUAGES, NAVIGATE_PAGES } from '@lib/components/common/constants/navbarConstants';
-import LinkNavigate from '@lib/components/common/components/LinkNavigate';
 import ToolbarMobile from '@lib/components/common/components/ToolbarMobile';
 import NavbarMenuList from '@lib/components/common/components/NavbarMenueList';
+import i18n from '@lib/i18n';
 
 const { HOME_PAGE } = NAVIGATE_PAGES;
 const { linkStyles, toolbarStyles, boxStyles, breadcrumbsLanguageStyles } = navbarStyles;
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [language, setLanguage] = useState<string>('Рус');
+  const [languageMobile, setLanguageMobile] = useState<string>('Рус');
   const open = Boolean(anchorEl);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = (language: string) => {
-    setLanguage(language);
+    setLanguageMobile(language);
     setAnchorEl(null);
+  };
+
+  // const [language, setLanguage] = useState<string | null>(null);
+
+  // useEffect(() => {
+  //   const lang = localStorage.getItem('i18nextLng');
+  //   setLanguage(lang);
+  // }, []);
+
+  const handleLanguageChange = async (language: string) => {
+    try {
+      i18n.changeLanguage(language);
+    } catch (error: any) {
+      console.error(error);
+    }
   };
 
   return (
@@ -35,7 +51,15 @@ export default function Navbar() {
         <Breadcrumbs separator="|" {...breadcrumbsLanguageStyles}>
           {LANGUAGES.map((language) => (
             <Box key={language.text}>
-              <LinkNavigate text={language.text} navigatePage={language.href} styles={linkStyles.linkBreadcrumb} />
+              <Typography
+                variant="h6"
+                {...linkStyles.linkBreadcrumb}
+                onClick={() => {
+                  handleLanguageChange(language.value);
+                }}
+              >
+                {language.text}
+              </Typography>
             </Box>
           ))}
         </Breadcrumbs>
@@ -48,7 +72,7 @@ export default function Navbar() {
           {...selectLanguageStyles(open).button}
         >
           <LanguageIcon />
-          {language}
+          {languageMobile}
           <ExpandMoreIcon {...selectLanguageStyles(open).icon} />
         </Button>
 
@@ -63,7 +87,15 @@ export default function Navbar() {
         >
           {LANGUAGES.map((language) => (
             <MenuItem key={language.text} onClick={() => handleClose(language.text)}>
-              <LinkNavigate text={language.text} navigatePage={language.href} styles={linkStyles.linkBreadcrumb} />
+              <Typography
+                variant="h6"
+                {...linkStyles.linkBreadcrumb}
+                onClick={() => {
+                  handleLanguageChange(language.value);
+                }}
+              >
+                {language.text}
+              </Typography>
             </MenuItem>
           ))}
         </Menu>

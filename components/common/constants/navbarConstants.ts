@@ -2,46 +2,46 @@ import { ILink } from '@lib/components/common/interface/navbar';
 
 export const LINKS: ILink[] = [
   {
-    text: 'Заполнить заявку',
+    text: 'fillOutApplication', // Заполнить заявку
     id: 'fllOutTheApplication',
     menu: [
-      { text: 'На уроки', href: '/application/online-lessons' },
-      { text: 'На услуги', href: '/application/services' },
+      { text: 'forLessons', href: '/application/online-lessons' }, // На уроки
+      { text: 'forServices', href: '/application/services' }, // На услуги
     ],
   },
   {
-    text: 'О школе',
-    id: 'аboutSchool',
+    text: 'aboutSchool', // О школе
+    id: 'aboutSchool',
     menu: [
-      { text: 'О нас', href: '/about' },
-      { text: 'Вопрос-ответ', href: '/helps' },
-      { text: 'Скидки', href: '/discounts' },
-      { text: 'Оплата', href: '/payment' },
+      { text: 'aboutUs', href: '/about' }, // О нас
+      { text: 'faq', href: '/helps' }, // Вопрос-ответ
+      { text: 'discounts', href: '/discounts' }, // Скидки
+      { text: 'payment', href: '/payment' }, // Оплата
     ],
   },
-
   {
-    text: 'Уроки',
+    text: 'lessons', // Уроки
     id: 'lessons',
     href: '/online-courses',
     menu: [
-      { text: 'Вокал', href: '/online-courses/vocals' },
-      { text: 'Музыкальные инструменты', href: '/online-courses/musical_instruments' },
-      { text: 'Теория музыки', href: '/online-courses/music_theory' },
-      { text: 'Создание музыки', href: '/online-courses/making_music' },
-      { text: 'Для детей', href: '/online-courses/for_children' },
-      { text: 'Для преподавателей музыки', href: '/online-courses/for_music_teachers' },
-      { text: 'Дополнительные предметы', href: '/online-courses/additional_items' },
-      { text: 'Языки', href: '/online-courses/languages' },
+      { text: 'vocals', href: '/online-courses/vocals' }, // Вокал
+      { text: 'musicalInstruments', href: '/online-courses/musical_instruments' }, // Музыкальные инструменты
+      { text: 'musicTheory', href: '/online-courses/music_theory' }, // Теория музыки
+      { text: 'musicCreation', href: '/online-courses/making_music' }, // Создание музыки
+      { text: 'forChildren', href: '/online-courses/for_children' }, // Для детей
+      { text: 'forTeachers', href: '/online-courses/for_music_teachers' }, // Для преподавателей музыки
+      { text: 'additionalSubjects', href: '/online-courses/additional_items' }, // Дополнительные предметы
+      { text: 'languages', href: '/online-courses/languages' }, // Языки
     ],
   },
-  { href: '/services', text: 'Услуги', id: 'services' },
-  { href: '/contactus', text: 'Контакты', id: 'contact' },
+  { href: '/services', text: 'services', id: 'services' }, // Услуги
+  { href: '/contactus', text: 'contacts', id: 'contact' }, // Контакты
 ];
 
 export const LANGUAGES = [
-  { href: '/', text: 'Рус' },
-  { href: '/', text: 'Eng' },
+  { value: 'ru', text: 'Рус' },
+  { value: 'en', text: 'Eng' },
+  { value: 'hy', text: 'Հայ' },
 ];
 
 export const NAVIGATE_PAGES = { HOME_PAGE: '/' };

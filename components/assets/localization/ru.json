@@ -1,3 +1,21 @@
 {
-  
+  "fillOutApplication": "Заполнить заявку",
+  "forLessons": "На уроки",
+  "forServices": "На услуги",
+  "aboutSchool": "О школе",
+  "aboutUs": "О нас",
+  "faq": "Вопрос-ответ",
+  "discounts": "Скидки",
+  "payment": "Оплата",
+  "lessons": "Уроки",
+  "vocals": "Вокал",
+  "musicalInstruments": "Музыкальные инструменты",
+  "musicTheory": "Теория музыки",
+  "musicCreation": "Создание музыки",
+  "forChildren": "Для детей",
+  "forTeachers": "Для преподавателей музыки",
+  "additionalSubjects": "Дополнительные предметы",
+  "languages": "Языки",
+  "services": "Услуги",
+  "contacts": "Контакты"
 }

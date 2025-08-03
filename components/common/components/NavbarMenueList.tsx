@@ -7,6 +7,7 @@ import LinkNavigate from '@lib/components/common/components/LinkNavigate';
 import { selectLanguageStyles, navbarStyles } from '@lib/components/common/styles/navbarStyles';
 import { IDonationLink, IHrefLink, ILink, IMenuLink } from '@lib/components/common/interface/navbar';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'react-i18next';
 
 const {
   linkStyles,
@@ -15,6 +16,7 @@ const {
 
 export default function NavbarMenuList({ data, styles }: { data: ILink[]; styles: { sx: SxProps<Theme> } }) {
   const [menuOpen, setMenuOpen] = useState<{ [key: string]: boolean }>({});
+  const { t } = useTranslation();
 
   const handleMouseOver = (value: string) => {
     setMenuOpen((prevState) => ({
@@ -46,7 +48,7 @@ export default function NavbarMenuList({ data, styles }: { data: ILink[]; styles
                 {...selectLanguageStyles(menuOpen[(link as IDonationLink).id]).hover}
                 endIcon={<KeyboardArrowDownIcon {...selectLanguageStyles(menuOpen[(link as IDonationLink).id]).icon} />}
               >
-                {link.text}
+                {t(link.text)}
               </Button>
 
               <Box {...selectLanguageStyles(menuOpen[(link as IDonationLink).id]).menuBox}>
@@ -59,13 +61,13 @@ export default function NavbarMenuList({ data, styles }: { data: ILink[]; styles
                       router.push(value.href);
                     }}
                   >
-                    <LinkNavigate text={value.text} navigatePage={value.href} styles={linkStyles.menuLink} />
+                    <LinkNavigate text={t(value.text)} navigatePage={value.href} styles={linkStyles.menuLink} />
                   </MenuItem>
                 ))}
               </Box>
             </Box>
           ) : (
-            <LinkNavigate text={link.text} navigatePage={(link as IHrefLink).href} styles={linkStyles.linkButton} />
+            <LinkNavigate text={t(link.text)} navigatePage={(link as IHrefLink).href} styles={linkStyles.linkButton} />
           )}
         </Fragment>
       ))}

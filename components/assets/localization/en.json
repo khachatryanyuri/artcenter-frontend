@@ -1,3 +1,21 @@
 {
-
+  "fillOutApplication": "Fill out the application",
+  "forLessons": "For lessons",
+  "forServices": "For services",
+  "aboutSchool": "About the school",
+  "aboutUs": "About us",
+  "faq": "FAQ",
+  "discounts": "Discounts",
+  "payment": "Payment",
+  "lessons": "Lessons",
+  "vocals": "Vocals",
+  "musicalInstruments": "Musical instruments",
+  "musicTheory": "Music theory",
+  "musicCreation": "Music creation",
+  "forChildren": "For children",
+  "forTeachers": "For music teachers",
+  "additionalSubjects": "Additional subjects",
+  "languages": "Languages",
+  "services": "Services",
+  "contacts": "Contacts"
 }

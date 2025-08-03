@@ -9,8 +9,6 @@ import { theme } from '@lib/styles/componentsStyles';
 import RootLayout from '@lib/components/common/components/RootLayout';
 import { DefaultSeo } from 'next-seo';
 import defaultSEO from '../next-seo.config';
-import { I18nextProvider } from 'react-i18next';
-import i18n from '@lib/i18n';
 
 declare global {
   interface Window {
@@ -38,22 +36,20 @@ function Azatazen({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <I18nextProvider i18n={i18n}>
-        <DefaultSeo {...defaultSEO} />
-        <ThemeProvider theme={theme}>
-          <RootLayout>
-            <AuthProvider>
-              {isAdminPage ? (
+      <DefaultSeo {...defaultSEO} />
+      <ThemeProvider theme={theme}>
+        <RootLayout>
+          <AuthProvider>
+            {isAdminPage ? (
+              <Component {...pageProps} />
+            ) : (
+              <Layout>
                 <Component {...pageProps} />
-              ) : (
-                <Layout>
-                  <Component {...pageProps} />
-                </Layout>
-              )}
-            </AuthProvider>
-          </RootLayout>
-        </ThemeProvider>
-      </I18nextProvider>
+              </Layout>
+            )}
+          </AuthProvider>
+        </RootLayout>
+      </ThemeProvider>
     </>
   );
 }

@@ -31,6 +31,7 @@ export const navbarStyles = {
         fontSize: '13px',
         lineHeight: '21px',
         color: '#777777',
+        cursor: 'pointer',
         '&:hover': {
           color: '#C35F1C',
           textDecoration: 'none',
