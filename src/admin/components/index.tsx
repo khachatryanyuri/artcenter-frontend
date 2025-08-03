@@ -25,3 +25,13 @@ export { default as TypeList } from '@lib/src/admin/components/Type/TypeList';
 export { default as TypeEdit } from '@lib/src/admin/components/Type/TypeEdit';
 export { default as TypeShow } from '@lib/src/admin/components/Type/TypeShow';
 export { default as TypeCreate } from '@lib/src/admin/components/Type/TypeCreate';
+
+export { default as CoursesApplicationList } from '@lib/src/admin/components/CoursesApplication/CoursesApplicationList';
+export { default as CoursesApplicationEdit } from '@lib/src/admin/components/CoursesApplication/CoursesApplicationEdit';
+export { default as CoursesApplicationShow } from '@lib/src/admin/components/CoursesApplication/CoursesApplicationShow';
+export { default as CoursesApplicationCreate } from '@lib/src/admin/components/CoursesApplication/CoursesApplicationCreate';
+
+export { default as ServicesApplicationList } from '@lib/src/admin/components/ServicesApplication/ServicesApplicationList';
+export { default as ServicesApplicationEdit } from '@lib/src/admin/components/ServicesApplication/ServicesApplicationEdit';
+export { default as ServicesApplicationShow } from '@lib/src/admin/components/ServicesApplication/ServicesApplicationShow';
+export { default as ServicesApplicationCreate } from '@lib/src/admin/components/ServicesApplication/ServicesApplicationCreate';

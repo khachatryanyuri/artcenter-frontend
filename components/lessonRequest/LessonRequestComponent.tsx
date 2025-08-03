@@ -1,4 +1,6 @@
+import { dataProvider } from '@lib/src/admin/providers/dataProvider';
 import { Box, Button, TextField, Typography, Select, MenuItem, FormHelperText } from '@mui/material';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 type Person = {
@@ -84,11 +86,42 @@ const LessonRequestComponent = ({ lessonsData }: { lessonsData: any }) => {
     setData(updatedData);
     return isValid;
   };
+  const router = useRouter();
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (validateFields()) {
       console.log('Форма успешно отправлена:', data);
-      // TODO: Add actual submit logic here (API call etc.)
+
+      try {
+        const requestData = data.reduce((acc: any, field: any) => {
+          const key = field.name === 'whatsApp' ? 'whatsapp' : field.name;
+
+          if (key === 'persons' && Array.isArray(field.value)) {
+            acc.persons = field.value.map((person: any, i: number) => {
+              console.log(person);
+
+              const { name, age } = person.value;
+
+              return { name, age: Number(age) };
+            });
+          } else {
+            acc[key] = field.value;
+          }
+
+          return acc;
+        }, {});
+
+        console.log('Request data:', requestData);
+
+        // Send the request if needed
+        const res = await dataProvider.create('courses-application-request', { data: requestData });
+        console.log(res, '=');
+
+        // const queryParams = new URLSearchParams({ message: SUCCESS_MESSAGE }).toString();
+        // router.push(`/success-message?${queryParams}`);
+      } catch (error) {
+        console.log('error', '400');
+      }
     } else {
       console.log('Форма содержит ошибки');
     }
