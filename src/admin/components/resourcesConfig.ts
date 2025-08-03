@@ -20,6 +20,16 @@ import TypeEdit from '@lib/src/admin/components/Type/TypeEdit';
 import TypeList from '@lib/src/admin/components/Type/TypeList';
 import TypeShow from '@lib/src/admin/components/Type/TypeShow';
 import TypeCreate from '@lib/src/admin/components/Type/TypeCreate';
+import CoursesApplicationList from './CoursesApplication/CoursesApplicationList';
+import CoursesApplicationEdit from './CoursesApplication/CoursesApplicationEdit';
+import CoursesApplicationShow from './CoursesApplication/CoursesApplicationShow';
+import CoursesApplicationCreate from './CoursesApplication/CoursesApplicationCreate';
+import {
+  ServicesApplicationList,
+  ServicesApplicationEdit,
+  ServicesApplicationShow,
+  ServicesApplicationCreate,
+} from '.';
 
 const resources = [
   { name: 'user/users', list: UsersList, edit: UserEdit, show: UserShow },
@@ -50,6 +60,20 @@ const resources = [
     edit: TypeEdit,
     show: TypeShow,
     create: TypeCreate,
+  },
+  {
+    name: 'courses-application-request',
+    list: CoursesApplicationList,
+    edit: CoursesApplicationEdit,
+    show: CoursesApplicationShow,
+    create: CoursesApplicationCreate,
+  },
+  {
+    name: 'services-application-request',
+    list: ServicesApplicationList,
+    edit: ServicesApplicationEdit,
+    show: ServicesApplicationShow,
+    create: ServicesApplicationCreate,
   },
 ];
 

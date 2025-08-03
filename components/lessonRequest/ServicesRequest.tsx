@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
+import { dataProvider } from '@lib/src/admin/providers/dataProvider';
 
 const fields = [
   { required: true, name: 'fieldOfServices', value: '', label: 'Выберите услуги *', error: '' },
@@ -12,7 +13,7 @@ const fields = [
   { required: true, name: 'email', value: '', label: 'E-mail *', error: '' },
   { required: false, name: 'skype', value: '', label: 'Skype', error: '' },
   { required: false, name: 'whatsApp', value: '', label: 'WhatsApp', error: '' },
-  { required: true, name: 'skillLevel', value: '', label: 'Ваш уровень навыков по выбранному предмету *', error: '' },
+  { required: false, name: 'telegram', value: '', label: 'Telegram', error: '' },
 ];
 
 const ServicesComponent = ({ servicesData }: { servicesData: any }) => {
@@ -39,10 +40,30 @@ const ServicesComponent = ({ servicesData }: { servicesData: any }) => {
     return isValid;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (validateFields()) {
       console.log('Форма успешно отправлена:', data);
-      // TODO: handle submit logic (e.g., API call)
+
+      const requestData: any = {};
+
+      data.forEach(({ name, value }: any) => {
+        switch (name) {
+          case 'fieldOfServices':
+            requestData.fieldOfService = value;
+            break;
+          case 'deadLine':
+            requestData.deadline = value ? new Date(value) : null;
+            break;
+          case 'whatsApp':
+            requestData.whatsapp = value;
+            break;
+          default:
+            requestData[name] = value;
+        }
+      });
+
+      const res = await dataProvider.create('services-application-request', { data: requestData });
+      console.log(res);
     } else {
       console.log('Форма содержит ошибки');
     }
