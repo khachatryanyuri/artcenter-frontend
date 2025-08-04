@@ -7,13 +7,13 @@ import { useCourses } from '@lib/components/courses/store/coursesStore';
 import { coursesStyles } from '@lib/components/courses/styles/coursesStyles';
 import { constants } from '@lib/components/courses/constants/constants';
 import Join from '@lib/components/common/components/Join';
-import { ICourses } from '@lib/components/interface/courses';
+// import { ICourses } from '@lib/components/interface/courses';
 import AuthModal from '@lib/components/common/components/AuthModal';
 import { useContent } from '@lib/services/store/contentsStore';
 import Content from '@lib/components/common/components/Content';
 import { Fragment } from 'react';
 
-const { REGISTER } = constants;
+// const { REGISTER } = constants;
 const {
   boxStyles: {
     containerBox,
@@ -53,7 +53,7 @@ export default function CoursesComponent() {
           <Content variant="h1" text={coursesHead?.title} />
           <Content variant="h5" text={coursesHead?.desc} />
         </Box>
-        <Box {...mainBox}>
+        {/* <Box {...mainBox}>
           {courses
             ? courses.map((value: ICourses) => (
                 <Fragment key={value.id}>
@@ -121,7 +121,7 @@ export default function CoursesComponent() {
                 </Fragment>
               ))
             : null}
-        </Box>
+        </Box> */}
       </Container>
       <CustomPagination
         totalCount={total}

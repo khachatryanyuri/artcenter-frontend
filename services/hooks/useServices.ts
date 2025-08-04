@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 
 import { dataProvider } from '@lib/src/admin/providers/dataProvider';
 import { IServices } from '@lib/services/interface/services/services';
-import { SERVICES } from '@lib/components/services/constants/services';
+// import { SERVICES } from '@lib/components/services/constants/services';
 
-const {
-  REGISTER_TO_SERVICES: { REGISTER },
-} = SERVICES;
+// const {
+//   REGISTER_TO_SERVICES: { REGISTER },
+// } = SERVICES;
 
 const useServices = (type: string) => {
   const [serviceItems, setServiceItems] = useState<{
@@ -20,7 +20,7 @@ const useServices = (type: string) => {
         const response = await dataProvider.getList('services', {
           pagination: { page: 1, perPage: 100 },
           sort: { field: 'createdAt', order: 'ASC' },
-          filter: type === REGISTER ? {} : { type },
+          filter: type === 'REGISTER' ? {} : { type },
         });
         setServiceItems({ loading: false, data: response.data });
       } catch (error) {
