@@ -1,8 +1,17 @@
-# Build Stage
+# Dockerfile
+
+# ---- Build Stage ----
 FROM node:18-alpine AS builder
 
 # Set working directory
 WORKDIR /app
+
+# --- ADDED THIS SECTION ---
+# 1. Declare the build-time argument to receive it from the `docker build` command.
+ARG NEXT_PUBLIC_API_URL
+# 2. Set the argument as an environment variable so `npm run build` can access it.
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+# --------------------------
 
 # Copy package.json and package-lock.json for dependency installation
 COPY package*.json ./
@@ -13,10 +22,11 @@ RUN npm install
 # Copy application files
 COPY . .
 
-# Build the application
+# Build the application. This command will now correctly use NEXT_PUBLIC_API_URL.
 RUN npm run build
 
-# Production Stage
+
+# ---- Production Stage ----
 FROM node:18-alpine
 
 # Set working directory
