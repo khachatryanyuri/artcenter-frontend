@@ -41,7 +41,7 @@ export default function NavbarMenuList({ data, styles }: { data: ILink[]; styles
               {...menuItemBox}
               onMouseOver={() => handleMouseOver((link as IDonationLink).id)}
               onMouseOut={() => handleMouseOut((link as IDonationLink).id)}
-              onClick={() => link.href && router.push(link.href)}
+              // onClick={() => link.href && router.push(link.href)}
             >
               <Button
                 variant="text"

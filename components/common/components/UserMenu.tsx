@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Tooltip, IconButton, Avatar, Menu, MenuItem, Typography } from '@mui/material';
 
-import { SETTINGS } from '@lib/components/common/constants/navbarConstants';
+// import { SETTINGS } from '@lib/components/common/constants/navbarConstants';
 import { navbarStyles } from '@lib/components/common/styles/navbarStyles';
 import { useRouter } from 'next/router';
 import { userProfileStyle } from '@lib/components/common/styles/userProfileStyles';
@@ -35,7 +35,7 @@ const UserMenu = ({ anchorElUser, handleCloseUserMenu, handleOpenShopCart, logou
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
-        {SETTINGS.map((setting) => (
+        {/* {SETTINGS.map((setting) => (
           <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
             <Typography
               onClick={() => {
@@ -51,7 +51,7 @@ const UserMenu = ({ anchorElUser, handleCloseUserMenu, handleOpenShopCart, logou
               {setting.name}
             </Typography>
           </MenuItem>
-        ))}
+        ))} */}
       </Menu>
     </Box>
   );
