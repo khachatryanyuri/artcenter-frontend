@@ -9,6 +9,7 @@ env:
   REGISTRY: ghcr.io
   OWNER: ${{ github.repository_owner }}
   IMG_NAME: artcenter-frontend
+  BACKEND_API_URL: https://api.artcenter.am/api
 
 permissions: write-all
 
@@ -33,7 +34,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push backend
+      - name: Build and push image
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -42,3 +43,5 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.OWNER }}/${{ env.IMG_NAME }}:latest
             ${{ env.REGISTRY }}/${{ env.OWNER }}/${{ env.IMG_NAME }}:${{ github.ref_name }}
           file: Dockerfile
+          build-args: |
+            NEXT_PUBLIC_API_URL=${{ env.BACKEND_API_URL }}
