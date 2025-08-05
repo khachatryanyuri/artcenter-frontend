@@ -22,7 +22,6 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
-import { addedCart } from '@lib/components/shop/store/cartStore';
 import { pageData } from '@lib/components/common/constants/dialogConstants';
 import { dialogStyles } from '@lib/components/common/styles/dialogStyles';
 import logoImage from '@lib/public/common/next1.svg';
@@ -75,7 +74,6 @@ const ProductDialog: React.FC<ProductDialogProps> = ({ open, handleClose, value 
   };
 
   const handleAddToCart = () => {
-    addedCart({ prodId: id, quantity: countProduct });
     handleClose();
     setCountProduct(0);
   };

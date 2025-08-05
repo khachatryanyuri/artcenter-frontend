@@ -34,7 +34,7 @@ export default function NavbarMenuList({ data, styles }: { data: ILink[]; styles
   const router = useRouter();
   return (
     <Box {...styles}>
-      {data.map((link: ILink, index: number) => (
+      {data.map((link: any, index: number) => (
         <Fragment key={`${link.text}-${index}`}>
           {link.menu ? (
             <Box
