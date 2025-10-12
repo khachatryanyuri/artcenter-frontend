@@ -4,16 +4,16 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 
 const constants = {
   FORMFIELDS: [
-    { label: 'Ваше имя', name: 'name', type: 'text', multiline: false },
-    { label: 'Ваш E-mail', name: 'email', type: 'email', multiline: false },
-    { label: 'Ваше сообщение или вопрос', name: 'letter', type: 'text', multiline: true },
+    { label: 'contactForm.fields.nameLabel', name: 'name', type: 'text', multiline: false },
+    { label: 'contactForm.fields.emailLabel', name: 'email', type: 'email', multiline: false },
+    { label: 'contactForm.fields.messageLabel', name: 'letter', type: 'text', multiline: true },
   ],
-  HEADING: 'Связаться с нами',
-  SENDBUTTONTEXT: 'Отпровить',
+  HEADING: 'contactForm.heading',
+  SENDBUTTONTEXT: 'contactForm.submitButton',
   CONTACTS_PAGE: 'contacts',
-  SUCCESS_MESSAGE: 'Ваше письмо успешно отправлено.',
-  ERROR_MESSAGE: 'Ваше письмо не было зарегестрировано.',
-  PROBLEM_TEXT: 'Непровильное значение.',
+  SUCCESS_MESSAGE: 'contactForm.successMessage',
+  ERROR_MESSAGE: 'contactForm.errorMessage',
+  PROBLEM_TEXT: 'contactForm.errors.invalidValue',
   INITIAL_STATE: {
     name: '',
     email: '',

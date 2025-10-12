@@ -4,6 +4,9 @@
   "forServices": "For services",
   "aboutSchool": "About the school",
   "aboutUs": "About us",
+  "help": "Help",
+  "contactsUs": "Contact us",
+  "onlineMusicSchool": "Online music school",
   "faq": "FAQ",
   "discounts": "Discounts",
   "payment": "Payment",
@@ -17,5 +20,127 @@
   "additionalSubjects": "Additional subjects",
   "languages": "Languages",
   "services": "Services",
-  "contacts": "Contacts"
+  "contacts": "Contacts",
+  "mainInfo": {
+    "buttonText": "Learn more about the school",
+    "lessonsButtonText": "Sign up for lessons",
+    "servicesButtonText": "Sign up for services",
+    "aboutTheBenefitsButtonText": "Learn more about the benefits",
+    "ourLessonsAndServices": "Our lessons and services",
+    "chooseLessons": "Choose lessons",
+    "chooseServices": "Choose services"
+  },
+  "participants_count": "Number of participants *",
+  "person_name_label": "Name, surname *",
+  "person_age_label": "Age *",
+  "location": "Country, city *",
+  "email": "E-mail *",
+  "skype": "Skype",
+  "whatsapp": "WhatsApp",
+  "field_of_study": "Field of study *",
+  "skill_level": "Your skill level in the selected subject *",
+  "wishes": "Your wishes",
+  "field_required": "This field is required",
+  "email_invalid": "Invalid email format",
+  "name_required": "Name is required",
+  "age_required": "Age is required",
+  "lesson_request_title": "Online lesson request",
+  "enter_name": "Enter name",
+  "enter_age": "Enter age",
+  "select_field_of_study": "Select field of study",
+  "select_skill_level": "Select skill level",
+  "enter_wishes": "Enter your wishes",
+  "submit": "Submit",
+  "skill_level_zero": "zero",
+  "skill_level_beginner": "beginner",
+  "skill_level_intermediate": "intermediate",
+  "skill_level_advanced": "advanced",
+  "skill_level_pro": "professional",
+  "form": {
+    "title": "Application for Online Lessons",
+    "submitButton": "Submit",
+    "count": {
+      "label": "Specify the number of participants *"
+    },
+    "persons": {
+      "name": {
+        "label": "Full name {{index}} *",
+        "placeholder": "Enter name"
+      },
+      "age": {
+        "label": "Age {{index}} *",
+        "placeholder": "Enter age"
+      }
+    },
+    "location": { "label": "Country, city *" },
+    "email": { "label": "E-mail *" },
+    "skype": { "label": "Skype" },
+    "whatsApp": { "label": "WhatsApp" },
+    "fieldOfStudy": {
+      "label": "Field of study *",
+      "placeholder": "Select field of study"
+    },
+    "skillLevel": {
+      "label": "Your skill level in the selected subject *",
+      "placeholder": "Select skill level",
+      "options": {
+        "zero": "zero",
+        "beginner": "beginner",
+        "intermediate": "intermediate",
+        "advanced": "advanced",
+        "professional": "professional"
+      }
+    },
+    "wishes": {
+      "label": "Your wishes",
+      "placeholder": "Enter your wishes"
+    },
+    "errors": {
+      "required": "This field cannot be empty",
+      "invalidEmail": "Invalid email format",
+      "nameRequired": "Name cannot be empty",
+      "ageRequired": "Age cannot be empty"
+    }
+  },
+  "servicesForm": {
+    "title": "Service Order Request",
+    "submitButton": "Submit",
+    "fieldOfServices": {
+      "label": "Select services *",
+      "placeholder": "Select a service"
+    },
+    "wishes": {
+      "label": "Detailed order description",
+      "placeholder": "Describe your order in detail..."
+    },
+    "deadLine": {
+      "label": "Order deadline *",
+      "placeholder": "Select a date"
+    },
+    "name": { "label": "Your name *" },
+    "email": { "label": "E-mail *" },
+    "skype": { "label": "Skype" },
+    "whatsApp": { "label": "WhatsApp" },
+    "telegram": { "label": "Telegram" },
+    "errors": {
+      "required": "This field cannot be empty",
+      "invalidEmail": "Invalid email format"
+    }
+  },
+  "contactForm": {
+    "heading": "Contact Us",
+    "submitButton": "Send",
+    "fields": {
+      "nameLabel": "Your name",
+      "emailLabel": "Your E-mail",
+      "messageLabel": "Your message or question"
+    },
+    "errors": {
+      "invalidValue": "Invalid value."
+    },
+    "successMessage": "Your message has been sent successfully.",
+    "errorMessage": "Your message could not be registered."
+  },
+  "register": "register",
+  "forRegisteredUsers": "You can register for the course at the following link:"
 }

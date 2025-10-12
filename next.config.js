@@ -7,6 +7,11 @@ const nextConfig = {
     unoptimized: true,
   },
   transpilePackages: ['mui-tel-input'],
+  i18n: {
+    locales: ['hy', 'en', 'ru'],
+    defaultLocale: 'hy',
+    localeDetection: false,
+  },
 
   ...withVideos(),
 };

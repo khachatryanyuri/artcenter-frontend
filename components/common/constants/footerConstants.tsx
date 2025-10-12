@@ -1,15 +1,15 @@
 import { Facebook, Instagram, LinkedIn, YouTube } from '@mui/icons-material';
 
 export const ALL_RIGHTS_RESERVED = '© 2025';
-export const BOTTOM_DATA = [{ title: 'Онлайн школа музыки.', link: '/' }];
+export const BOTTOM_DATA = [{ title: 'onlineMusicSchool', link: '/' }];
 
 export const SECTIONS_DATA = [
   {
     title: '',
     data: [
-      { subTitle: 'О нас', link: '/about' },
-      { subTitle: 'Помощь', link: '/helps' },
-      { subTitle: 'Связаться с нами', link: '/contactus' },
+      { subTitle: 'aboutUs', link: '/about' },
+      { subTitle: 'help', link: '/helps' },
+      { subTitle: 'contactsUs', link: '/contactus' },
     ],
   },
 ];

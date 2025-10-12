@@ -6,6 +6,8 @@ import { constants } from '@lib/components/courses/constants/constants';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Image from 'next/image';
 import Content from '@lib/components/common/components/Content';
+import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/router';
 
 const { BUTTONT_TEXT, BUTTONT__INFO } = constants;
 const {
@@ -16,11 +18,12 @@ const {
 } = detailedCourseStyles;
 
 export default function DetailedCourseComponent({ data }: any) {
-  const handleNavigate = (navigateLink: string) => {
-    if (typeof window !== 'undefined') {
-      window.open(navigateLink, '_blank');
-    }
+  const router = useRouter();
+  const handleNavigate = () => {
+    const url = data.typesKey === "curses" ? `/application/online-lessons?id=${data.id}` : `/application/services?id=${data.id}`;
+    router.push(url);
   };
+  const { t } = useTranslation();
   return (
     <Container maxWidth={false} {...mainContainer}>
       <Grid {...mainBox} container>
@@ -33,14 +36,14 @@ export default function DetailedCourseComponent({ data }: any) {
           <Content variant="h5" text={data?.description} style={{ sx: { pt: '24px' } }} />
         </Grid>
         <Box sx={{ mt: '72px' }}>
-          <Typography variant="h5">{BUTTONT__INFO}</Typography>
+          <Typography variant="h5">{t(BUTTONT__INFO)}</Typography>
           <Button
             variant="outlined"
             endIcon={<ArrowForwardIcon />}
             {...shareIcon}
-            onClick={() => handleNavigate(data?.id)}
+            onClick={handleNavigate}
           >
-            {BUTTONT_TEXT}
+            {t(BUTTONT_TEXT)}
           </Button>
         </Box>
       </Grid>

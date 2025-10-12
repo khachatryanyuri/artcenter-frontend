@@ -1,27 +1,25 @@
 import i18n from 'i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
 
-import en from './components/assets/localization/en.json';
-import ru from './components/assets/localization/ru.json';
-import hy from './components/assets/localization/hy.json';
+import eng from './components/assets/localization/en.json';
+import rus from './components/assets/localization/ru.json';
+import arm from './components/assets/localization/hy.json';
 
 i18n
-  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources: {
       en: {
-        translation: en,
-      },
+        translation: eng,
+      },  
       ru: {
-        translation: ru,
+        translation: rus,
       },
       hy: {
-        translation: hy,
+        translation: arm,
       },
     },
-    fallbackLng: 'en',
+    fallbackLng: 'hy',
     interpolation: {
       escapeValue: false,
     },

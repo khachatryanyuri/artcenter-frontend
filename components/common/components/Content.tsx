@@ -1,7 +1,8 @@
 import { Typography, styled } from '@mui/material';
 import { useEffect, useState } from 'react';
-
+import { useRouter } from 'next/router';
 import { IContentProps } from '@lib/components/common/interface/content';
+import { getLocalizedText } from '@lib/services/helpers/service';
 
 const NewTypography = styled(Typography)`
   & * {
@@ -15,24 +16,18 @@ const NewTypography = styled(Typography)`
 `;
 
 export default function Content({ variant, style = {}, text, useResetStyles = true, ...props }: IContentProps) {
+  const { locale } = useRouter();
   const [html, setHtml] = useState('');
   const [paragraphCount, setParagraphCount] = useState(0);
 
   useEffect(() => {
-    if (text?.ru) {
-      setHtml(text.ru);
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(text.ru, 'text/html');
-      const paragraphs = doc.querySelectorAll('p');
-      setParagraphCount(paragraphs.length);
-    } else {
-      setHtml(text);
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(text, 'text/html');
-      const paragraphs = doc.querySelectorAll('p');
-      setParagraphCount(paragraphs.length);
-    }
-  }, [text?.ru, text]);
+    const localizedText = getLocalizedText(text, locale || 'hy');
+    setHtml(localizedText);
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(localizedText, 'text/html');
+    setParagraphCount(doc.querySelectorAll('p').length);
+
+  }, [text, locale]);
 
   return (
     <>

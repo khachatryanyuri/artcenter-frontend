@@ -7,6 +7,7 @@ import { ALL_RIGHTS_RESERVED, BOTTOM_DATA, SECTIONS_DATA } from '@lib/components
 import LinkNavigate from '@lib/components/common/components/LinkNavigate';
 import { SocialMedia } from '@lib/components/common/components/SocialMedia';
 import FooterMobile from '@lib/components/common/components/FooterMobile';
+import { useTranslation } from 'react-i18next';
 
 const {
   boxStyles: { footerBox, linkBox, lastBox, lastTextLinkBox, privacyBox, boxMax, boxMobile },
@@ -15,6 +16,7 @@ const {
 } = footerStyles;
 
 export default function Footer() {
+  const { t } = useTranslation();
   return (
     <Container maxWidth={false} {...footerBox}>
       <Box {...boxMax}>
@@ -35,7 +37,7 @@ export default function Footer() {
               <Box key={`link-box-${index}`} {...linkBox}>
                 {value.data.map((linkData, subIndex) => (
                   <Fragment key={`privacy-link-${subIndex}`}>
-                    <LinkNavigate text={linkData.subTitle} navigatePage={linkData.link} styles={link} />
+                    <LinkNavigate text={t(linkData.subTitle)} navigatePage={linkData.link} styles={link} />
                   </Fragment>
                 ))}
               </Box>
@@ -48,7 +50,7 @@ export default function Footer() {
             <Box {...privacyBox}>
               {BOTTOM_DATA.map((value, subIndex) => (
                 <Fragment key={`privacy-link-${subIndex}`}>
-                  <LinkNavigate text={value.title} navigatePage={value.link} styles={privacyLinks} />
+                  <LinkNavigate text={t(value.title)} navigatePage={value.link} styles={privacyLinks} />
                 </Fragment>
               ))}
             </Box>

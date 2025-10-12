@@ -14,6 +14,7 @@ import { CustomSwiperProps, SwiperType, INewsItem } from '@lib/components/interf
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { useTranslation } from 'react-i18next';
 
 SwiperCore.use([Navigation]);
 
@@ -26,7 +27,7 @@ const {
 
 export default function CustomSwiper({ data, linkStyles, customStyle }: CustomSwiperProps) {
   const swiperRef = useRef<SwiperType | null>(null);
-
+  const { t } = useTranslation();
   return (
     <>
       <Swiper
@@ -50,7 +51,7 @@ export default function CustomSwiper({ data, linkStyles, customStyle }: CustomSw
                     {...lessonImage}
                     {...setCustomImgStyle(customStyle)}
                   />
-                  <SwiperContent linkText={value.buttonText} navigatePage={`${value.link}`} linkStyles={linkStyles} />
+                  <SwiperContent linkText={t(value.buttonText)} navigatePage={`${value.link}`} linkStyles={linkStyles} />
                 </Box>
               </Box>
             </Grid>

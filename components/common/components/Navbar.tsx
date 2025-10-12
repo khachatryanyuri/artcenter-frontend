@@ -12,6 +12,8 @@ import { LINKS, LANGUAGES, NAVIGATE_PAGES } from '@lib/components/common/constan
 import ToolbarMobile from '@lib/components/common/components/ToolbarMobile';
 import NavbarMenuList from '@lib/components/common/components/NavbarMenueList';
 import i18n from '@lib/i18n';
+import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/router';
 
 const { HOME_PAGE } = NAVIGATE_PAGES;
 const { linkStyles, toolbarStyles, boxStyles, breadcrumbsLanguageStyles } = navbarStyles;
@@ -20,6 +22,8 @@ export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [languageMobile, setLanguageMobile] = useState<string>('Рус');
   const open = Boolean(anchorEl);
+  const { t } = useTranslation();
+
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -30,19 +34,10 @@ export default function Navbar() {
     setAnchorEl(null);
   };
 
-  // const [language, setLanguage] = useState<string | null>(null);
+  const { push, pathname, asPath, query, locale } = useRouter();
 
-  // useEffect(() => {
-  //   const lang = localStorage.getItem('i18nextLng');
-  //   setLanguage(lang);
-  // }, []);
-
-  const handleLanguageChange = async (language: string) => {
-    try {
-      i18n.changeLanguage(language);
-    } catch (error: any) {
-      console.error(error);
-    }
+  const handleLanguageChange = (lng: string) => {
+    push({ pathname, query }, asPath, { locale: lng });
   };
 
   return (

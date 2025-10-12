@@ -1,7 +1,8 @@
 import { dataProvider } from '@lib/src/admin/providers/dataProvider';
 import { Box, Button, TextField, Typography, Select, MenuItem, FormHelperText } from '@mui/material';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type Person = {
   name: string;
@@ -19,91 +20,130 @@ type Field = {
   error: string;
 };
 
-const initialFields: Field[] = [
-  { required: true, name: 'count', value: 1, label: 'Укажите количество участников *', error: '' },
-  {
-    required: true,
-    name: 'persons',
-    value: [
-      {
-        name: 'user1',
-        value: { name: '', age: '' },
-        label: 'Имя, фамилия *',
-        ageLabel: 'Возраст *',
-        error: { name: '', age: '' },
-      },
-    ],
-    label: '',
-    error: '',
-  },
-  { required: true, name: 'location', value: '', label: 'Страна, город *', error: '' },
-  { required: true, name: 'email', value: '', label: 'E-mail *', error: '' },
-  { required: false, name: 'skype', value: '', label: 'Skype', error: '' },
-  { required: false, name: 'whatsApp', value: '', label: 'WhatsApp', error: '' },
-  { required: true, name: 'fieldOfStudy', value: '', label: 'Направление обучения *', error: '' },
-  { required: true, name: 'skillLevel', value: '', label: 'Ваш уровень навыков по выбранному предмету *', error: '' },
-  { required: false, name: 'wishes', value: '', label: 'Ваши пожелания', error: '' },
-];
-
-const mockSkillLevelOptions = ['нулевой', 'начальный', 'средний', 'продвинутый', 'профессиональный'];
-
 const LessonRequestComponent = ({ lessonsData }: { lessonsData: any }) => {
+  const { t, i18n } = useTranslation();
+  const router = useRouter();
+  const { id } = router.query;
+
+  const initialFields = useMemo<Field[]>(
+    () => [
+      { required: true, name: 'count', value: 1, label: t('form.count.label'), error: '' },
+      {
+        required: true,
+        name: 'persons',
+        value: [
+          {
+            name: 'user1',
+            value: { name: '', age: '' },
+            label: t('form.persons.name.label', { index: 1 }),
+            ageLabel: t('form.persons.age.label', { index: 1 }),
+            error: { name: '', age: '' },
+          },
+        ],
+        label: '',
+        error: '',
+      },
+      { required: true, name: 'location', value: '', label: t('form.location.label'), error: '' },
+      { required: true, name: 'email', value: '', label: t('form.email.label'), error: '' },
+      { required: false, name: 'skype', value: '', label: t('form.skype.label'), error: '' },
+      { required: false, name: 'whatsApp', value: '', label: t('form.whatsApp.label'), error: '' },
+      { required: true, name: 'fieldOfStudy', value: '', label: t('form.fieldOfStudy.label'), error: '' },
+      { required: true, name: 'skillLevel', value: '', label: t('form.skillLevel.label'), error: '' },
+      { required: false, name: 'wishes', value: '', label: t('form.wishes.label'), error: '' },
+    ],
+    [t],
+  );
+
+  const mockSkillLevelOptions = useMemo(
+    () => [
+      { key: 'zero', label: t('form.skillLevel.options.zero') },
+      { key: 'beginner', label: t('form.skillLevel.options.beginner') },
+      { key: 'intermediate', label: t('form.skillLevel.options.intermediate') },
+      { key: 'advanced', label: t('form.skillLevel.options.advanced') },
+      { key: 'professional', label: t('form.skillLevel.options.professional') },
+    ],
+    [t],
+  );
+
   const [data, setData] = useState<Field[]>([...initialFields]);
+
+  useEffect(() => {
+    setData((currentData) =>
+      currentData.map((field) => {
+        const newFieldData = initialFields.find((initField) => initField.name === field.name);
+        if (!newFieldData) return field;
+
+        if (field.name === 'persons') {
+          const updatedPersons = field.value.map((person: Person, index: number) => ({
+            ...person,
+            label: t('form.persons.name.label', { index: index + 1 }),
+            ageLabel: t('form.persons.age.label', { index: index + 1 }),
+          }));
+          return { ...field, value: updatedPersons };
+        }
+
+        return {
+          ...field,
+          label: newFieldData.label,
+        };
+      }),
+    );
+  }, [t]);
+
+  useEffect(() => {
+    if (!id || !lessonsData?.data?.length) return;
+
+    setData((prevData) =>
+      prevData.map((field) =>
+        field.name === 'fieldOfStudy'
+          ? { ...field, value: lessonsData.data.find((lesson: any) => lesson.id === id)?.id || '' }
+          : field,
+      ),
+    );
+  }, [id, lessonsData]);
 
   const validateFields = () => {
     let isValid = true;
-
     const updatedData = data.map((field) => {
       if (field.required && field.name !== 'persons' && !field.value) {
         isValid = false;
-        return { ...field, error: 'Поле не может быть пустым' };
+        return { ...field, error: t('form.errors.required') };
       }
-
       if (field.name === 'email' && field.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
         isValid = false;
-        return { ...field, error: 'Неверный формат электронной почты' };
+        return { ...field, error: t('form.errors.invalidEmail') };
       }
-
       if (field.name === 'persons') {
         const updatedPersons = field.value.map((person: Person) => {
           const personErrors = {
-            name: person.value.name ? '' : 'Имя не может быть пустым',
-            age: person.value.age ? '' : 'Возраст не может быть пустым',
+            name: person.value.name ? '' : t('form.errors.nameRequired'),
+            age: person.value.age ? '' : t('form.errors.ageRequired'),
           };
-
           if (!person.value.name || !person.value.age) {
             isValid = false;
           }
-
           return { ...person, error: personErrors };
         });
         return { ...field, value: updatedPersons };
       }
-
       return { ...field, error: '' };
     });
-
     setData(updatedData);
     return isValid;
   };
-  const router = useRouter();
 
   const handleSubmit = async () => {
     if (validateFields()) {
-      console.log('Форма успешно отправлена:', data);
-
       try {
         const requestData = data.reduce((acc: any, field: any) => {
           const key = field.name === 'whatsApp' ? 'whatsapp' : field.name;
 
           if (key === 'persons' && Array.isArray(field.value)) {
-            acc.persons = field.value.map((person: any, i: number) => {
-              console.log(person);
+            acc.persons = field.value.map((person: any) => ({
+              name: person.value.name,
 
-              const { name, age } = person.value;
-
-              return { name, age: Number(age) };
-            });
+              age: Number(person.value.age),
+            }));
           } else {
             acc[key] = field.value;
           }
@@ -111,19 +151,13 @@ const LessonRequestComponent = ({ lessonsData }: { lessonsData: any }) => {
           return acc;
         }, {});
 
-        console.log('Request data:', requestData);
-
-        // Send the request if needed
-        const res = await dataProvider.create('courses-application-request', { data: requestData });
-        console.log(res, '=');
-
-        // const queryParams = new URLSearchParams({ message: SUCCESS_MESSAGE }).toString();
-        // router.push(`/success-message?${queryParams}`);
+        await dataProvider.create('courses-application-request', { data: requestData });
+        router.push('/');
       } catch (error) {
-        console.log('error', '400');
+        console.error('Error submitting form:', error);
       }
     } else {
-      console.log('Форма содержит ошибки');
+      console.log('Form contains errors');
     }
   };
 
@@ -139,11 +173,16 @@ const LessonRequestComponent = ({ lessonsData }: { lessonsData: any }) => {
           : field.name === 'persons'
           ? {
               ...field,
+
               value: Array.from({ length: value }, (_, index) => ({
                 name: `user${index + 1}`,
+
                 value: { name: '', age: '' },
-                label: `Имя, фамилия ${index + 1} *`,
-                ageLabel: `Возраст ${index + 1} *`,
+
+                label: t('form.persons.name.label', { index: index + 1 }),
+
+                ageLabel: t('form.persons.age.label', { index: index + 1 }),
+
                 error: { name: '', age: '' },
               })),
             }
@@ -154,26 +193,28 @@ const LessonRequestComponent = ({ lessonsData }: { lessonsData: any }) => {
 
   const handlePersonChange = (personIndex: number, key: 'name' | 'age', value: string) => {
     const personsField = data.find((field) => field.name === 'persons');
+
     if (!personsField) return;
 
     const updatedPersons = [...personsField.value];
+
     updatedPersons[personIndex].value[key] = value;
+
     updatedPersons[personIndex].error[key] = value
       ? ''
       : key === 'name'
-      ? 'Имя не может быть пустым'
-      : 'Возраст не может быть пустым';
+      ? t('form.errors.nameRequired')
+      : t('form.errors.ageRequired');
 
     setData((prevData) =>
       prevData.map((field) => (field.name === 'persons' ? { ...field, value: updatedPersons } : field)),
     );
   };
-
   return (
     <Box sx={{ minHeight: '60vh', p: 2 }}>
       <Box sx={{ margin: '64px auto', width: '100%', maxWidth: 1024 }}>
         <Typography variant="h3" sx={{ mb: '32px', color: '#C35F1C' }}>
-          Заявка на онлайн уроки
+          {t('form.title')}
         </Typography>
 
         {data.map((field, index) =>
@@ -189,7 +230,7 @@ const LessonRequestComponent = ({ lessonsData }: { lessonsData: any }) => {
                     sx={{ mb: 2 }}
                     value={person.value.name}
                     onChange={(e) => handlePersonChange(personIndex, 'name', e.target.value)}
-                    placeholder="Введите имя"
+                    placeholder={t('form.persons.name.placeholder')}
                     error={!!person.error.name}
                     helperText={person.error.name}
                   />
@@ -201,7 +242,7 @@ const LessonRequestComponent = ({ lessonsData }: { lessonsData: any }) => {
                     value={person.value.age}
                     type="number"
                     onChange={(e) => handlePersonChange(personIndex, 'age', e.target.value)}
-                    placeholder="Введите возраст"
+                    placeholder={t('form.persons.age.placeholder')}
                     error={!!person.error.age}
                     helperText={person.error.age}
                   />
@@ -242,11 +283,11 @@ const LessonRequestComponent = ({ lessonsData }: { lessonsData: any }) => {
                     error={!!field.error}
                   >
                     <MenuItem value="" disabled>
-                      Выберите направление обучения
+                      {t('form.fieldOfStudy.placeholder')}
                     </MenuItem>
                     {lessonsData.data.map((option: any) => (
                       <MenuItem key={option?.id} value={option?.id}>
-                        {option?.title?.ru}
+                        {option?.title?.[i18n.language] || option?.title?.['ru']}
                       </MenuItem>
                     ))}
                   </Select>
@@ -262,11 +303,11 @@ const LessonRequestComponent = ({ lessonsData }: { lessonsData: any }) => {
                     error={!!field.error}
                   >
                     <MenuItem value="" disabled>
-                      Выберите уровень навыков
+                      {t('form.skillLevel.placeholder')}
                     </MenuItem>
                     {mockSkillLevelOptions.map((option) => (
-                      <MenuItem key={option} value={option}>
-                        {option}
+                      <MenuItem key={option.key} value={option.label}>
+                        {option.label}
                       </MenuItem>
                     ))}
                   </Select>
@@ -279,7 +320,7 @@ const LessonRequestComponent = ({ lessonsData }: { lessonsData: any }) => {
                   rows={4}
                   value={field.value}
                   onChange={(e) => handleFieldChange(field.name, e.target.value)}
-                  placeholder="Введите ваши пожелания"
+                  placeholder={t('form.wishes.placeholder')}
                   error={!!field.error}
                   helperText={field.error}
                 />
@@ -297,7 +338,7 @@ const LessonRequestComponent = ({ lessonsData }: { lessonsData: any }) => {
         )}
 
         <Button variant="contained" fullWidth onClick={handleSubmit} sx={{ mt: 4 }}>
-          Отправить
+          {t('form.submitButton')}
         </Button>
       </Box>
     </Box>

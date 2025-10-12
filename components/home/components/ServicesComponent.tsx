@@ -8,7 +8,7 @@ import Content from '@lib/components/common/components/Content';
 
 import lessonsImage from '@lib/public/homePage/getLessons.jpg';
 import servicesImage from '@lib/public/homePage/getServices.jpg';
-
+import { useTranslation } from 'react-i18next';
 const {
   linkStyles,
   imageStyles,
@@ -16,6 +16,7 @@ const {
 } = servicesRangeStyles;
 
 export default function Services() {
+  const { t } = useTranslation();
   return (
     <Container
       maxWidth={false}
@@ -28,14 +29,14 @@ export default function Services() {
       }}
     >
       <Box {...headerBox}>
-        <Content variant="h2" text={'Наши уроки и услуги'} />
+        <Content variant="h2" text={t('mainInfo.ourLessonsAndServices')} />
       </Box>
       <Grid container {...infoBox}>
         <Grid item {...childInfoBox} xs={10} lg={5}>
           <Box {...leftChildBox}>
             <Image src={lessonsImage} alt={'lessonsImage'} loading="lazy" {...imageStyles} />
             <Box {...leftChildTextBox}>
-              <LinkNavigate text={'Выбрать уроки'} navigatePage={'/online-courses'} styles={linkStyles} />
+              <LinkNavigate text={t('mainInfo.chooseLessons')} navigatePage={'/online-courses'} styles={linkStyles} />
             </Box>
           </Box>
         </Grid>
@@ -43,7 +44,7 @@ export default function Services() {
           <Box {...leftChildBox}>
             <Image src={servicesImage} alt={'servicesImage'} loading="lazy" {...imageStyles} />
             <Box {...leftChildTextBox}>
-              <LinkNavigate text={'Выбрать услуги'} navigatePage={'/services'} styles={{ ...linkStyles }} />
+              <LinkNavigate text={t('mainInfo.chooseServices')} navigatePage={'/services'} styles={{ ...linkStyles }} />
             </Box>
           </Box>
         </Grid>

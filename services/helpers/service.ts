@@ -74,4 +74,23 @@ const definePageContent = (type: string, contents: any) => {
   }
 };
 
-export { definePageContent, defineServiceInputField, defineErrorKeys, stripHtmlTagsWithRegex };
+function getLocalizedText(
+  text: string | { hy?: string; ru?: string; en?: string },
+  locale: string
+): string { 
+  if (!text) return '';
+  if (typeof text === 'string') return text;
+
+  switch (locale) {
+    case 'hy':
+      return text.hy || text.ru || text.en || '';
+    case 'ru':
+      return text.ru || text.hy || text.en || '';
+    case 'en':
+      return text.en || text.ru || text.hy || '';
+    default:
+      return text.hy || text.ru || text.en || '';
+  }
+}
+
+export { definePageContent, defineServiceInputField, defineErrorKeys, stripHtmlTagsWithRegex, getLocalizedText };

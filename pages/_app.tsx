@@ -9,6 +9,7 @@ import { theme } from '@lib/styles/componentsStyles';
 import RootLayout from '@lib/components/common/components/RootLayout';
 import { DefaultSeo } from 'next-seo';
 import defaultSEO from '../next-seo.config';
+import i18n from '../i18n';
 
 declare global {
   interface Window {
@@ -33,6 +34,14 @@ function Azatazen({ Component, pageProps }: AppProps) {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
+
+  const { locale } = useRouter();
+
+  useEffect(() => {
+    if (locale) {
+      i18n.changeLanguage(locale);
+    }
+  }, [locale]);
 
   return (
     <>

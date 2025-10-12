@@ -5,6 +5,7 @@ import { constants } from '@lib/components/contactUs/constants/constants';
 import { contactUsStyles } from '@lib/components/contactUs/styles/contactUsStyles';
 import Snackbars from '@lib/components/common/components/Snackbars';
 import { useForm } from '@lib/components/contactUs/hooks/useForm';
+import { useTranslation } from 'react-i18next';
 
 const {
   boxStyles: { formMainBox, inputBox },
@@ -16,15 +17,15 @@ const { FORMFIELDS, SENDBUTTONTEXT, PROBLEM_TEXT, HEADING } = constants;
 
 export const Form = () => {
   const { formData, errors, snackbar, handleInputChange, handleSubmit } = useForm();
-
+  const { t } = useTranslation();
   return (
     <Box component="form" onSubmit={handleSubmit} {...formMainBox}>
       <Typography variant="h3" {...titleText}>
-        {HEADING}
+        {t(HEADING)}
       </Typography>
       {FORMFIELDS.map((field) => (
         <Box key={field.name} {...inputBox}>
-          {field.label && <Typography variant="h6">{field.label}</Typography>}
+          {field.label && <Typography variant="h6">{t(field.label)}</Typography>}
           <TextField
             {...textfield}
             fullWidth
@@ -36,15 +37,15 @@ export const Form = () => {
             multiline={field.multiline}
             rows={5}
           />
-          {errors[field.name] && <FormHelperText {...errText}>{PROBLEM_TEXT}</FormHelperText>}
+          {errors[field.name] && <FormHelperText {...errText}>{t(PROBLEM_TEXT)}</FormHelperText>}
         </Box>
       ))}
       <Box>
         <Button type="submit" endIcon={<ArrowForwardIcon />} {...buttonStyle}>
-          {SENDBUTTONTEXT}
+          {t(SENDBUTTONTEXT)}
         </Button>
       </Box>
-      {snackbar.show && <Snackbars text={snackbar.text} statusCode={snackbar.statusCode} />}
+      {snackbar.show && <Snackbars text={t(snackbar.text)} statusCode={snackbar.statusCode} />}
     </Box>
   );
 };

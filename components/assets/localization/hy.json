@@ -4,6 +4,9 @@
   "forServices": "Ծառայությունների համար",
   "aboutSchool": "Դպրոցի մասին",
   "aboutUs": "Մեր մասին",
+  "help": "Օգնություն",
+  "contactsUs": "Կապ մեզ հետ",
+  "onlineMusicSchool": "Օնլայն երաժշտական դպրոց",
   "faq": "Հաճախ տրվող հարցեր",
   "discounts": "Զեղչեր",
   "payment": "Վճարում",
@@ -17,5 +20,127 @@
   "additionalSubjects": "Լրացուցիչ առարկաներ",
   "languages": "Լեզուներ",
   "services": "Ծառայություններ",
-  "contacts": "Կոնտակտներ"
+  "contacts": "Կոնտակտներ",
+  "mainInfo": {
+    "buttonText": "Ավելին դպրոցին մասին",
+    "lessonsButtonText": "Գրանցվեք դասերի համար",
+    "servicesButtonText": "Գրանցվեք ծառայությունների համար",
+    "aboutTheBenefitsButtonText": "Իմանալ ավելին առավելությունների մասին",
+    "ourLessonsAndServices": "Մեր դասերն ու ծառայությունները",
+    "chooseLessons": "Ընտրել դասերը",
+    "chooseServices": "Ընտրել ծառայությունները"
+  },
+  "participants_count": "Մասնակիցների քանակը *",
+  "person_name_label": "Անուն, ազգանուն *",
+  "person_age_label": "Տարիք *",
+  "location": "Երկիր, քաղաք *",
+  "email": "Էլ. հասցե *",
+  "skype": "Skype",
+  "whatsapp": "WhatsApp",
+  "field_of_study": "Ուսման ուղղություն *",
+  "skill_level": "Ձեր հմտությունների մակարդակը ընտրված առարկայով *",
+  "wishes": "Ձեր ցանկությունները",
+  "field_required": "Դաշտը պարտադիր է",
+  "email_invalid": "Էլ. հասցեն սխալ է",
+  "name_required": "Անունը պարտադիր է",
+  "age_required": "Տարիքը պարտադիր է",
+  "lesson_request_title": "Առցանց դասի հայտ",
+  "enter_name": "Մուտքագրեք անունը",
+  "enter_age": "Մուտքագրեք տարիքը",
+  "select_field_of_study": "Ընտրեք ուսման ուղղությունը",
+  "select_skill_level": "Ընտրեք հմտությունների մակարդակը",
+  "enter_wishes": "Մուտքագրեք ձեր ցանկությունները",
+  "submit": "Ուղարկել",
+  "skill_level_zero": "զրո",
+  "skill_level_beginner": "սկսնակ",
+  "skill_level_intermediate": "միջին",
+  "skill_level_advanced": "առաջադեմ",
+  "skill_level_pro": "պրոֆեսիոնալ",
+  "form": {
+    "title": "Առցանց դասերի հայտ",
+    "submitButton": "Ուղարկել",
+    "count": {
+      "label": "Նշեք մասնակիցների քանակը *"
+    },
+    "persons": {
+      "name": {
+        "label": "Անուն, ազգանուն {{index}} *",
+        "placeholder": "Մուտքագրեք անունը"
+      },
+      "age": {
+        "label": "Տարիք {{index}} *",
+        "placeholder": "Մուտքագրեք տարիքը"
+      }
+    },
+    "location": { "label": "Երկիր, քաղաք *" },
+    "email": { "label": "Էլ. փոստ *" },
+    "skype": { "label": "Skype" },
+    "whatsApp": { "label": "WhatsApp" },
+    "fieldOfStudy": {
+      "label": "Ուսուցման ուղղություն *",
+      "placeholder": "Ընտրեք ուսուցման ուղղությունը"
+    },
+    "skillLevel": {
+      "label": "Ձեր հմտությունների մակարդակը ընտրված առարկայի գծով *",
+      "placeholder": "Ընտրեք հմտությունների մակարդակը",
+      "options": {
+        "zero": "զրոյական",
+        "beginner": "սկսնակ",
+        "intermediate": "միջին",
+        "advanced": "բարձր",
+        "professional": "պրոֆեսիոնալ"
+      }
+    },
+    "wishes": {
+      "label": "Ձեր ցանկությունները",
+      "placeholder": "Մուտքագրեք ձեր ցանկությունները"
+    },
+    "errors": {
+      "required": "Դաշտը չի կարող դատարկ լինել",
+      "invalidEmail": "Էլ. փոստի սխալ ձևաչափ",
+      "nameRequired": "Անունը չի կարող դատարկ լինել",
+      "ageRequired": "Տարիքը չի կարող դատարկ լինել"
+    }
+  },
+  "servicesForm": {
+    "title": "Ծառայության պատվերի հայտ",
+    "submitButton": "Ուղարկել",
+    "fieldOfServices": {
+      "label": "Ընտրեք ծառայություններ *",
+      "placeholder": "Ընտրեք ծառայություն"
+    },
+    "wishes": {
+      "label": "Պատվերի մանրամասն նկարագրություն",
+      "placeholder": "Մանրամասն նկարագրեք ձեր պատվերը..."
+    },
+    "deadLine": {
+      "label": "Պատվերի կատարման վերջնաժամկետ *",
+      "placeholder": "Ընտրեք ամսաթիվ"
+    },
+    "name": { "label": "Ձեր անունը *" },
+    "email": { "label": "Էլ. փոստ *" },
+    "skype": { "label": "Skype" },
+    "whatsApp": { "label": "WhatsApp" },
+    "telegram": { "label": "Telegram" },
+    "errors": {
+      "required": "Դաշտը չի կարող դատարկ լինել",
+      "invalidEmail": "Էլ. փոստի սխալ ձևաչափ"
+    }
+  },
+  "contactForm": {
+    "heading": "Կապ մեզ հետ",
+    "submitButton": "Ուղարկել",
+    "fields": {
+      "nameLabel": "Ձեր անունը",
+      "emailLabel": "Ձեր Էլ. փոստը",
+      "messageLabel": "Ձեր հաղորդագրությունը կամ հարցը"
+    },
+    "errors": {
+      "invalidValue": "Սխալ արժեք։"
+    },
+    "successMessage": "Ձեր նամակը հաջողությամբ ուղարկվել է։",
+    "errorMessage": "Ձեր նամակը չի գրանցվել։"
+  },
+  "register": "Գրանցվել",
+  "forRegisteredUsers": "Դուք կարող եք գրանցվել դասերին հետևյալ հղումով՝"
 }

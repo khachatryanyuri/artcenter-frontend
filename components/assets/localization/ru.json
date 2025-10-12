@@ -4,6 +4,9 @@
   "forServices": "На услуги",
   "aboutSchool": "О школе",
   "aboutUs": "О нас",
+  "help": "Помощь",
+  "contactsUs": "Связаться с нами",
+  "onlineMusicSchool": "Онлайн школа музыки.",
   "faq": "Вопрос-ответ",
   "discounts": "Скидки",
   "payment": "Оплата",
@@ -17,5 +20,127 @@
   "additionalSubjects": "Дополнительные предметы",
   "languages": "Языки",
   "services": "Услуги",
-  "contacts": "Контакты"
+  "contacts": "Контакты",
+  "mainInfo": {
+    "buttonText": "Подробнее о школе",
+    "lessonsButtonText": "Записаться на уроки",
+    "servicesButtonText": "Записаться на услуги",
+    "aboutTheBenefitsButtonText": "Узнать больше о преимуществах",
+    "ourLessonsAndServices": "Наши уроки и услуги",
+    "chooseLessons": "Выбрать уроки",
+    "chooseServices": "Выбрать услуги"
+  },
+  "participants_count": "Укажите количество участников *",
+  "person_name_label": "Имя, фамилия *",
+  "person_age_label": "Возраст *",
+  "location": "Страна, город *",
+  "email": "E-mail *",
+  "skype": "Skype",
+  "whatsapp": "WhatsApp",
+  "field_of_study": "Направление обучения *",
+  "skill_level": "Ваш уровень навыков по выбранному предмету *",
+  "wishes": "Ваши пожелания",
+  "field_required": "Поле не может быть пустым",
+  "email_invalid": "Неверный формат электронной почты",
+  "name_required": "Имя не может быть пустым",
+  "age_required": "Возраст не может быть пустым",
+  "lesson_request_title": "Заявка на онлайн уроки",
+  "enter_name": "Введите имя",
+  "enter_age": "Введите возраст",
+  "select_field_of_study": "Выберите направление обучения",
+  "select_skill_level": "Выберите уровень навыков",
+  "enter_wishes": "Введите ваши пожелания",
+  "submit": "Отправить",
+  "skill_level_zero": "нулевой",
+  "skill_level_beginner": "начальный",
+  "skill_level_intermediate": "средний",
+  "skill_level_advanced": "продвинутый",
+  "skill_level_pro": "профессиональный",
+  "form": {
+    "title": "Заявка на онлайн уроки",
+    "submitButton": "Отправить",
+    "count": {
+      "label": "Укажите количество участников *"
+    },
+    "persons": {
+      "name": {
+        "label": "Имя, фамилия {{index}} *",
+        "placeholder": "Введите имя"
+      },
+      "age": {
+        "label": "Возраст {{index}} *",
+        "placeholder": "Введите возраст"
+      }
+    },
+    "location": { "label": "Страна, город *" },
+    "email": { "label": "E-mail *" },
+    "skype": { "label": "Skype" },
+    "whatsApp": { "label": "WhatsApp" },
+    "fieldOfStudy": {
+      "label": "Направление обучения *",
+      "placeholder": "Выберите направление обучения"
+    },
+    "skillLevel": {
+      "label": "Ваш уровень навыков по выбранному предмету *",
+      "placeholder": "Выберите уровень навыков",
+      "options": {
+        "zero": "нулевой",
+        "beginner": "начальный",
+        "intermediate": "средний",
+        "advanced": "продвинутый",
+        "professional": "профессиональный"
+      }
+    },
+    "wishes": {
+      "label": "Ваши пожелания",
+      "placeholder": "Введите ваши пожелания"
+    },
+    "errors": {
+      "required": "Поле не может быть пустым",
+      "invalidEmail": "Неверный формат электронной почты",
+      "nameRequired": "Имя не может быть пустым",
+      "ageRequired": "Возраст не может быть пустым"
+    }
+  },
+  "servicesForm": {
+    "title": "Заявка на заказ услуги",
+    "submitButton": "Отправить",
+    "fieldOfServices": {
+      "label": "Выберите услуги *",
+      "placeholder": "Выберите услугу"
+    },
+    "wishes": {
+      "label": "Подробное описание заказа",
+      "placeholder": "Опишите подробно ваш заказ..."
+    },
+    "deadLine": {
+      "label": "Крайний срок выполнения заказа *",
+      "placeholder": "Выберите дату"
+    },
+    "name": { "label": "Ваше имя *" },
+    "email": { "label": "E-mail *" },
+    "skype": { "label": "Skype" },
+    "whatsApp": { "label": "WhatsApp" },
+    "telegram": { "label": "Telegram" },
+    "errors": {
+      "required": "Поле не может быть пустым",
+      "invalidEmail": "Неверный формат электронной почты"
+    }
+  },
+  "contactForm": {
+    "heading": "Связаться с нами",
+    "submitButton": "Отправить",
+    "fields": {
+      "nameLabel": "Ваше имя",
+      "emailLabel": "Ваш E-mail",
+      "messageLabel": "Ваше сообщение или вопрос"
+    },
+    "errors": {
+      "invalidValue": "Неправильное значение."
+    },
+    "successMessage": "Ваше письмо успешно отправлено.",
+    "errorMessage": "Ваше письмо не было зарегистрировано."
+  },
+  "register": "Зарегистрироваться",
+  "forRegisteredUsers": "Зарегистрироваться на курс можно по следующей ссылке:"
 }

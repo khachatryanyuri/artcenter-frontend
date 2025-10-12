@@ -8,6 +8,7 @@ import { footerStyles } from '@lib/components/common/styles/footerStyle';
 import { ALL_RIGHTS_RESERVED, BOTTOM_DATA, SECTIONS_DATA } from '@lib/components/common/constants/footerConstants';
 import LinkNavigate from '@lib/components/common/components/LinkNavigate';
 import { SocialMedia } from '@lib/components/common/components/SocialMedia';
+import { useTranslation } from 'react-i18next';
 
 const {
   boxStyles: { linkBox, lastBox, imageBoxMobile },
@@ -16,6 +17,7 @@ const {
 } = footerStyles;
 
 export default function FooterMobile() {
+  const { t } = useTranslation();
   return (
     <>
       {/* <Box {...imageBoxMobile}>
@@ -30,7 +32,7 @@ export default function FooterMobile() {
             <Box key={`link-box-${index}`} {...linkBox}>
               {value.data.map((linkData, subIndex) => (
                 <Fragment key={`privacy-link-${subIndex}`}>
-                  <LinkNavigate text={linkData.subTitle} navigatePage={linkData.link} styles={link} />
+                  <LinkNavigate text={t(linkData.subTitle)} navigatePage={linkData.link} styles={link} />
                 </Fragment>
               ))}
             </Box>
@@ -42,7 +44,7 @@ export default function FooterMobile() {
         <Typography {...copyrightText}>{ALL_RIGHTS_RESERVED}</Typography>
         {BOTTOM_DATA.map((value, subIndex) => (
           <Fragment key={`privacy-link-${subIndex}`}>
-            <LinkNavigate text={value.title} navigatePage={value.link} styles={privacyLinks} />
+            <LinkNavigate text={t(value.title)} navigatePage={value.link} styles={privacyLinks} />
           </Fragment>
         ))}
       </Box>
