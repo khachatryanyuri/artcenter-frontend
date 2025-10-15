@@ -37,7 +37,7 @@ export default function Navbar() {
   const { push, pathname, asPath, query, locale } = useRouter();
 
   const handleLanguageChange = (lng: string) => {
-    push({ pathname, query }, asPath, { locale: lng });
+    push({ pathname, query }, undefined, { locale: lng });
   };
 
   return (
