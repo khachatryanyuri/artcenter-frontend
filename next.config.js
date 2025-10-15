@@ -12,6 +12,14 @@ const nextConfig = {
     defaultLocale: 'hy',
     localeDetection: false,
   },
+  async rewrites() {
+    return [
+      {
+        source: '/:locale(en|ru|hy){/}?/:path*',
+        destination: '/:path*',
+      },
+    ];
+  },
 
   ...withVideos(),
 };
