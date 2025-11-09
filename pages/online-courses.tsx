@@ -6,50 +6,39 @@ import axios from 'axios';
 import { Box } from '@mui/material';
 import SEO from '@lib/components/common/components/SEO.';
 import { stripHtmlTagsWithRegex } from '@lib/services/helpers/service';
+import { GetCourseProps } from '@lib/types/types';
+import { generatedSEOData } from '@lib/helpers/helpers';
 
 const CourseComponent = dynamic(() => import('@lib/components/courses/components/Course'), {
   ssr: false,
 });
-
-interface ICourseData {
-  id: string;
-  title: {
-    arm: string;
-  };
-  description: {
-    arm: string;
-  };
-  picture?: string;
-}
-
-interface GetCourseProps {
-  courseItem: {
-    data: ICourseData | null;
-  };
-}
 
 const GetCourse: React.FC<GetCourseProps> = ({ courseItem }) => {
   if (!courseItem.data) {
     return <Box>Error: Course not found</Box>;
   }
 
-  const courseData = courseItem.data;
-  const imageUrl = courseData.picture || 'https://azatazen.am/homePage/azatazenMid.png';
+  const { title, description, image, data } = generatedSEOData(courseItem, true);
 
   return (
     <>
-      {/* <SEO
-        title={courseData?.title?.arm || 'Ազատազէն Դասընթացներ'}
-        description={stripHtmlTagsWithRegex(courseData?.description?.arm) || ''}
-        url={`https://azatazen.am/courses/${courseData?.id}`}
-        image={imageUrl as string}
-      /> */}
-      <CourseComponent data={courseData} />
+      <SEO
+        title={title}
+        description={stripHtmlTagsWithRegex(description) || ''}
+        url={courseItem.dynamicUrl}
+        image={image as string}
+      />
+      <CourseComponent data={data} />
     </>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { locale, req, resolvedUrl } = context;
+  const currentLocale = locale || 'hy';
+  const protocol = req.headers['x-forwarded-proto'] || 'http';
+  const host = req.headers['x-forwarded-host'] || req.headers.host;
+  const dynamicUrl = `${protocol}://${host}${resolvedUrl}`;
   try {
     const web_filter = {
       key: 'curses',
@@ -65,6 +54,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props: {
         courseItem: {
           data: response.data,
+          locale: currentLocale,
+          dynamicUrl,
         },
       },
     };
@@ -74,6 +65,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props: {
         courseItem: {
           data: null,
+          locale: currentLocale,
+          dynamicUrl,
         },
       },
     };

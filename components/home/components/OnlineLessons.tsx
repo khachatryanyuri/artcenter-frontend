@@ -21,7 +21,7 @@ export default function MainInfo({ content: { onlineLessons } }: IContent) {
       <Content
         variant="h5"
         text={onlineLessons?.desc}
-        style={{ color: '#000', fontWeight: '600 !important', pl: '32px' }}
+        style={{ color: '#000', pl: '32px' }}
       />
 
       <Button variant="contained" onClick={handleClick} sx={{ alignSelf: 'flex-start' }}>

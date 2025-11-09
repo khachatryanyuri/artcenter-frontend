@@ -20,16 +20,15 @@ const {
 export default function DetailedCourseComponent({ data }: any) {
   const router = useRouter();
   const handleNavigate = () => {
-    const url = data.typesKey === "curses" ? `/application/online-lessons?id=${data.id}` : `/application/services?id=${data.id}`;
+    const url =
+      data.typesKey === 'curses' ? `/application/online-lessons?id=${data.id}` : `/application/services?id=${data.id}`;
     router.push(url);
   };
   const { t } = useTranslation();
   return (
     <Container maxWidth={false} {...mainContainer}>
       <Grid {...mainBox} container>
-        <Typography variant="h2" {...heading}>
-          {data?.title?.ru}
-        </Typography>
+        <Content variant="h3" text={data?.title} style={{ sx: { margin: '0 auto', mb: '64px', textAlign: 'center' } }} />
         <Grid item xs={12}>
           <Image width={800} height={600} src={data?.picture} alt={data?.id} loading="lazy" {...newsImage} />
 
@@ -37,12 +36,7 @@ export default function DetailedCourseComponent({ data }: any) {
         </Grid>
         <Box sx={{ mt: '72px' }}>
           <Typography variant="h5">{t(BUTTONT__INFO)}</Typography>
-          <Button
-            variant="outlined"
-            endIcon={<ArrowForwardIcon />}
-            {...shareIcon}
-            onClick={handleNavigate}
-          >
+          <Button variant="outlined" endIcon={<ArrowForwardIcon />} {...shareIcon} onClick={handleNavigate}>
             {t(BUTTONT_TEXT)}
           </Button>
         </Box>
