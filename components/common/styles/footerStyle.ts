@@ -1,11 +1,20 @@
 import { theme } from '@lib/styles/componentsStyles';
 
+// Палитра "Вечерний Закат"
+const sunsetColors = {
+  bgAppbar: '#2A2540', // Глубокий Индиго (Фон AppBar/Footer)
+  textPrimary: '#F5F3F7', // Бледно-лавандовый (Основной светлый текст)
+  textSecondary: '#CEC9DC', // Приглушенная Лаванда (Второстепенный/копирайт текст)
+  accentOrange: '#E64A19', // Горящий Оранжевый (Акценты)
+  borderColor: '#5A4A8D', // Легкая граница для разделителя в футере (вместо #D9D9D9)
+};
+
 export const footerStyles = {
   boxStyles: {
     footerBox: {
       sx: {
         padding: '64px 64px 48px 64px',
-        backgroundColor: '#1A1B1D',
+        backgroundColor: sunsetColors.bgAppbar, // <--- ИЗМЕНЕНИЕ: Глубокий Индиго
         [theme.breakpoints.down('lg')]: {
           padding: '32px 32px 24px 32px',
         },
@@ -25,7 +34,7 @@ export const footerStyles = {
     lastBox: {
       sx: {
         width: '100%',
-        borderTop: '1px solid #D9D9D9',
+        borderTop: `1px solid ${sunsetColors.borderColor}`, // <--- ИЗМЕНЕНИЕ: Мягкий пурпурный разделитель
         paddingTop: '32px',
         display: 'flex',
         gap: '8px',
@@ -107,6 +116,7 @@ export const footerStyles = {
     sectionHeading: {
       sx: {
         paddingBottom: '24px',
+        color: sunsetColors.textPrimary, // <--- ИЗМЕНЕНИЕ: Заголовки разделов
       },
     },
     copyrightText: {
@@ -115,7 +125,7 @@ export const footerStyles = {
         fontSize: '14px',
         fontWeight: 400,
         fontFamily: 'Montserratarm',
-        color: '#BEBEBE',
+        color: sunsetColors.textSecondary, // <--- ИЗМЕНЕНИЕ: Копирайт текст
         '@media (max-width:1050px)': {
           fontSize: '11px',
         },
@@ -127,10 +137,11 @@ export const footerStyles = {
       sx: {
         '&:hover': {
           textDecoration: 'underline',
-          textDecorationColor: '#fff',
+          textDecorationColor: sunsetColors.accentOrange, // <--- ИЗМЕНЕНИЕ: Ховер оранжевый
+          color: sunsetColors.accentOrange,
         },
         textDecoration: 'none',
-        color: '#fff',
+        color: sunsetColors.textPrimary, // <--- ИЗМЕНЕНИЕ: Основные ссылки
         fontSize: '14px',
         fontWeight: '400',
         lineHeight: '21px',
@@ -141,10 +152,11 @@ export const footerStyles = {
       sx: {
         '&:hover': {
           textDecoration: 'underline',
-          textDecorationColor: '#BEBEBE',
+          textDecorationColor: sunsetColors.accentOrange, // <--- ИЗМЕНЕНИЕ: Ховер оранжевый
+          color: sunsetColors.accentOrange,
         },
         textDecoration: 'none',
-        color: '#BEBEBE',
+        color: sunsetColors.textSecondary, // <--- ИЗМЕНЕНИЕ: Ссылки внизу (Privacy)
         lineHeight: '21px',
         fontSize: '14px',
         fontWeight: 400,

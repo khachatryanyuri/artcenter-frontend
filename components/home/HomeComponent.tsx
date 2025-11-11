@@ -1,15 +1,15 @@
 import React from 'react';
-
-import MainInfo from '@lib/components/home/components/MainInfo';
 import { useContent } from '@lib/services/store/contentsStore';
 import OnlineLessons from '@lib/components/home/components/OnlineLessons';
 import LessonsServices from '@lib/components/home/components/LessonsServicesComponent';
 import Services from '@lib/components/home/components/ServicesComponent';
 import { Box, Container } from '@mui/material';
-
+import SliderComponent from '@lib/components/home/components/SliderComponent';
+import MainInfo from '@lib/components/home/components/MainInfo';
+import { theme } from '@lib/styles/componentsStyles';
 export default function HomePage() {
   const {
-    contents: { mainInfo, onlineLessons },
+    contents: { onlineLessons, mainInfo },
   } = useContent('home');
 
   return (
@@ -21,6 +21,7 @@ export default function HomePage() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        padding: '0 !important',
         '@media (max-width:600px)': {
           display: 'block',
           flexDirection: 'column',
@@ -29,12 +30,29 @@ export default function HomePage() {
         },
       }}
     >
-      <Box sx={{ maxWidth: '1024px' }}>
+      <SliderComponent />
+      <Container
+        maxWidth={false}
+        sx={{
+          padding: '64px 120px !important',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: '#FBFBFB',
+          [theme.breakpoints.down('md')]: {
+            padding: '64px 64px !important',
+          },
+          [theme.breakpoints.down('sm')]: {
+            padding: '32px 32px !important',
+          },
+          '@media (max-width: 560px)': {
+            padding: '24px 12px !important',
+          },
+        }}
+      >
         <MainInfo content={{ mainInfo }} />
         <LessonsServices />
         <OnlineLessons content={{ onlineLessons }} />
         <Services />
-      </Box>
+      </Container>
     </Container>
   );
 }

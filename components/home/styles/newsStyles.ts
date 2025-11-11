@@ -6,48 +6,44 @@ export const newsStyles = {
       sx: {
         backgroundRepeat: 'no-repeat',
         backgroundColor: '#FBFBFB',
-        padding: '64px 48px',
-
-        [theme.breakpoints.down('lg')]: {
-          padding: '32px',
-        },
-        '@media (max-width:600px)': {
-          padding: '64px 0 0 0',
-        },
+        padding: { xs: '32px 16px', sm: '48px 32px', md: '64px 48px' },
       },
     },
 
     allNewsBox: {
       sx: {
         display: 'flex',
-        justifyContent: 'space-around !important',
-        marginTop: '23px',
+        justifyContent: 'center',
         gap: '32px',
-        alignItems: 'center',
-        [theme.breakpoints.down('sm')]: {
-          display: 'none',
-          justifyContent: 'none',
-        },
+        alignItems: 'flex-start',
+        flexWrap: 'wrap',
       },
     },
+
     newsBox: {
       sx: {
-        border: '1px solid #000',
-        borderRadius: '6px',
-        margin: '12px',
         backgroundColor: '#fff',
+        borderRadius: '16px',
+        boxShadow: '0 8px 32px rgba(42, 37, 64, 0.08)',
+        overflow: 'hidden',
+
+        width: '100%',
+        maxWidth: '420px',
       },
     },
+
     newsTextBox: {
       sx: {
         display: 'flex',
-        gap: '8px',
         flexDirection: 'column',
-        padding: '16px',
+        alignItems: 'center',
+        gap: '8px',
+        padding: '24px',
         backgroundColor: '#fff',
         borderRadius: '6px',
       },
     },
+
     boxTitle: {
       sx: {
         display: 'flex',
@@ -72,19 +68,18 @@ export const newsStyles = {
       },
     },
   },
+
   imageStyles: {
     newsImage: {
       style: {
-        borderRadius: '6px',
         width: '100%',
         height: 'auto',
-        marginTop: '-28px',
-        marginLeft: '-28px',
-        aspectRatio: 1 / 1,
+        aspectRatio: '16 / 10',
         objectFit: 'cover' as const,
       },
     },
   },
+
   linkStyles: {
     sx: {
       color: '#8C8C8C',
@@ -99,14 +94,25 @@ export const newsStyles = {
       },
     },
   },
+
   linkStylesNews: {
     sx: {
       textDecoration: 'underline',
-      fontSize: '15px !important',
-      padding: '10px 0',
+      display: 'inline-block',
+      backgroundColor: 'accentOrange.main',
+      color: 'textPrimary.main',
+      padding: '10px 24px',
+      borderRadius: '8px',
       fontWeight: 600,
+      fontSize: '15px !important',
+      '&:hover': {
+        backgroundColor: 'accentOrange.dark',
+        textDecoration: 'underline',
+        color: 'textPrimary.main',
+      },
     },
   },
+
   typographyStyles: {
     sx: {
       [theme.breakpoints.down('sm')]: {

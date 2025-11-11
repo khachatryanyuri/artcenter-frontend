@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Box, Grid, Typography } from '@mui/material';
 import { Fragment } from 'react';
 
-import azatazenLogo from '@lib/public/homePage/azatazenWhite.svg';
+import artcenterLogo from '@lib/public/Logo.png';
 import { footerStyles } from '@lib/components/common/styles/footerStyle';
 import { ALL_RIGHTS_RESERVED, BOTTOM_DATA, SECTIONS_DATA } from '@lib/components/common/constants/footerConstants';
 import LinkNavigate from '@lib/components/common/components/LinkNavigate';
@@ -20,9 +20,9 @@ export default function FooterMobile() {
   const { t } = useTranslation();
   return (
     <>
-      {/* <Box {...imageBoxMobile}>
-        <Image loading="lazy" src={azatazenLogo} alt={'azatazenLogo'} />
-      </Box> */}
+      <Box {...imageBoxMobile}>
+        <Image loading="lazy" src={artcenterLogo} alt={'artcenterLogo'} height={100} width={100} />
+      </Box>
       <Grid container spacing={3} sx={{ textAlign: 'center' }}>
         {SECTIONS_DATA.map((value, index) => (
           <Grid item key={`section-box-${index}`} xs={12}>

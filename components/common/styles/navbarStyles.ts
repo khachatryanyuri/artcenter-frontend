@@ -1,5 +1,16 @@
 import { theme } from '@lib/styles/componentsStyles';
 
+// Палитра "Вечерний Закат"
+const colors = {
+  bgAppbar: '#2A2540', // Глубокий Индиго (Фон AppBar/Footer)
+  bgTopBar: '#1E1A2E', // Еще темнее для верхней полоски (как в прошлый раз)
+  bgMenu: '#3C325B', // Темно-лиловый (Выпадающие и мобильное меню)
+  textPrimary: '#F5F3F7', // Бледно-лавандовый (Основной текст на темном)
+  textSecondary: '#CEC9DC', // Приглушенная Лаванда (Второстепенный текст на темном)
+  accentOrange: '#E64A19', // Горящий Оранжевый (Акценты)
+  accentCoral: '#FF7043', // Яркий Коралл (Hover акценты)
+};
+
 export const navbarStyles = {
   breadcrumbsStyles: {
     sx: {
@@ -19,8 +30,10 @@ export const navbarStyles = {
   linkStyles: {
     menuLink: {
       sx: {
+        color: colors.textPrimary, // <--- ИЗМЕНЕНИЕ
         '&:hover': {
           textDecoration: 'underline',
+          color: colors.accentOrange, // <--- ИЗМЕНЕНИЕ
         },
         lineHeight: 1.75,
       },
@@ -30,10 +43,10 @@ export const navbarStyles = {
         fontWeight: 400,
         fontSize: '13px',
         lineHeight: '21px',
-        color: '#777777',
+        color: colors.textSecondary, // <--- ИЗМЕНЕНИЕ
         cursor: 'pointer',
         '&:hover': {
-          color: '#C35F1C',
+          color: colors.accentOrange, // <--- ИЗМЕНЕНИЕ
           textDecoration: 'none',
           fontWeight: 700,
           transition: 'color 0.3s ease',
@@ -44,15 +57,16 @@ export const navbarStyles = {
       sx: {
         padding: '14px 16px',
         '&:hover': {
-          color: '#C35F1C',
+          color: colors.accentOrange, // <--- ИЗМЕНЕНИЕ
           textDecoration: 'none',
           fontWeight: 700,
           transition: 'color 0.3s ease',
         },
-        color: '#000',
+        color: colors.textPrimary, // <--- ИЗМЕНЕНИЕ
         [theme.breakpoints.down('lg')]: {
+          color: colors.textPrimary, // <--- ИЗМЕНЕНИЕ (для мобильной версии)
           '&:hover': {
-            color: '#C35F1C',
+            color: colors.accentOrange, // <--- ИЗМЕНЕНИЕ
             backgroundColor: 'transparent',
             textDecoration: 'none',
             borderRadius: '6px',
@@ -74,15 +88,15 @@ export const navbarStyles = {
         padding: '14px 16px',
         textWrap: 'wrap',
         '&:hover': {
-          color: '#C35F1C',
+          color: colors.accentOrange, // <--- ИЗМЕНЕНИЕ
           textDecoration: 'none',
           fontWeight: 700,
           transition: 'color 0.3s ease',
         },
-        color: '#676767',
+        color: colors.textPrimary, // <--- ИЗМЕНЕНИЕ
         [theme.breakpoints.down('lg')]: {
           '&:hover': {
-            color: '#C35F1C',
+            color: colors.accentOrange, // <--- ИЗМЕНЕНИЕ
             backgroundColor: 'transparent',
             textDecoration: 'none',
             borderRadius: '6px',
@@ -107,10 +121,10 @@ export const navbarStyles = {
         '&:hover': {
           color: '#fff',
           textDecoration: 'underline',
-          backgroundColor: '#000',
+          backgroundColor: colors.accentCoral, // <--- ИЗМЕНЕНИЕ
           borderRadius: '6px',
         },
-        backgroundColor: '#C35F1C',
+        backgroundColor: colors.accentOrange, // <--- ИЗМЕНЕНИЕ
         color: '#fff',
 
         [theme.breakpoints.down('lg')]: {
@@ -125,7 +139,7 @@ export const navbarStyles = {
       sx: {
         display: 'flex',
         justifyContent: 'flex-end',
-        backgroundColor: '#F4F4F4',
+        backgroundColor: colors.bgTopBar, // <--- ИЗМЕНЕНИЕ
         gap: '8px',
         [theme.breakpoints.down('lg')]: {
           justifyContent: 'space-between',
@@ -166,6 +180,7 @@ export const navbarStyles = {
         [theme.breakpoints.down('lg')]: {
           display: 'flex',
           flexDirection: 'column',
+          width: '100%', // Для мобильного меню
         },
       },
     },
@@ -182,17 +197,47 @@ export const navbarStyles = {
     },
   },
   menuStyles: {
-    sx: { mt: '45px' },
+    sx: {
+      mt: '45px',
+      // Стили для выпадающего меню (десктоп)
+      '& .MuiMenu-paper': {
+        backgroundColor: colors.bgMenu, // <--- ИЗМЕНЕНИЕ
+        color: colors.textPrimary, // <--- ИЗМЕНЕНИЕ
+      },
+      '& .MuiMenuItem-root': {
+        color: colors.textPrimary,
+        '&:hover': {
+          backgroundColor: 'rgba(0,0,0,0.1)', // <--- Легкое затемнение при ховере
+          color: colors.accentOrange,
+        },
+      },
+    },
   },
   iconStyles: {
     style: { cursor: 'pointer' },
   },
   accordionStyles: {
-    accordion: { sx: { width: '100%', boxShadow: 'none', backgroundColor: '#fff' } },
+    // Стили для мобильного меню
+    accordion: {
+      sx: {
+        width: '100%',
+        boxShadow: 'none',
+        backgroundColor: colors.bgMenu, // <--- ИЗМЕНЕНИЕ
+        color: colors.textPrimary, // <--- ИЗМЕНЕНИЕ
+        '&:before': {
+          // Убираем верхний разделитель
+          display: 'none',
+        },
+      },
+    },
     accordionSummary: {
       sx: {
         width: '100%',
-        backgroundColor: '#fff',
+        backgroundColor: colors.bgMenu, // <--- ИЗМЕНЕНИЕ
+        color: colors.textPrimary, // <--- ИЗМЕНЕНИЕ
+        '& .MuiAccordionSummary-expandIconWrapper .MuiSvgIcon-root': {
+          color: colors.textPrimary, // <--- ИЗМЕНЕНИЕ
+        },
       },
     },
   },
@@ -222,6 +267,10 @@ export const navbarStyles = {
       display: 'flex',
       gap: '7px',
       alignItems: 'center',
+      // Делаем иконку меню "menue.svg" белой (светлой)
+      '& img': {
+        filter: 'brightness(0) invert(1)',
+      },
     },
   },
   menuItem: {
@@ -229,6 +278,8 @@ export const navbarStyles = {
       display: 'flex',
       padding: 0,
       margin: 0,
+      width: '100%',
+      backgroundColor: colors.bgMenu, // <--- ИЗМЕНЕНИЕ
     },
   },
 };
@@ -238,13 +289,28 @@ export const isOpenAccordionStyle = (isSelect: boolean) => {
     ? {
         sx: {
           width: '100%',
-          backgroundColor: '#fff',
-          color: '#C35F1C',
+          backgroundColor: colors.bgMenu, 
+          color: colors.accentOrange, // <--- ИЗМЕНЕНИЕ: Текст активного заголовка оранжевый
           fontWeight: 700,
-          '& .MuiAccordionSummary-expandIconWrapper .MuiSvgIcon-root': { color: '#C35F1C' },
+          '& .MuiAccordionSummary-expandIconWrapper .MuiSvgIcon-root': { color: colors.accentOrange }, // <--- ИЗМЕНЕНИЕ: Иконка активного заголовка оранжевая
+          // Убеждаемся, что при открытом состоянии цвет текста заголовка не перебивается
+          '& .MuiTypography-root': {
+             color: colors.accentOrange,
+          }
         },
       }
-    : { sx: { width: '100%', backgroundColor: '#fff' } };
+    : {
+        sx: {
+          width: '100%',
+          backgroundColor: colors.bgMenu, 
+          color: colors.textPrimary, 
+          '& .MuiAccordionSummary-expandIconWrapper .MuiSvgIcon-root': { color: colors.textPrimary }, 
+          // Убеждаемся, что при закрытом состоянии текст заголовка светлый
+          '& .MuiTypography-root': {
+             color: colors.textPrimary,
+          }
+        },
+      };
 };
 
 export const selectLanguageStyles = (open: boolean) => {
@@ -254,7 +320,7 @@ export const selectLanguageStyles = (open: boolean) => {
         padding: 0,
         margin: 0,
         justifyContent: 'flex-start',
-        color: open ? '#C35F1C' : undefined,
+        color: open ? colors.accentOrange : colors.textPrimary, // <--- ИЗМЕНЕНИЕ
         [theme.breakpoints.up('lg')]: {
           display: 'none',
         },
@@ -269,7 +335,7 @@ export const selectLanguageStyles = (open: boolean) => {
     },
     hover: {
       sx: {
-        color: open ? '#C35F1C' : null,
+        color: open ? colors.accentOrange : colors.textPrimary, // <--- ИЗМЕНЕНИЕ
         fontWeight: open ? 700 : null,
         transition: open ? 'color 0.3s ease' : null,
       },
@@ -279,14 +345,33 @@ export const selectLanguageStyles = (open: boolean) => {
         position: 'absolute',
         top: '100%',
         left: 0,
-        backgroundColor: '#fff',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+        backgroundColor: colors.bgMenu, // <--- ИЗМЕНЕНИЕ
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
         zIndex: 1,
         opacity: open ? 1 : 0,
         transform: open ? 'translateY(0)' : 'translateY(10px)',
         transition: 'opacity 0.3s, transform 0.3s',
         pointerEvents: open ? 'auto' : 'none',
+        // Стили для MuiMenuItem внутри этого выпадающего меню
+        '& .MuiMenuItem-root': {
+          color: colors.textPrimary,
+          '&:hover': {
+            backgroundColor: 'rgba(0,0,0,0.1)',
+            color: colors.accentOrange,
+          },
+        },
       },
     },
   };
+};
+
+// Стили для обертки мобильного меню
+export const mobileMenuPaperProps = {
+  PaperProps: {
+    sx: {
+      backgroundColor: colors.bgMenu, // <--- ИЗМЕНЕНИЕ
+      color: colors.textPrimary, // <--- ИЗМЕНЕНИЕ
+      maxWidth: '240px', // Как у тебя было
+    },
+  },
 };

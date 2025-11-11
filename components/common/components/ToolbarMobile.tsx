@@ -6,8 +6,8 @@ import { Accordion, AccordionDetails, AccordionSummary, Menu, MenuItem, Typograp
 import Link from 'next/link';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import azatazenLogo from '@lib/public/homePage/Azatazen_Mid_images.svg';
-import { isOpenAccordionStyle, navbarStyles } from '@lib/components/common/styles/navbarStyles';
+import artcenterLogo from '@lib/public/Logo.png';
+import { isOpenAccordionStyle, mobileMenuPaperProps, navbarStyles } from '@lib/components/common/styles/navbarStyles';
 import { NAVIGATE_PAGES, LINKS } from '@lib/components/common/constants/navbarConstants';
 import LinkNavigate from './LinkNavigate';
 import menue from '@lib/public/homePage/menue.svg';
@@ -47,7 +47,18 @@ export default function ToolbarMobile() {
   return (
     <>
       <Toolbar {...toolbarStyles.toolbarLinksMobile}>
-        <Link href={HOME_PAGE}></Link>
+        <Link href={HOME_PAGE}>
+          <Image
+            loading="lazy"
+            height={100}
+            width={100}
+            src={artcenterLogo}
+            alt={'artcenterLogo'}
+            style={{
+              cursor: 'pointer',
+            }}
+          />
+        </Link>
 
         <Box {...mobileMenue}>
           <Image
@@ -60,7 +71,7 @@ export default function ToolbarMobile() {
           />
         </Box>
 
-        <Menu anchorEl={menus} open={Boolean(menus)} onClose={() => handleMenuClose()} sx={{ maxWidth: '240px' }}>
+        <Menu anchorEl={menus} open={Boolean(menus)} onClose={() => handleMenuClose()} {...mobileMenuPaperProps}>
           <MenuItem {...menuItem}>
             <Box {...boxStyles.boxToolbar}>
               {LINKS.map((link: ILink, index: number) => {

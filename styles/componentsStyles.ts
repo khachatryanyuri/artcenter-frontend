@@ -1,5 +1,15 @@
 import { checkboxClasses, createTheme } from '@mui/material';
 
+const sunsetColors = {
+  bgAppbar: '#2A2540',
+  bgPage: '#FFFFFF',
+  textOnDark: '#F5F3F7',
+  textOnLight: '#333333',
+  textMutedOnLight: '#666666',
+  accentOrange: '#E64A19',
+  accentCoral: '#FF7043',
+};
+
 export const theme = createTheme({
   breakpoints: {
     values: {
@@ -19,11 +29,12 @@ export const theme = createTheme({
           fontFamily: 'Montserratarm',
           lineHeight: '20px',
           letterSpacing: '0.1px',
-          backgroundColor: '#C35F1C',
+          backgroundColor: sunsetColors.accentOrange,
           minWidth: '240px',
           textTransform: 'none',
+          color: sunsetColors.bgPage,
           '&:hover': {
-            backgroundColor: '#000',
+            backgroundColor: sunsetColors.accentCoral,
           },
           '@media (max-width:500px)': {
             fontSize: '14px',
@@ -37,13 +48,13 @@ export const theme = createTheme({
           letterSpacing: '0.1px',
           borderRadius: '5px',
           border: '1px solid #79747E',
-          color: '#000',
+          color: sunsetColors.textOnLight,
           padding: '10px 22px',
           textTransform: 'none',
           '&:hover': {
-            backgroundColor: '#000',
-            color: '#fff',
-            border: '1px solid #000',
+            backgroundColor: sunsetColors.accentCoral,
+            color: sunsetColors.bgPage,
+            border: `1px solid ${sunsetColors.accentCoral}`,
           },
           '@media (max-width:500px)': {
             fontSize: '14px',
@@ -51,13 +62,13 @@ export const theme = createTheme({
           },
         },
         text: {
-          color: '#000',
+          color: sunsetColors.textOnLight,
           fontFamily: 'Montserratarm',
           fontSize: '16px',
           textTransform: 'none',
           textDecoration: 'none',
           '&:hover': {
-            color: '#C35F1C',
+            color: sunsetColors.accentOrange,
             cursor: 'pointer',
             borderRadius: '6px',
             fontWeight: 700,
@@ -73,7 +84,7 @@ export const theme = createTheme({
         root: {
           '& .MuiOutlinedInput-root': {
             '& input': {
-              color: '#000',
+              color: sunsetColors.textOnLight,
               fontWeight: 400,
               fontSize: '18px',
               lineHeight: '24px',
@@ -96,16 +107,16 @@ export const theme = createTheme({
 
             '&:focus-within': {
               '& input': {
-                color: '##c15927',
+                color: sunsetColors.accentOrange,
               },
             },
             '&.Mui-focused fieldset': {
-              borderColor: '#c15927',
+              borderColor: sunsetColors.accentOrange,
             },
           },
           '& .MuiInputLabel-root': {
             '&.Mui-focused': {
-              color: '#c15927',
+              color: sunsetColors.accentOrange,
             },
           },
           backgroundColor: '#FBFBFB',
@@ -135,10 +146,10 @@ export const theme = createTheme({
             fontSize: '12px',
           },
           '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-            borderColor: '#c15927',
+            borderColor: sunsetColors.accentOrange,
           },
           '.MuiSvgIcon-root ': {
-            fill: 'white !important',
+            fill: `${sunsetColors.textOnLight} !important`,
           },
           backgroundColor: '#FBFBFB',
         },
@@ -150,6 +161,7 @@ export const theme = createTheme({
           fontWeight: 400,
           fontSize: '18px',
           lineHeight: '24px',
+          color: sunsetColors.textOnLight,
           '@media (max-width: 1600px)': {
             fontWeight: 400,
             lineHeight: '24px',
@@ -165,6 +177,10 @@ export const theme = createTheme({
             lineHeight: '24px',
             fontSize: '12px',
           },
+          '&:hover': {
+            backgroundColor: '#F5F5F5',
+            color: sunsetColors.accentOrange,
+          },
         },
       },
     },
@@ -172,7 +188,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           [`&.${checkboxClasses.checked}`]: {
-            color: '#c15927',
+            color: sunsetColors.accentOrange,
           },
         },
       },
@@ -181,22 +197,22 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           '& .MuiInputLabel-root': {
-            color: '#000',
+            color: sunsetColors.textOnLight,
           },
           '& .MuiInputLabel-root.Mui-focused': {
-            color: '#c15927',
+            color: sunsetColors.accentOrange,
           },
           '& .MuiOutlinedInput-root': {
             '& input': {
-              color: '#000',
+              color: sunsetColors.textOnLight,
             },
             '&:focus-within': {
               '& input': {
-                color: '#000',
+                color: sunsetColors.textOnLight,
               },
             },
             '&.Mui-focused fieldset': {
-              borderColor: '#c15927',
+              borderColor: sunsetColors.accentOrange,
             },
           },
         },
@@ -205,9 +221,9 @@ export const theme = createTheme({
     MuiRadio: {
       styleOverrides: {
         root: {
-          color: '#c15927',
+          color: sunsetColors.accentOrange,
           ' &.Mui-checked': {
-            color: '#c15927',
+            color: sunsetColors.accentOrange,
           },
         },
       },
@@ -216,10 +232,10 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           ':hover': {
-            color: '#fff',
+            color: sunsetColors.accentOrange,
             textDecoration: 'none',
           },
-          color: '#000',
+          color: sunsetColors.textOnLight,
           fontSize: '16px',
           textDecoration: 'none',
         },
@@ -236,7 +252,7 @@ export const theme = createTheme({
     },
     MuiAppBar: {
       styleOverrides: {
-        root: { backgroundColor: '#fff', zIndex: 1 },
+        root: { backgroundColor: sunsetColors.bgAppbar, zIndex: 1 },
       },
     },
     MuiTypography: {
@@ -246,6 +262,7 @@ export const theme = createTheme({
           fontSize: '56px',
           lineHeight: '67px',
           fontFamily: 'Bokonique',
+          color: sunsetColors.textOnLight,
           '@media (max-width: 1600px)': {
             fontWeight: 650,
             fontSize: '46px',
@@ -266,6 +283,7 @@ export const theme = createTheme({
           fontSize: '48px',
           lineHeight: '58px',
           fontFamily: 'Bokonique',
+          color: sunsetColors.textOnLight,
           '@media (max-width: 1600px)': {
             fontWeight: 650,
             fontSize: '40px',
@@ -286,6 +304,7 @@ export const theme = createTheme({
           fontSize: '40px',
           lineHeight: '48px',
           fontFamily: 'Bokonique',
+          color: sunsetColors.textOnLight,
           '@media (max-width: 1600px)': {
             fontWeight: 650,
             fontSize: '34px',
@@ -306,6 +325,7 @@ export const theme = createTheme({
           fontWeight: 600,
           fontSize: '24px',
           lineHeight: '24px',
+          color: sunsetColors.textOnLight,
           '@media (max-width: 1600px)': {
             fontWeight: 600,
             fontSize: '18px',
@@ -323,6 +343,7 @@ export const theme = createTheme({
           fontWeight: 400,
           fontSize: '18px',
           lineHeight: '24px',
+          color: sunsetColors.textOnLight,
           '@media (max-width: 1600px)': {
             fontWeight: 400,
             lineHeight: '24px',
@@ -343,6 +364,7 @@ export const theme = createTheme({
           fontWeight: 400,
           fontSize: '16px',
           lineHeight: '21px',
+          color: sunsetColors.textOnLight,
           '@media (max-width: 1600px)': {
             fontWeight: 400,
             fontSize: '15px',
@@ -363,7 +385,7 @@ export const theme = createTheme({
           fontWeight: 500,
           fontSize: '16px',
           lineHeight: '21px',
-          color: '#8C8C8C',
+          color: sunsetColors.textMutedOnLight,
           '@media (max-width:500px)': {
             fontSize: '14px',
           },
@@ -372,7 +394,7 @@ export const theme = createTheme({
           fontWeight: 400,
           fontSize: '13px',
           lineHeight: '21px',
-          color: '#777777',
+          color: sunsetColors.textMutedOnLight,
           '@media (max-width:500px)': {
             fontSize: '10px',
           },

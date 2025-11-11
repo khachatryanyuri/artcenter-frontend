@@ -8,6 +8,8 @@ import LinkNavigate from '@lib/components/common/components/LinkNavigate';
 import { SocialMedia } from '@lib/components/common/components/SocialMedia';
 import FooterMobile from '@lib/components/common/components/FooterMobile';
 import { useTranslation } from 'react-i18next';
+import artcenterLogo from '@lib/public/Logo.png';
+import Image from 'next/image';
 
 const {
   boxStyles: { footerBox, linkBox, lastBox, lastTextLinkBox, privacyBox, boxMax, boxMobile },
@@ -22,12 +24,7 @@ export default function Footer() {
       <Box {...boxMax}>
         <Grid container spacing={3}>
           <Grid item xs={2}>
-            {/* <Image
-              loading="lazy"
-              src={azatazenLogo}
-              alt={'azatazenLogo'}
-              style={{ width: '100%', height: 'auto', maxWidth: '126px' }}
-            /> */}
+            <Image loading="lazy" src={artcenterLogo} alt={'artcenterLogo'} height={100} width={100} />
           </Grid>
           {SECTIONS_DATA.map((value, index) => (
             <Grid item key={`section-box-${index}`} xs={2}>

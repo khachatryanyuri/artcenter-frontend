@@ -17,6 +17,7 @@ export const servicesRangeStyles = {
         display: 'flex',
         gap: '16px',
         flexDirection: 'column',
+        mb:"48px"
       },
     },
     infoBox: {

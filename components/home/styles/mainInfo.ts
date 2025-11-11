@@ -1,16 +1,21 @@
-import { theme } from '@lib/styles/componentsStyles';
-
 export const mainInfoStyles = {
   mainBox: {
     sx: {
-      backgroundColor: '#FBFBFB',
-      justifyContent: 'center',
-      padding: '64px 48px !important',
+      backgroundColor: '#FFFFFF',
+      borderRadius: '16px',
+      boxShadow: '0 8px 32px rgba(42, 37, 64, 0.08)',
+      padding: { xs: '32px 24px', md: '56px 48px' },
       display: 'flex',
       flexDirection: 'column',
-      gap: '16px',
-      [theme.breakpoints.down('lg')]: {
-        padding: '32px 24px !important',
+      alignItems: 'center',
+      gap: '24px',
+
+      '& .MuiButton-root': {
+        backgroundColor: 'accentOrange.main',
+        alignSelf: 'center',
+        '&:hover': {
+          backgroundColor: 'accentOrange.dark',
+        },
       },
     },
   },

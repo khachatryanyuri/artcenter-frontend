@@ -18,6 +18,35 @@ export const courseStyle = {
         },
       },
     },
+    cardItem: {
+      sx: {
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        backgroundColor: '#FFFFFF',
+        borderRadius: '16px',
+        boxShadow: '0 8px 32px rgba(42, 37, 64, 0.08)',
+        overflow: 'hidden',
+        transition: 'transform 0.3s ease, boxShadow 0.3s ease',
+        '&:hover': {
+          transform: 'translateY(-4px)',
+          boxShadow: '0 12px 40px rgba(42, 37, 64, 0.12)',
+        },
+      },
+    },
+    cardTextBox: {
+      sx: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '24px',
+        width: '100%',
+
+        flexGrow: 1,
+      },
+    },
+
     imageStyle: {
       style: { width: '100%', height: 'auto' },
     },
@@ -34,6 +63,40 @@ export const courseStyle = {
           margin: '0',
           marginTop: '96px',
           marginLeft: '32px',
+        },
+      },
+    },
+  },
+  imageStyles: {
+    bannerImage: {
+      style: { width: '100%', height: 'auto', borderRadius: '8px', objectFit: 'cover' as const },
+    },
+
+    cardImage: {
+      style: {
+        width: '100%',
+        height: '200px',
+        objectFit: 'cover' as const,
+      },
+    },
+  },
+  linkStyles: {
+    courseButton: {
+      sx: {
+        textDecoration: 'none',
+        display: 'inline-block',
+
+        backgroundColor: 'accentOrange.main',
+        color: 'textOnDark.main',
+        padding: '10px 24px',
+        borderRadius: '8px',
+        fontWeight: 600,
+        fontSize: '15px !important',
+        textAlign: 'center',
+        '&:hover': {
+          backgroundColor: 'accentCoral.main',
+          color: 'textOnDark.main',
+          textDecoration: 'none',
         },
       },
     },
@@ -87,36 +150,31 @@ export const detailedCourseStyles = {
   boxStyles: {
     mainBox: {
       sx: {
-        padding: '96px 360px',
+        padding: '0 120px !important',
+        [theme.breakpoints.down('xl')]: {
+          mt: '64px',
+          padding: '0 64px !important',
+        },
+        [theme.breakpoints.down('md')]: {
+          mt: '32px',
+          padding: '0 32px !important',
+        },
+        margin: '64px auto',
         width: '100%',
-        '@media (max-width: 1600px)': {
-          padding: '64px 240px',
-        },
-        '@media (max-width: 1200px)': {
-          padding: '48px 120px',
-        },
-        '@media (max-width: 900px)': {
-          padding: '24px 48px',
-        },
-        '@media (max-width: 700px)': {
-          padding: '24px',
-        },
-        '@media (max-width: 500px)': {
-          padding: '24px 0',
-        },
       },
     },
     iconBox: {
       sx: {
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'flex-end',
+        mt: '16px',
+        mb: '8px',
       },
     },
     mainContainer: {
       sx: {
-        backgroundImage: 'url(/news/detailedNewsBackground.png)',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'top center',
+        backgroundColor: '#FFFFFF',
       },
     },
     linkBox: {
@@ -149,19 +207,38 @@ export const detailedCourseStyles = {
       style: {
         width: '100%',
         height: 'auto',
+
+        borderRadius: '16px',
+        objectFit: 'cover' as const,
       },
     },
   },
-
   iconStyles: {
     iconButtonStyle: {
       sx: {
-        fontSize: '36px',
-        color: '#000',
+        fontSize: '32px',
+        color: 'text.secondary',
+        '&:hover': {
+          color: 'accentOrange.main',
+        },
       },
     },
     shareIcon: {
-      sx: { color: '#C35F1C', border: '1px solid #C35F1C', mt: '16px' },
+      sx: {
+        backgroundColor: 'accentOrange.main',
+        color: 'textOnDark.main',
+        border: 'none',
+        mt: '16px',
+        padding: '10px 24px',
+        borderRadius: '8px',
+        fontWeight: 600,
+        fontSize: '15px',
+        '&:hover': {
+          backgroundColor: 'accentCoral.main',
+          color: 'textOnDark.main',
+          border: 'none',
+        },
+      },
     },
   },
 };

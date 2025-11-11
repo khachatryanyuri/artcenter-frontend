@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 
 const { mainBox } = mainInfoStyles;
 
-export default function MainInfo({ content: { onlineLessons } }: IContent) {
+export default function OnlineLessons({ content: { onlineLessons } }: IContent) {
   const router = useRouter();
   const { t } = useTranslation();
   const handleClick = () => {
@@ -17,14 +17,9 @@ export default function MainInfo({ content: { onlineLessons } }: IContent) {
   };
   return (
     <Container maxWidth={false} {...mainBox}>
-      <Content variant="h3" text={onlineLessons?.title} style={{ color: '#000', fontWeight: '600 !important' }} />
-      <Content
-        variant="h5"
-        text={onlineLessons?.desc}
-        style={{ color: '#000', pl: '32px' }}
-      />
-
-      <Button variant="contained" onClick={handleClick} sx={{ alignSelf: 'flex-start' }}>
+      <Content variant="h3" text={onlineLessons?.title} style={{ color: '#E64A19 !important', fontWeight: '600 !important' }} />
+      <Content variant="h5" text={onlineLessons?.desc} style={{ color: '#000', fontWeight: '600 !important', pl: '32px' }} />
+      <Button variant="contained" onClick={handleClick}>
         {t('mainInfo.aboutTheBenefitsButtonText')}
       </Button>
     </Container>

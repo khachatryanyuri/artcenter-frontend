@@ -9,43 +9,39 @@ import Content from '@lib/components/common/components/Content';
 import lessonsImage from '@lib/public/homePage/getLessons.jpg';
 import servicesImage from '@lib/public/homePage/getServices.jpg';
 import { useTranslation } from 'react-i18next';
+import { newsStyles } from '@lib/components/home/styles/newsStyles';
 const {
   linkStyles,
-  imageStyles,
-  boxStyles: { headerBox, infoBox, childInfoBox, leftChildBox, leftChildTextBox },
+  boxStyles: { headerBox },
 } = servicesRangeStyles;
+
+const {
+  boxStyles: { mainBox, allNewsBox, newsBox, newsTextBox },
+  imageStyles: { newsImage },
+} = newsStyles;
 
 export default function Services() {
   const { t } = useTranslation();
   return (
-    <Container
-      maxWidth={false}
-      sx={{
-        paddingTop: '64px',
-        backgroundColor: '#FBFBFB',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-    >
+    <Container maxWidth={false} {...mainBox}>
       <Box {...headerBox}>
-        <Content variant="h2" text={t('mainInfo.ourLessonsAndServices')} />
+        <Content
+          variant="h2"
+          text={t('mainInfo.ourLessonsAndServices')}
+          style={{ color: '#E64A19', fontWeight: '600 !important' }}
+        />
       </Box>
-      <Grid container {...infoBox}>
-        <Grid item {...childInfoBox} xs={10} lg={5}>
-          <Box {...leftChildBox}>
-            <Image src={lessonsImage} alt={'lessonsImage'} loading="lazy" {...imageStyles} />
-            <Box {...leftChildTextBox}>
-              <LinkNavigate text={t('mainInfo.chooseLessons')} navigatePage={'/online-courses'} styles={linkStyles} />
-            </Box>
+      <Grid container {...allNewsBox}>
+        <Grid {...newsBox} item xs={10} lg={5.7}>
+          <Image width={100} height={100} src={lessonsImage} alt={'lessonsImage'} loading="lazy" {...newsImage} />
+          <Box {...newsTextBox}>
+            <LinkNavigate text={t('mainInfo.chooseLessons')} navigatePage={'/online-courses'} styles={linkStyles} />
           </Box>
         </Grid>
-        <Grid item {...childInfoBox} xs={10} lg={5}>
-          <Box {...leftChildBox}>
-            <Image src={servicesImage} alt={'servicesImage'} loading="lazy" {...imageStyles} />
-            <Box {...leftChildTextBox}>
-              <LinkNavigate text={t('mainInfo.chooseServices')} navigatePage={'/services'} styles={{ ...linkStyles }} />
-            </Box>
+        <Grid {...newsBox} item xs={10} lg={5.7}>
+          <Image width={100} height={100} src={servicesImage} alt={'servicesImage'} loading="lazy" {...newsImage} />
+          <Box {...newsTextBox}>
+            <LinkNavigate text={t('mainInfo.chooseServices')} navigatePage={'/services'} styles={{ ...linkStyles }} />
           </Box>
         </Grid>
       </Grid>

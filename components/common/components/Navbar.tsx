@@ -6,8 +6,10 @@ import { Breadcrumbs, Button, Menu, MenuItem, Typography } from '@mui/material';
 import Link from 'next/link';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LanguageIcon from '@mui/icons-material/Language';
+import Image from 'next/image';
+import artcenterLogo from '@lib/public/Logo.png';
 
-import { navbarStyles, selectLanguageStyles } from '@lib/components/common/styles/navbarStyles';
+import { mobileMenuPaperProps, navbarStyles, selectLanguageStyles } from '@lib/components/common/styles/navbarStyles';
 import { LINKS, LANGUAGES, NAVIGATE_PAGES } from '@lib/components/common/constants/navbarConstants';
 import ToolbarMobile from '@lib/components/common/components/ToolbarMobile';
 import NavbarMenuList from '@lib/components/common/components/NavbarMenueList';
@@ -23,7 +25,6 @@ export default function Navbar() {
   const [languageMobile, setLanguageMobile] = useState<string>('Рус');
   const open = Boolean(anchorEl);
   const { t } = useTranslation();
-
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -79,9 +80,14 @@ export default function Navbar() {
           MenuListProps={{
             'aria-labelledby': 'basic-button',
           }}
+          {...mobileMenuPaperProps}
         >
           {LANGUAGES.map((language) => (
-            <MenuItem key={language.text} onClick={() => handleClose(language.text)}>
+            <MenuItem
+              key={language.text}
+              onClick={() => handleClose(language.text)}
+              sx={{ backgroundColor: '#3C325B', width: '100%' }}
+            >
               <Typography
                 variant="h6"
                 {...linkStyles.linkBreadcrumb}
@@ -96,7 +102,18 @@ export default function Navbar() {
         </Menu>
       </Toolbar>
       <Toolbar {...toolbarStyles.toolbarLinks}>
-        <Link href={HOME_PAGE}></Link>
+        <Link href={HOME_PAGE}>
+          <Image
+            loading="lazy"
+            height={100}
+            width={100}
+            src={artcenterLogo}
+            alt={"artcenterLogo"}
+            style={{
+              cursor: 'pointer',
+            }}
+          />
+        </Link>
         <NavbarMenuList data={LINKS} styles={boxStyles.boxToolbar} />
         <NavbarMenuList data={LINKS} styles={boxStyles.boxToolbarLaptop} />
       </Toolbar>
