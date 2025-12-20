@@ -31,9 +31,14 @@ export default function CourseComponent({ data }: any) {
           width={1200}
           height={400}
         />
-        <Typography variant="h3" sx={{ mt: '48px', textAlign: 'center' }}>
-          {courseData?.title?.ru}
-        </Typography>
+        <Content
+          variant="h3"
+          text={courseData?.title}
+          style={{
+            mt: '48px',
+            textAlign: 'center',
+          }}
+        />
         <Content
           variant="body1"
           text={courseData?.desc}
@@ -43,7 +48,6 @@ export default function CourseComponent({ data }: any) {
             textAlign: 'center',
             maxWidth: '800px',
             margin: '24px auto 32px auto',
-            
           }}
         />
 

@@ -27,7 +27,6 @@ const ServicesComponent = ({ servicesData }: { servicesData: any }) => {
       { required: true, name: 'deadLine', value: '', label: t('servicesForm.deadLine.label'), error: '' },
       { required: true, name: 'name', value: '', label: t('servicesForm.name.label'), error: '' },
       { required: true, name: 'email', value: '', label: t('servicesForm.email.label'), error: '' },
-      { required: false, name: 'skype', value: '', label: t('servicesForm.skype.label'), error: '' },
       { required: false, name: 'whatsApp', value: '', label: t('servicesForm.whatsApp.label'), error: '' },
       { required: false, name: 'telegram', value: '', label: t('servicesForm.telegram.label'), error: '' },
     ],

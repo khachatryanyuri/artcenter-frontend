@@ -2,7 +2,7 @@ import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Image from 'next/image';
 
-import contuctusImg from '@lib/public/contactUs/contactus.png';
+import contuctusImg from '@lib/public/contactUs/contactus.jpg';
 import { contactUsStyles } from '@lib/components/contactUs/styles/contactUsStyles';
 import { constants } from '@lib/components/contactUs/constants/constants';
 import { Form } from '@lib/components/contactUs/components/Form';

@@ -35,7 +35,6 @@
   "person_age_label": "Возраст *",
   "location": "Страна, город *",
   "email": "E-mail *",
-  "skype": "Skype",
   "whatsapp": "WhatsApp",
   "field_of_study": "Направление обучения *",
   "skill_level": "Ваш уровень навыков по выбранному предмету *",
@@ -74,7 +73,6 @@
     },
     "location": { "label": "Страна, город *" },
     "email": { "label": "E-mail *" },
-    "skype": { "label": "Skype" },
     "whatsApp": { "label": "WhatsApp" },
     "fieldOfStudy": {
       "label": "Направление обучения *",
@@ -119,7 +117,6 @@
     },
     "name": { "label": "Ваше имя *" },
     "email": { "label": "E-mail *" },
-    "skype": { "label": "Skype" },
     "whatsApp": { "label": "WhatsApp" },
     "telegram": { "label": "Telegram" },
     "errors": {

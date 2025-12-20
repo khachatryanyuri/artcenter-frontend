@@ -20,7 +20,6 @@ const ServicesApplicationEdit = () => {
         />
         <TextInput source="wishes" multiline fullWidth />
         <DateInput source="deadline" />
-        <TextInput source="skype" />
         <TextInput source="whatsapp" />
         <TextInput source="telegram" />
       </SimpleForm>

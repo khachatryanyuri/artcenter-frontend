@@ -35,7 +35,6 @@
   "person_age_label": "Տարիք *",
   "location": "Երկիր, քաղաք *",
   "email": "Էլ. հասցե *",
-  "skype": "Skype",
   "whatsapp": "WhatsApp",
   "field_of_study": "Ուսման ուղղություն *",
   "skill_level": "Ձեր հմտությունների մակարդակը ընտրված առարկայով *",
@@ -74,7 +73,6 @@
     },
     "location": { "label": "Երկիր, քաղաք *" },
     "email": { "label": "Էլ. փոստ *" },
-    "skype": { "label": "Skype" },
     "whatsApp": { "label": "WhatsApp" },
     "fieldOfStudy": {
       "label": "Ուսուցման ուղղություն *",
@@ -119,7 +117,6 @@
     },
     "name": { "label": "Ձեր անունը *" },
     "email": { "label": "Էլ. փոստ *" },
-    "skype": { "label": "Skype" },
     "whatsApp": { "label": "WhatsApp" },
     "telegram": { "label": "Telegram" },
     "errors": {

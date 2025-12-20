@@ -33,7 +33,6 @@ const CoursesApplicationCreate = (props: CreateProps) => {
         <NumberInput source="count" label="Count" />
         <TextInput source="location" label="Location" />
         <TextInput source="email" label="Email" />
-        <TextInput source="skype" label="Skype" />
         <TextInput source="whatsapp" label="WhatsApp" />
 
         <SelectInput

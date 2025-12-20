@@ -1,5 +1,5 @@
 import servicesImage from '@lib/public/homePage/services.jpg';
-import lessonsImage from '@lib/public/homePage/lessons.jpg';
+import lessonsImage from '@lib/public/homePage/lessons.png';
 
 export const globalConstants = {
   LESSONS_SERVICES_DATA: [

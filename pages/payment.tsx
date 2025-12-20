@@ -2,7 +2,7 @@ import SEO from '@lib/components/common/components/SEO.';
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
-import paymentImage from '@lib/public/more/paymentImage.jpg';
+import paymentImage from '@lib/public/more/paymentImage.png';
 
 const AboutUsComponent = dynamic(() => import('../components/aboutUs/components/AboutUsComponent'), {
   ssr: false,

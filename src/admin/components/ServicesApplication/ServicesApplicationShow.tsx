@@ -25,7 +25,6 @@ const ServicesApplicationShow = () => (
 
       <TextField source="wishes" />
       <DateField source="deadline" />
-      <TextField source="skype" />
       <TextField source="whatsapp" />
       <TextField source="telegram" />
     </SimpleShowLayout>

@@ -45,7 +45,6 @@ const LessonRequestComponent = ({ lessonsData }: { lessonsData: any }) => {
       },
       { required: true, name: 'location', value: '', label: t('form.location.label'), error: '' },
       { required: true, name: 'email', value: '', label: t('form.email.label'), error: '' },
-      { required: false, name: 'skype', value: '', label: t('form.skype.label'), error: '' },
       { required: false, name: 'whatsApp', value: '', label: t('form.whatsApp.label'), error: '' },
       { required: true, name: 'fieldOfStudy', value: '', label: t('form.fieldOfStudy.label'), error: '' },
       { required: true, name: 'skillLevel', value: '', label: t('form.skillLevel.label'), error: '' },

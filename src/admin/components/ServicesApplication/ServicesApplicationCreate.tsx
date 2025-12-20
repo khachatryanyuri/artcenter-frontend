@@ -20,7 +20,6 @@ const ServicesApplicationCreate = () => {
         />
         <TextInput source="wishes" multiline />
         <DateInput source="deadline" />
-        <TextInput source="skype" />
         <TextInput source="whatsapp" />
         <TextInput source="telegram" />
       </SimpleForm>

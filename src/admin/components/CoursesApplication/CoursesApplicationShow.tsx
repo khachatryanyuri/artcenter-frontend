@@ -48,7 +48,6 @@ const CoursesApplicationShow = (props: ShowProps) => {
         <TextField source="count" label="Count" />
         <TextField source="location" label="Location" />
         <TextField source="email" label="Email" />
-        <TextField source="skype" label="Skype" />
         <TextField source="whatsapp" label="WhatsApp" />
         <Box>
           <Typography variant="body2" sx={{ fontSize: '12px !important', opacity: 0.6 }}>
