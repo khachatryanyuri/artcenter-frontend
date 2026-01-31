@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Box, Button, Container, Grid, IconButton, Typography } from '@mui/material';
 
 import { detailedCourseStyles } from '@lib/components/courses/styles/courseStyle';
-import { constants } from '@lib/components/courses/constants/constants';
+import { constants, PAYMENT } from '@lib/components/courses/constants/constants';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Image from 'next/image';
 import Content from '@lib/components/common/components/Content';
@@ -79,6 +79,9 @@ export default function DetailedCourseComponent({ data }: any) {
           </Box>
 
           <Content variant="h5" text={data?.description} style={{ sx: { pt: '24px' } }} />
+          {data.typesKey === 'curses' && (
+            <Content variant="h5" text={PAYMENT} style={{ sx: { pt: '24px' } }} />
+          )}
         </Grid>
         <Box sx={{ mt: '72px' }}>
           <Typography variant="h5">{t(BUTTONT__INFO)}</Typography>

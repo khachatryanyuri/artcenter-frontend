@@ -6,7 +6,7 @@
   "aboutUs": "Մեր մասին",
   "help": "Օգնություն",
   "contactsUs": "Կապ մեզ հետ",
-  "onlineMusicSchool": "Օնլայն երաժշտական դպրոց",
+  "onlineMusicSchool": "Copyright © 2026 Gyanjumyan Art Center LLC. All Rights Reserved.",
   "faq": "Հաճախ տրվող հարցեր",
   "discounts": "Զեղչեր",
   "payment": "Վճարում",
@@ -139,5 +139,11 @@
     "errorMessage": "Ձեր նամակը չի գրանցվել։"
   },
   "register": "Գրանցվել",
-  "forRegisteredUsers": "Դուք կարող եք գրանցվել դասերին հետևյալ հղումով՝"
+  "forRegisteredUsers": "Դուք կարող եք գրանցվել դասերին հետևյալ հղումով՝",
+  "privacyPolicy": "Գաղտնիության քաղաքականություն",
+  "name": "«Գյանջումյան Արտ Կենտրոն» ՍՊԸ",
+  "address": "Հասցե՝ ք. Երևան ,Բաղրամյան փող., 51 շ., բն.29",
+  "number": "Հեռ.` +374 43 198 899",
+  "VAT": "ՀՎՀՀ.` 08312005",
+  "companyEmail": "Էլ. փոստ՝ info@gyanjumyanartcenter.com"
 }

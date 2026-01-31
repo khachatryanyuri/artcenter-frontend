@@ -56,6 +56,7 @@ export const aboutUsStyles = {
   typographyStyles: {
     typographyHeading: {
       sx: {
+        mt: '24px',
         color: '#C35F1C',
         [theme.breakpoints.down('lg')]: {
           fontWeight: 900,

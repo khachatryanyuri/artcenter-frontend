@@ -1,7 +1,6 @@
 import { Facebook, Instagram, LinkedIn, YouTube } from '@mui/icons-material';
 
 export const ALL_RIGHTS_RESERVED = '© 2025';
-export const BOTTOM_DATA = [{ title: 'onlineMusicSchool', link: '/' }];
 
 export const SECTIONS_DATA = [
   {
@@ -9,7 +8,18 @@ export const SECTIONS_DATA = [
     data: [
       { subTitle: 'aboutUs', link: '/about' },
       { subTitle: 'help', link: '/helps' },
+      { subTitle: 'privacyPolicy', link: '/privacy-policy' },
       { subTitle: 'contactsUs', link: '/contactus' },
+    ],
+  },
+  {
+    title: '',
+    data: [
+      { subTitle: 'name', link: '' },
+      { subTitle: 'address', link: '' },
+      { subTitle: 'number', link: '' },
+      { subTitle: 'VAT', link: '' },
+      { subTitle: 'companyEmail', link: '' },
     ],
   },
 ];

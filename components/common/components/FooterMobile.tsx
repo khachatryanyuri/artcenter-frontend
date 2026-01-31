@@ -5,10 +5,13 @@ import { Fragment } from 'react';
 
 import artcenterLogo from '@lib/public/Logo.png';
 import { footerStyles } from '@lib/components/common/styles/footerStyle';
-import { ALL_RIGHTS_RESERVED, BOTTOM_DATA, SECTIONS_DATA } from '@lib/components/common/constants/footerConstants';
+import { SECTIONS_DATA } from '@lib/components/common/constants/footerConstants';
 import LinkNavigate from '@lib/components/common/components/LinkNavigate';
 import { SocialMedia } from '@lib/components/common/components/SocialMedia';
 import { useTranslation } from 'react-i18next';
+import arcaImg from '@lib/public/donation/arca.png';
+import visaImg from '@lib/public/donation/visa.png';
+import masterCardImg from '@lib/public/donation/masterCard.png';
 
 const {
   boxStyles: { linkBox, lastBox, imageBoxMobile },
@@ -32,21 +35,48 @@ export default function FooterMobile() {
             <Box key={`link-box-${index}`} {...linkBox}>
               {value.data.map((linkData, subIndex) => (
                 <Fragment key={`privacy-link-${subIndex}`}>
-                  <LinkNavigate text={t(linkData.subTitle)} navigatePage={linkData.link} styles={link} />
+                  {linkData.link ? (
+                    <LinkNavigate text={t(linkData.subTitle)} navigatePage={linkData.link} styles={link} />
+                  ) : (
+                    <Typography variant="body1" sx={{ color: '#fff', fontSize: '10px !important' }}>
+                      {t(linkData.subTitle)}
+                    </Typography>
+                  )}
                 </Fragment>
               ))}
             </Box>
           </Grid>
         ))}
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 2, mt: 4, width: '100%' }}>
+          <Image
+            style={{ width: '60px', height: 'auto' }}
+            loading="lazy"
+            src={arcaImg}
+            alt={'arcaImg'}
+            height={50}
+            width={100}
+          />
+          <Image
+            style={{ width: '60px', height: 'auto' }}
+            loading="lazy"
+            src={visaImg}
+            alt={'visaImg'}
+            height={50}
+            width={100}
+          />
+          <Image
+            style={{ width: '60px', height: 'auto' }}
+            loading="lazy"
+            src={masterCardImg}
+            alt={'masterCardImg'}
+            height={50}
+            width={100}
+          />
+        </Box>
       </Grid>
       <Box {...lastBox}>
         <SocialMedia iconColor={'#fff'} />
-        <Typography {...copyrightText}>{ALL_RIGHTS_RESERVED}</Typography>
-        {BOTTOM_DATA.map((value, subIndex) => (
-          <Fragment key={`privacy-link-${subIndex}`}>
-            <LinkNavigate text={t(value.title)} navigatePage={value.link} styles={privacyLinks} />
-          </Fragment>
-        ))}
+        <Typography {...copyrightText}>{t('onlineMusicSchool')}</Typography>
       </Box>
     </>
   );

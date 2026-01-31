@@ -6,7 +6,7 @@
   "aboutUs": "About us",
   "help": "Help",
   "contactsUs": "Contact us",
-  "onlineMusicSchool": "Online music school",
+  "onlineMusicSchool": "Copyright © 2026 Gyanjumyan Art Center LLC. All Rights Reserved.",
   "faq": "FAQ",
   "discounts": "Discounts",
   "payment": "Payment",
@@ -139,5 +139,11 @@
     "errorMessage": "Your message could not be registered."
   },
   "register": "register",
-  "forRegisteredUsers": "You can register for the course at the following link:"
+  "forRegisteredUsers": "You can register for the course at the following link:",
+  "privacyPolicy": "Privacy Policy",
+  "name": "Gyanchjumyan Art Center LLC",
+  "address": "Address: Yerevan, st. Baghramyan, 51, apt. 29",
+  "number": "Tel.: +374 43 198 899",
+  "VAT": "VAT Number: 08312005",
+  "companyEmail": "Email: info@gyanjumyanartcenter.com"
 }

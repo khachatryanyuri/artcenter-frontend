@@ -6,7 +6,7 @@
   "aboutUs": "О нас",
   "help": "Помощь",
   "contactsUs": "Связаться с нами",
-  "onlineMusicSchool": "Онлайн школа музыки.",
+  "onlineMusicSchool": "Copyright © 2026 Gyanjumyan Art Center LLC. All Rights Reserved.",
   "faq": "Вопрос-ответ",
   "discounts": "Скидки",
   "payment": "Оплата",
@@ -139,5 +139,11 @@
     "errorMessage": "Ваше письмо не было зарегистрировано."
   },
   "register": "Зарегистрироваться",
-  "forRegisteredUsers": "Зарегистрироваться на курс можно по следующей ссылке:"
+  "forRegisteredUsers": "Зарегистрироваться на курс можно по следующей ссылке:",
+  "privacyPolicy": "Политика конфиденциальности",
+  "name": "ООО «Гянчжумян Арт Центр»",
+  "address": "Aдрес: Ереван, ул. Баграмян, 51, кв. 29",
+  "number": "Тел.: +374 43 198 899",
+  "VAT": "Номер НДС: 08312005",
+  "companyEmail": "E-mail: info@gyanjumyanartcenter.com"
 }

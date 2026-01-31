@@ -1,4 +1,3 @@
-import SEO from '@lib/components/common/components/SEO.';
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
