@@ -9,6 +9,7 @@ export const SECTIONS_DATA = [
       { subTitle: 'aboutUs', link: '/about' },
       { subTitle: 'help', link: '/helps' },
       { subTitle: 'privacyPolicy', link: '/privacy-policy' },
+      { subTitle: 'payment', link: '/payment' },
       { subTitle: 'contactsUs', link: '/contactus' },
     ],
   },

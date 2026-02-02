@@ -1,7 +1,6 @@
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
-import paymentImage from '@lib/public/more/paymentImage.png';
 
 const AboutUsComponent = dynamic(() => import('../components/aboutUs/components/AboutUsComponent'), {
   ssr: false,
@@ -35,7 +34,7 @@ const PaymentPage: React.FC<GetContentProps> = ({ contentData }) => {
         url={`https://azatazen.am/about`}
         image={'https://azatazen.am/seo/about.png'}
       /> */}
-      <AboutUsComponent courseData={contentData.data} imageSrc={paymentImage} />
+      <AboutUsComponent courseData={contentData.data} />
     </>
   );
 };

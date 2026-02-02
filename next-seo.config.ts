@@ -1,11 +1,11 @@
 const defaultSEO = {
-  title: 'Артцентер',
+  title: 'Արտ Կենտրոն',
   description: '',
   openGraph: {
     type: 'website',
     locale: 'hy_AM',
     url: '',
-    site_name: 'Артцентер',
+    site_name: 'Արտ Կենտրոն',
     images: [
       {
         url: '',

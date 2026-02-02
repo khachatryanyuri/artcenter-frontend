@@ -10,9 +10,9 @@ import FooterMobile from '@lib/components/common/components/FooterMobile';
 import { useTranslation } from 'react-i18next';
 import artcenterLogo from '@lib/public/Logo.png';
 import Image from 'next/image';
-import arcaImg from '@lib/public/donation/arca.png';
-import visaImg from '@lib/public/donation/visa.png';
-import masterCardImg from '@lib/public/donation/masterCard.png';
+import arcaImg from '@lib/public/donation/arca.svg';
+import visaImg from '@lib/public/donation/visa.svg';
+import masterCardImg from '@lib/public/donation/master.svg';
 
 const {
   boxStyles: { footerBox, linkBox, lastBox, lastTextLinkBox, privacyBox, boxMax, boxMobile },

@@ -9,9 +9,9 @@ import { SECTIONS_DATA } from '@lib/components/common/constants/footerConstants'
 import LinkNavigate from '@lib/components/common/components/LinkNavigate';
 import { SocialMedia } from '@lib/components/common/components/SocialMedia';
 import { useTranslation } from 'react-i18next';
-import arcaImg from '@lib/public/donation/arca.png';
-import visaImg from '@lib/public/donation/visa.png';
-import masterCardImg from '@lib/public/donation/masterCard.png';
+import arcaImg from '@lib/public/donation/arca.svg';
+import visaImg from '@lib/public/donation/visa.svg';
+import masterCardImg from '@lib/public/donation/master.svg';
 
 const {
   boxStyles: { linkBox, lastBox, imageBoxMobile },
