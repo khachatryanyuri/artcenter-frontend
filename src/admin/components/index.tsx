@@ -35,3 +35,9 @@ export { default as ServicesApplicationList } from '@lib/src/admin/components/Se
 export { default as ServicesApplicationEdit } from '@lib/src/admin/components/ServicesApplication/ServicesApplicationEdit';
 export { default as ServicesApplicationShow } from '@lib/src/admin/components/ServicesApplication/ServicesApplicationShow';
 export { default as ServicesApplicationCreate } from '@lib/src/admin/components/ServicesApplication/ServicesApplicationCreate';
+
+export { default as LessonPricingList } from '@lib/src/admin/components/LessonPricing/LessonPricingList';
+export { default as LessonPricingCreate } from '@lib/src/admin/components/LessonPricing/LessonPricingCreate';
+export { default as LessonPricingEdit } from '@lib/src/admin/components/LessonPricing/LessonPricingEdit';
+export { default as LessonPricingShow } from '@lib/src/admin/components/LessonPricing/LessonPricingShow';
+

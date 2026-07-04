@@ -30,6 +30,8 @@ const CoursesApplicationList = (props: ListProps) => {
         </Box>
         <TextField source="skillLevel" label="Skill Level" />
         <TextField source="wishes" label="Wishes" />
+        <TextField source="package" label="Package" />
+        <TextField source="totalPriceAMD" label="Price (AMD)" />
         <EditButton />
         <DeleteButton label="Delete" />
       </Datagrid>

@@ -30,6 +30,12 @@ import {
   ServicesApplicationShow,
   ServicesApplicationCreate,
 } from '.';
+import LessonPricingList from '@lib/src/admin/components/LessonPricing/LessonPricingList';
+import LessonPricingCreate from '@lib/src/admin/components/LessonPricing/LessonPricingCreate';
+import LessonPricingEdit from '@lib/src/admin/components/LessonPricing/LessonPricingEdit';
+import LessonPricingShow from '@lib/src/admin/components/LessonPricing/LessonPricingShow';
+import PaymentsList from './Payments/PaymentsList';
+import PaymentsShow from './Payments/PaymentsShow';
 
 const resources = [
   { name: 'user/users', list: UsersList, edit: UserEdit, show: UserShow },
@@ -74,6 +80,18 @@ const resources = [
     edit: ServicesApplicationEdit,
     show: ServicesApplicationShow,
     create: ServicesApplicationCreate,
+  },
+  {
+    name: 'pricing',
+    list: LessonPricingList,
+    edit: LessonPricingEdit,
+    show: LessonPricingShow,
+    create: LessonPricingCreate,
+  },
+  {
+    name: 'payments',
+    list: PaymentsList,
+    show: PaymentsShow,
   },
 ];
 

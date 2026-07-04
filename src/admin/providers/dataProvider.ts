@@ -60,7 +60,8 @@ export const dataProvider = {
 
     const { json } = await httpClient(url);
 
-    return resource !== 'pages' ? { data: json } : { data: json.data };
+    // Some endpoints return { data: [...] }, others return just [...]
+    return { data: json.data || json };
   },
 
   getManyReference: async (resource: string, params: any) => {
@@ -78,8 +79,8 @@ export const dataProvider = {
 
     const { headers, json } = await httpClient(url);
     return {
-      data: json,
-      total: parseInt(headers.get('content-range')?.split('/').pop() || '0', 10),
+      data: json.data || json,
+      total: json.total ?? parseInt(headers.get('content-range')?.split('/').pop() || '0', 10),
     };
   },
 

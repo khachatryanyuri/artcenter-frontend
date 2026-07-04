@@ -2,7 +2,9 @@ import * as React from 'react';
 import { Box, Button, Container, Grid, IconButton, Typography } from '@mui/material';
 
 import { detailedCourseStyles } from '@lib/components/courses/styles/courseStyle';
-import { constants, getPaymentContent, USD_EXCHANGE_RATE } from '@lib/components/courses/constants/constants';
+import { constants } from '@lib/components/courses/constants/constants';
+import { useLessonPricing } from '@lib/services/hooks/useLessonPricing';
+import PricingTable, { PricingTableSkeleton } from '@lib/components/courses/components/PricingTable';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Image from 'next/image';
 import Content from '@lib/components/common/components/Content';
@@ -27,33 +29,9 @@ export default function DetailedCourseComponent({ data }: any) {
   const { locale } = router;
   const { t } = useTranslation();
 
-  const [exchangeRate, setExchangeRate] = React.useState(USD_EXCHANGE_RATE);
-
-  React.useEffect(() => {
-    const CACHE_KEY = 'usd_exchange_rate';
-    const CACHE_TIME_KEY = 'usd_exchange_rate_time';
-    const CACHE_DURATION = 1000 * 60 * 60 * 24;
-
-    const cachedRate = localStorage.getItem(CACHE_KEY);
-    const cachedTime = localStorage.getItem(CACHE_TIME_KEY);
-
-    if (cachedRate && cachedTime && Date.now() - Number(cachedTime) < CACHE_DURATION) {
-      setExchangeRate(Number(cachedRate));
-      return;
-    }
-
-    fetch('https://cb.am/latest.json.php')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.USD) {
-          const rate = Number(data.USD);
-          setExchangeRate(rate);
-          localStorage.setItem(CACHE_KEY, rate.toString());
-          localStorage.setItem(CACHE_TIME_KEY, Date.now().toString());
-        }
-      })
-      .catch((err) => console.error('Failed to fetch exchange rate:', err));
-  }, []);
+  // Pass courseId directly — the hook skips the fetch if the id is
+  // null/undefined, so courses without a pricing document simply show nothing.
+  const { data: pricingData, loading: pricingLoading } = useLessonPricing(data.id ?? null);
 
   const handleNavigate = () => {
     const url =
@@ -107,8 +85,17 @@ export default function DetailedCourseComponent({ data }: any) {
           </Box>
 
           <Content variant="h5" text={data?.description} style={{ sx: { pt: '24px' } }} />
-          {data.typesKey === 'curses' && (
-            <Content variant="h5" text={getPaymentContent(exchangeRate)} style={{ sx: { pt: '24px' } }} />
+          {/* Render pricing if the backend has a config for this course type */}
+          {(pricingLoading || pricingData) && (
+            <>
+              {pricingLoading && <PricingTableSkeleton />}
+              {!pricingLoading && pricingData && (
+                <PricingTable
+                  pricing={pricingData.pricing}
+                  usdExchangeRate={pricingData.usdExchangeRate}
+                />
+              )}
+            </>
           )}
         </Grid>
         <Box sx={{ mt: '72px' }}>

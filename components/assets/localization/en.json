@@ -93,6 +93,30 @@
       "label": "Your wishes",
       "placeholder": "Enter your wishes"
     },
+    "duration": {
+      "label": "Duration *",
+      "placeholder": "Select duration",
+      "minutes": "min"
+    },
+    "package": {
+      "label": "Package *",
+      "single": "Single Lesson (1)",
+      "8lessons": "Monthly Package (8 lessons) - 3% off",
+      "fullCourse": "Full Course (24 lessons) - 5% off"
+    },
+    "pricingSection": {
+      "label": "Pricing Section *",
+      "placeholder": "Select a pricing section"
+    },
+    "price": {
+      "summaryTitle": "Price Summary",
+      "lessons": "Lessons",
+      "student": "student",
+      "students": "students",
+      "baseTotal": "Base Total",
+      "discount": "Discount Applied",
+      "finalTotal": "Final Total"
+    },
     "errors": {
       "required": "This field cannot be empty",
       "invalidEmail": "Invalid email format",
@@ -145,5 +169,30 @@
   "address": "Address: Yerevan, st. Baghramyan, 51, apt. 29",
   "number": "Tel.: +374 43 198 899",
   "VAT": "VAT Number: 08312005",
-  "companyEmail": "Email: gyanjumyan.artcenter.1@gmail.com"
+  "companyEmail": "Email: gyanjumyan.artcenter.1@gmail.com",
+  "payment": {
+    "processingTitle": "Processing your payment...",
+    "processingDescription": "Please wait while we verify your transaction with the bank. Do not close this page.",
+    "successTitle": "Payment Successful!",
+    "successDescription": "Your application and payment have been successfully received.",
+    "pendingTitle": "Payment Pending",
+    "pendingDescription": "Your payment is currently being processed by the bank. We will update you shortly.",
+    "failedTitle": "Payment Failed",
+    "failedDescription": "Unfortunately, your payment could not be processed. Please try again or contact support.",
+    "returnHome": "Return to Home"
+  },
+  "invoice": {
+    "invalidLink": "Invalid payment link.",
+    "notFound": "Invoice not found or expired.",
+    "failedInitiate": "Failed to initiate payment.",
+    "invalidResponse": "Invalid response from payment gateway.",
+    "errorTitle": "Error",
+    "title": "Service Invoice",
+    "orderNumber": "Order Number",
+    "customerName": "Customer Name",
+    "serviceDetails": "Service Details",
+    "totalAmount": "Total Amount:",
+    "payNow": "Pay Now",
+    "paymentStatus": "Payment Status: "
+  }
 }

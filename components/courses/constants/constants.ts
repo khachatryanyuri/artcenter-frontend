@@ -1,4 +1,5 @@
-export const USD_EXCHANGE_RATE = 400;
+// Pricing is now served from the backend API via /api/pricing/by-type/:courseTypeKey
+// See: services/hooks/useLessonPricing.ts and components/courses/components/PricingTable.tsx
 
 export const constants = {
   BUTTONT_TEXT: 'register',

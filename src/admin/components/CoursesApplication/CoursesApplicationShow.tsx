@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import React from 'react';
-import { SimpleShowLayout, Show, TextField, ShowProps, useRecordContext } from 'react-admin';
+import { SimpleShowLayout, Show, TextField, ShowProps, useRecordContext, ReferenceManyField, Datagrid, DateField, NumberField } from 'react-admin';
 import { useCourses } from './CoursesApplicationEdit';
 
 const PersonsField = () => {
@@ -57,6 +57,25 @@ const CoursesApplicationShow = (props: ShowProps) => {
         </Box>
         <TextField source="skillLevel" label="Skill Level" />
         <TextField source="wishes" label="Wishes" />
+        <TextField source="pricingSection" label="Pricing Section ID" />
+        <TextField source="duration" label="Duration (minutes)" />
+        <TextField source="package" label="Package" />
+        <TextField source="totalPriceAMD" label="Total Price (AMD)" />
+        <TextField source="totalPriceUSD" label="Total Price (USD)" />
+        <TextField source="paymentStatus" label="Payment Status" />
+        
+        <Box mt={2}>
+          <Typography variant="h6">Payment History</Typography>
+          <ReferenceManyField reference="payments" target="applicationId" label="">
+            <Datagrid rowClick="show">
+              <TextField source="orderNumber" label="Order ID" />
+              <TextField source="bankOrderId" label="Bank Trans. ID" />
+              <NumberField source="amountAMD" label="Amount" />
+              <TextField source="status" label="Status" />
+              <DateField source="createdAt" label="Date" showTime />
+            </Datagrid>
+          </ReferenceManyField>
+        </Box>
       </SimpleShowLayout>
     </Show>
   );

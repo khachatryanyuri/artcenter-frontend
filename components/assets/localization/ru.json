@@ -93,6 +93,30 @@
       "label": "Ваши пожелания",
       "placeholder": "Введите ваши пожелания"
     },
+    "duration": {
+      "label": "Длительность *",
+      "placeholder": "Выберите длительность",
+      "minutes": "мин"
+    },
+    "package": {
+      "label": "Пакет *",
+      "single": "Один урок (1)",
+      "8lessons": "Пакет из 8 уроков - скидка 3%",
+      "fullCourse": "Полный курс (24 урока) - скидка 5%"
+    },
+    "pricingSection": {
+      "label": "Тип занятия *",
+      "placeholder": "Выберите тип занятия"
+    },
+    "price": {
+      "summaryTitle": "Итоговая стоимость",
+      "lessons": "Уроки",
+      "student": "ученик",
+      "students": "учеников",
+      "baseTotal": "Базовая стоимость",
+      "discount": "Примененная скидка",
+      "finalTotal": "К оплате"
+    },
     "errors": {
       "required": "Поле не может быть пустым",
       "invalidEmail": "Неверный формат электронной почты",
@@ -145,5 +169,30 @@
   "address": "Aдрес: Ереван, ул. Баграмян, 51, кв. 29",
   "number": "Тел.: +374 43 198 899",
   "VAT": "Номер НДС: 08312005",
-  "companyEmail": "E-mail: gyanjumyan.artcenter.1@gmail.com"
+  "companyEmail": "E-mail: gyanjumyan.artcenter.1@gmail.com",
+  "payment": {
+    "processingTitle": "Обработка вашего платежа...",
+    "processingDescription": "Пожалуйста, подождите, пока мы проверим транзакцию в банке. Не закрывайте эту страницу.",
+    "successTitle": "Оплата прошла успешно!",
+    "successDescription": "Ваша заявка и оплата успешно получены.",
+    "pendingTitle": "Ожидание оплаты",
+    "pendingDescription": "Ваш платеж в данный момент обрабатывается банком. Мы сообщим вам результат в ближайшее время.",
+    "failedTitle": "Ошибка оплаты",
+    "failedDescription": "К сожалению, ваш платеж не может быть обработан. Пожалуйста, попробуйте еще раз или обратитесь в службу поддержки.",
+    "returnHome": "Вернуться на главную"
+  },
+  "invoice": {
+    "invalidLink": "Неверная ссылка на оплату.",
+    "notFound": "Счет не найден или истек срок действия.",
+    "failedInitiate": "Не удалось инициировать платеж.",
+    "invalidResponse": "Неверный ответ от платежного шлюза.",
+    "errorTitle": "Ошибка",
+    "title": "Счет за услуги",
+    "orderNumber": "Номер заказа",
+    "customerName": "Имя клиента",
+    "serviceDetails": "Детали услуги",
+    "totalAmount": "Итоговая сумма:",
+    "payNow": "Оплатить сейчас",
+    "paymentStatus": "Статус платежа: "
+  }
 }
