@@ -35,7 +35,7 @@ function discountLabel(condition: string, locale: string): string {
 // Price formatting helpers (same logic as the old constants.ts)
 // ---------------------------------------------------------------------------
 function formatAMD(amdPrice: number): string {
-  return amdPrice >= 10000 ? `${amdPrice / 1000}.000` : amdPrice.toString();
+  return new Intl.NumberFormat('en-US').format(amdPrice);
 }
 
 function formatPrice(amdPrice: number, usdExchangeRate: number, locale: string): string {

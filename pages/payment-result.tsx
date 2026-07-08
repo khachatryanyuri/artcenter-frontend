@@ -24,14 +24,18 @@ export default function PaymentResultPage() {
     const verifyPayment = async () => {
       try {
         const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
-        const res = await fetch(`${baseUrl}/payments/verify/${transactionId}`);
+        const res = await fetch(`${baseUrl}/payments/verify`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ bankOrderId: transactionId }),
+        });
         
         if (!res.ok) {
           throw new Error('Verification failed');
         }
 
         const data = await res.json();
-        setStatus(data.status); // PENDING, COMPLETED, FAILED, REFUNDED
+        setStatus(data.status); // PENDING, COMPLETED, FAILED, REFUNDED, REVERSED, EXPIRED
       } catch (error) {
         console.error('Error verifying payment:', error);
         setStatus('FAILED');

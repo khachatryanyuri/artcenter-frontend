@@ -104,20 +104,10 @@ export default function CheckoutServicePage() {
             </Box>
 
             <Box sx={{ mb: 3 }}>
-              <Typography variant="body2" color="text.secondary">{t('invoice.customerName')}</Typography>
-              <Typography variant="body1" sx={{ fontWeight: 500 }}>{application?.name}</Typography>
-            </Box>
-
-            <Box sx={{ mb: 3 }}>
               <Typography variant="body2" color="text.secondary">{t('invoice.serviceDetails')}</Typography>
               <Typography variant="body1" sx={{ fontWeight: 500 }}>
                 {application?.fieldOfService}
               </Typography>
-              {application?.wishes && (
-                <Typography variant="body2" sx={{ mt: 1, p: 2, bgcolor: '#f5f5f5', borderRadius: 1 }}>
-                  {application.wishes}
-                </Typography>
-              )}
             </Box>
 
             <Box sx={{ mt: 4, pt: 3, borderTop: '1px solid #eee', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

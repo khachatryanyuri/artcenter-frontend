@@ -232,30 +232,13 @@ const LessonRequestComponent = ({ lessonsData }: { lessonsData: any }) => {
           requestData.totalPriceUSD = priceDetails.finalTotalUSD;
         }
 
-        // 1. Create the application first
+        // 1. Create the application (and initiate payment on the backend if applicable)
         const appResponse = await dataProvider.create('courses-application-request', { data: requestData });
-        const applicationId = appResponse.data.id;
 
-        // 2. If there's a price, initiate payment checkout
-        if (priceDetails && priceDetails.finalTotalAMD > 0) {
-          const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
-          const checkoutResponse = await fetch(`${baseUrl}/payments/checkout`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ applicationId })
-          });
-
-          if (!checkoutResponse.ok) {
-            throw new Error('Failed to initiate payment');
-          }
-
-          const checkoutData = await checkoutResponse.json();
-          if (checkoutData.formUrl) {
-            window.location.href = checkoutData.formUrl;
-            return;
-          }
+        // 2. If the backend returned a formUrl, redirect to the payment gateway
+        if (appResponse.data.formUrl) {
+          window.location.href = appResponse.data.formUrl;
+          return;
         }
 
         router.push('/');

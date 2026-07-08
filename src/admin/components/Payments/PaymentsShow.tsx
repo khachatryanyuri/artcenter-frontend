@@ -41,7 +41,7 @@ const PaymentsShowActions = () => {
 
   return (
     <TopToolbar>
-      {record.status === 'COMPLETED' && (
+      {(record.status === 'COMPLETED' || record.status === 'PARTIALLY_REFUNDED') && (
         <>
           <Button 
             color="primary" 
@@ -106,6 +106,7 @@ const PaymentsShow = (props: ShowProps) => {
         <DynamicApplicationReference />
 
         <NumberField source="amountAMD" label="Amount (AMD)" />
+        <NumberField source="refundedAmountAMD" label="Refunded Amount (AMD)" />
         <TextField source="currency" label="Currency Code" />
 
         <TextField source="status" label="Payment Status" />
