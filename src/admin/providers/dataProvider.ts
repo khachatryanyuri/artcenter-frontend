@@ -116,7 +116,7 @@ export const dataProvider = {
       body: requestBody,
     });
 
-    return resource === 'check-answers' ? { data: json } : { data: { ...params.data, id: json.id, status } };
+    return resource === 'check-answers' ? { data: json } : { data: { ...params.data, ...json, status } };
   },
 
   updateMany: async (resource: any, params: any) => {

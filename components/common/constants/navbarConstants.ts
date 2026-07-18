@@ -16,7 +16,7 @@ export const LINKS: ILink[] = [
       { text: 'aboutUs', href: '/about' },
       { text: 'faq', href: '/helps' },
       { text: 'discounts', href: '/discounts' },
-      { text: 'payment', href: '/payment' },
+      { text: 'payments', href: '/payment' },
       { text: 'privacyPolicy', href: '/privacy-policy' },
     ],
   },
