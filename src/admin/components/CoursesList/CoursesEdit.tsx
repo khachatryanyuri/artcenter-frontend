@@ -20,7 +20,7 @@ const DependentSelectInputs = ({ subTypes }: { subTypes: any[] }) => {
   const { control } = useFormContext();
 
   // Watching subType key (selected in first select)
-  const selectedSubTypeKey = useWatch({ control, name: 'subTypeKey' });
+  const selectedSubTypeKey = useWatch({ control, name: 'subTypesKey' });
 
   const selectedSubType = useMemo(() => {
     return subTypes.find((s) => s.key === selectedSubTypeKey);
@@ -38,7 +38,7 @@ const DependentSelectInputs = ({ subTypes }: { subTypes: any[] }) => {
   return (
     <>
       <SelectInput
-        source="subTypeKey" // <-- главное исправление
+        source="subTypesKey"
         label="Sub Type"
         choices={subTypes}
         optionText={(record) => `${record.title?.ru || record.title?.en || record.key}`}
@@ -47,7 +47,7 @@ const DependentSelectInputs = ({ subTypes }: { subTypes: any[] }) => {
       />
 
       <SelectInput
-        source="typeKey" // <-- ключ выбранного type из выбранного subType
+        source="subTypesThemeKey"
         label="Type"
         choices={typeChoices}
         optionText="name"
