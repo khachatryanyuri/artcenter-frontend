@@ -42,7 +42,6 @@ const PaymentsShowActions = () => {
   return (
     <TopToolbar>
       {(record.status === 'COMPLETED' || record.status === 'PARTIALLY_REFUNDED') && (
-        <>
           <Button 
             color="primary" 
             onClick={() => handleAction('refund')} 
@@ -51,6 +50,8 @@ const PaymentsShowActions = () => {
           >
             Refund
           </Button>
+      )}
+      {record.status === 'COMPLETED' && (
           <Button 
             color="secondary" 
             onClick={() => handleAction('reverse')} 
@@ -59,7 +60,6 @@ const PaymentsShowActions = () => {
           >
             Reverse
           </Button>
-        </>
       )}
     </TopToolbar>
   );

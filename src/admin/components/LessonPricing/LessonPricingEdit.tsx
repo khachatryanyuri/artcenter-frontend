@@ -75,7 +75,7 @@ const LessonPricingEdit = (props: EditProps) => {
                 <TextInput
                   label={`Section Title (${language.code})`}
                   source={`title.${language.code}`}
-                  validate={language.code === 'ru' ? required() : undefined}
+                  // validate={language.code === 'ru' ? required() : undefined}
                   fullWidth
                 />
               </Fragment>

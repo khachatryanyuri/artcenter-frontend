@@ -101,8 +101,8 @@
     "package": {
       "label": "Package *",
       "single": "Single Lesson (1)",
-      "8lessons": "Monthly Package (8 lessons) - 3% off",
-      "fullCourse": "Full Course (24 lessons) - 5% off"
+      "8lessons": "Monthly Package (8 lessons)",
+      "fullCourse": "Full Course (24 lessons)"
     },
     "pricingSection": {
       "label": "Pricing Section *",
